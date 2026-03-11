@@ -1,0 +1,603 @@
+/* =================== Root Variables =================== */
+:root {
+  --primary-green: #2f7a3e;
+  --accent-brown: #6d3402;
+  --badge-brown: #8b4513;
+  --text-dark: #111;
+  --text-light: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: rgba(0, 0, 0, 0.4);
+  --transition-speed: 0.3s;
+  --video-glow: rgba(132, 79, 5, 0.35);
+  --button-light: #FFD8A8;
+  --product-name-color: #001F54;
+  --insta-pink: #E1306C;
+}
+
+/* =================== Base Styles =================== */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  background: linear-gradient(
+    rgba(154, 151, 151, 0.85),
+    rgba(36, 81, 6, 0.15)
+  ), url("images/card-bgs.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Fix for Inline Styles Error (Logo) */
+.brand-logo-main {
+  height: 200px;
+  object-position: center top;
+}
+
+.brand {
+  font-weight: 700;
+  color: rgb(3, 62, 22);
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: #000;
+}
+
+/* =================== Banner =================== */
+/* =================== FIXED RESPONSIVE BANNER =================== */
+.banner {
+  display: block;
+  width: 100%;
+  height: clamp(200px, 32vw, 480px);
+  object-fit: cover;
+  object-position: center top;   /* 👈 IMPORTANT: show TOP section */
+  margin: 0 auto 20px auto;
+  border-radius: 20px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .banner {
+    height: clamp(260px, 33vw, 520px);
+    object-position: center top; /* 👈 keeps top visible on desktop */
+    border-radius: 18px;
+  }
+}
+
+
+
+
+/* =================== Buttons =================== */
+.btn {
+  border-radius: 25px;
+  padding: 0.5rem 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all var(--transition-speed) ease;
+  color: var(--text-dark);
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--card-hover-shadow);
+  background: #025710;
+  color: white;
+}
+
+/* Instagram Pink Button */
+#instaBtn {
+  background: var(--insta-pink);
+  color: white !important;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
+  width: 100%;
+  margin-top: 15px;
+}
+
+#instaBtn::before {
+  content: "▶";
+  font-size: 0.9rem;
+}
+
+#instaBtn:hover {
+  background: #c12056;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(225, 48, 108, 0.4);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, #f0f9eb, #e0f2d9);
+  border-radius: 18px;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform var(--transition-speed) cubic-bezier(.22,1,.36,1),
+              box-shadow var(--transition-speed),
+              filter var(--transition-speed);
+  box-shadow: 0 8px 20px var(--card-shadow);
+  min-height: 1px; /* Firefox Fix */
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 35px var(--card-hover-shadow);
+  filter: saturate(1.1) contrast(1.04);
+}
+
+.product-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  transition: transform var(--transition-speed);
+}
+
+.product-card .fw-bold {
+  font-size: 1rem;
+  color: var(--product-name-color);
+}
+
+.price {
+  display: inline-block;
+  background: var(--badge-brown);
+  color: #fff;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 18px;
+  margin-top: 6px;
+  font-size: 0.85rem;
+}
+
+/* =================== Modal Luxury Design =================== */
+.modal-content {
+  position: relative;
+  border-radius: 25px;
+  border: none;
+  background: rgba(204, 233, 208, 0.92);
+  -webkit-backdrop-filter: blur(10px); /* Safari Fix First */
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.modal-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.05));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.modal-header, .modal-body {
+  position: relative;
+  z-index: 1;
+}
+
+#modalTitle {
+  background: linear-gradient(45deg, #2d5a27, #051f02);
+  -webkit-background-clip: text;
+  background-clip: text; /* Compatibility Fix */
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* Fix for inline flex styles in Modal Body */
+.modal-img-container {
+  flex: 0 0 320px;
+}
+
+.modal-info-container {
+  flex: 1;
+}
+
+#modalImage {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ffffff, #f7f7f7);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Modal Entrance Animation */
+.modal.fade .modal-dialog {
+  transform: translateY(16px) scale(0.98);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(.22,1,.36,1);
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* =================== Video Section =================== */
+.video-wrap {
+  position: relative;
+  width: 360px;
+  max-width: 90vw;
+  margin: 20px auto;
+  border-radius: 18px;
+  background: #000;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+
+.brand-video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
+/* =================== Responsive Queries =================== */
+@media (min-width: 768px) {
+  .modal-body {
+    flex-direction: row !important;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal-body {
+    text-align: center;
+  }
+  .modal-img-container {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-img {
+    max-height: 240px;
+  }
+  .modal-dialog {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 20px);
+  }
+  #modalTitle {
+    font-size: 1.2rem;
+  }
+}
+#logoText {
+  width: 48px;  /* Konjam size increase panniruken */
+  height: 48px;
+  background: rgb(1,114,37);
+  border-radius: 16px; /* Ithu thaan antha Curved Square look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Chinna shadow for depth */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle border for luxury look */
+}
+/* Phone and Email links look */
+.contact-link {
+    text-decoration: none;
+    color: inherit; /* Normal text color-laeye irukkum */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--primary-green); /* Hover panna unga brand green varum */
+    text-decoration: underline;
+}
+
+/* Instagram ID specific color (Pinkish Gradient Look) */
+.insta-text-link {
+    font-weight: 700;
+    text-decoration: none;
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: opacity 0.3s ease;
+}
+
+.insta-text-link:hover {
+    opacity: 0.8;
+}
+/* ... Keep Root and Base Styles as they are ... */
+
+/* =================== Product Grid & Cards (Fixed) =================== */
+#productGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Mobile-la rendu card side-by-side */
+    gap: 12px; /* Gap-ai konjam kuraichaa image innum perusa theriyum */
+    padding: 10px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0f0f0;
+}
+
+.product-img-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: #f9f9f9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Image cut aagama, card-ai nalla fill pannum */
+    display: block;
+}
+
+.product-info-area {
+    padding: 10px 5px;
+    text-align: center;
+    background: #fff;
+}
+
+.product-title-main {
+    font-size: 0.9rem; /* Text size-ai balance panni image-ku importance tharuvom */
+    font-weight: 700;
+    color: #333;
+    min-height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.product-price-main {
+    color: #2f7a3e;
+    font-weight: 900;
+    font-size: 1.15rem;
+    margin-top: 4px;
+}
+
+/* Desktop-la 4 or 5 cards kaatalaam */
+@media (min-width: 768px) {
+    #productGrid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+}
+
+.price {
+  background: var(--badge-brown);
+  color: #fff;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  width: fit-content;
+  margin-top: 5px;
+}
+
+
+/* =================== Language Toggle (Fixed) =================== */
+.lang-btn {
+  background: none;
+  border: none;
+  color: #666; /* Unselected color */
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+  color: var(--primary-green) !important; /* Green color only when clicked */
+  text-decoration: underline;
+  font-weight: 800;
+  transform: scale(1.1);
+}
+.lang-toggle {
+  cursor: pointer;
+  color: #666;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+}
+
+/* Click pannum pothu temporary-ah green aaga */
+.lang-toggle.clicked {
+  color: var(--primary-green) !important;
+  transform: scale(1.1);
+}
+
+/* =================== Modal Bold Text (Fixed) =================== */
+#modalDescription, #modalIngredients, 
+.modal-info-container b, 
+.modal-info-container strong {
+  font-weight: 800 !important; /* Forces bold on mobile */
+  color: #000 !important;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.modal-lang-toggle {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #eae7e7;
+    padding-bottom: 10px;
+}
+
+.modal-lang-toggle .btn {
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 4px 12px;
+}
+
+#modalDesc strong {
+    color: #000000; /* Description headings (Description, Ingredients) green color-la irukka */
+}
+/* Desktop-la ellathaiyum fix panna */
+@media (min-width: 768px) {
+    /* 2. Modal Body - Layout structure */
+    .modal-body {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 30px !important;
+        align-items: flex-start !important;
+    }
+
+    /* Left Side: Image */
+    .modal-img-container {
+        flex: 0 0 350px !important; /* Fixed width for image side */
+    }
+
+    /* Right Side: Info */
+    .modal-info-container {
+        flex: 1 !important;
+        display: block !important; /* Flex-ai remove panna button side-la pogaadhu */
+    }
+
+    /* 3. Modal Text & Button - Vertical Alignment */
+    #modalDesc {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 20px !important; /* Text mudinja udanae space */
+        text-align: left;
+    }
+
+    #instaBtn {
+        display: block !important; /* Button-ai next line-ku force pannum */
+        width: fit-content !important;
+        margin-top: 10px !important;
+        float: none !important; /* Side-la poga vidaadhu */
+    }
+}
+
+/* 2. Mobile Modal: Gaps-ai kuraikka and Boldness-ai adhigam aakka */
+@media (max-width: 767px) {
+    /* Header (Our Products & Contact) alignment fix */
+    .row.mb-3 {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 10px;
+    }
+    .col.text-end { text-align: center !important; width: 100%; }
+
+    /* Modal padding and gap reduction */
+    .modal-content { padding: 12px !important; }
+    .modal-body { 
+        gap: 8px !important; 
+        padding: 5px !important;
+        flex-direction: column !important;
+    }
+    
+    #modalImage { 
+        max-height: 275px !important; 
+        margin-bottom: 5px !important; 
+    }
+
+    /* Bold Text for Mobile Description */
+    #modalDesc strong, #modalDesc b {
+        font-weight: 900 !important; /* Super Bold */
+        color: #000 !important;
+        display: inline-block !important;
+        margin-top: 10px !important;
+        font-size: 1rem !important;
+    }
+
+    #modalDesc {
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+        text-align: left !important;
+    }
+  }
+/* =================== CATEGORY TABS (GLOBAL) =================== */
+
+.shop-tabs {
+  display: flex;
+  gap: 12px;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+
+  position: relative;
+  z-index: 20;
+
+  width: fit-content;   /* ✅ NEW */
+  max-width: 100%;      /* ✅ NEW */
+}
+
+.shop-tabs::-webkit-scrollbar {
+  display: none;
+}
+.shop-tabs {
+  scrollbar-width: none;
+}
+
+.shop-tabs .tab {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  min-height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 15px;
+  color: #5f7f72;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: background 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.15s ease;
+}
+
+.shop-tabs .tab.active {
+  background: #0f5c3c;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.shop-tabs .tab:active {
+  transform: scale(0.97);
+}
+@media (min-width: 768px) {
+  .shop-tabs {
+    margin: 0 auto;      /* center on desktop */
+    overflow-x: visible;
+  }
+}
+

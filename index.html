@@ -926,8 +926,9 @@
     }
 
     .sec-sub {
-      color: rgba(255, 255, 255, .72);
-      font-size: .94rem
+      color: var(--gl);
+      font-size: .94rem;
+      font-weight: 700;
     }
 
     .sec-deco {
@@ -2652,7 +2653,7 @@
             <h1 class="sl-title">Farm <em>To table</em></h1>
             <p class="sl-desc">Multi- blends rooted in tradition — wholesome nutrition for every age, every
               morning.</p>
-            <a href="#products" class="sl-btn" onclick="filterProducts('mix')">Shop Healthmix →</a>
+            <a href="#products" class="sl-btn" onclick="filterProducts('mix')">Explore →</a>
           </div>
         </div>
         <div class="car-slide">
@@ -2672,8 +2673,7 @@
           <div class="sl-con">
             <span class="sl-badge">🥛 Healthy</span>
             <h1 class="sl-title">Pure <em>and Natural</em></h1>
-            <p class="sl-desc">We care for your health
-              way.</p>
+            <p class="sl-desc">We care for your health.</p>
             <a href="#products" class="sl-btn" onclick="filterProducts('ghee')">Explore →</a>
           </div>
         </div>
@@ -2744,9 +2744,14 @@
         <div id="modalBody" style="padding:8px 20px 22px;display:flex;flex-direction:column;gap:16px;">
           <!-- Image + price column -->
           <div id="modalImgCol" style="flex-shrink:0;">
-            <img id="modalImage"
-              style="width:100%;max-height:280px;object-fit:cover;border-radius:12px;border:1px solid rgba(30,122,62,.12);box-shadow:0 6px 20px rgba(11,46,20,.15);display:block;"
-              alt="Product">
+            <div id="modalDualWrap" style="display:flex;gap:10px;">
+              <img id="modalImage"
+                style="width:100%;max-height:280px;object-fit:cover;border-radius:12px;border:1px solid rgba(30,122,62,.12);box-shadow:0 6px 20px rgba(11,46,20,.15);display:block;"
+                alt="Product">
+              <img id="modalImage2"
+                style="width:100%;max-height:280px;object-fit:cover;border-radius:12px;border:1px solid rgba(30,122,62,.12);box-shadow:0 6px 20px rgba(11,46,20,.15);display:none;"
+                alt="Product">
+            </div>
             <div style="margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
               <span id="modalPriceOrig"
                 style="font-size:.9rem;color:#aaa;text-decoration:line-through;text-decoration-color:#e05555;text-decoration-thickness:2px;font-weight:700;"></span>
@@ -3430,13 +3435,10 @@
             <img class="prod-img" src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820494/DSC00269_wkw8kn.jpg" alt="${p.name}" loading="lazy"
               onload="this.classList.add('loaded');this.previousElementSibling&&(this.previousElementSibling.style.display='none')"
               onerror="this.classList.add('loaded');this.previousElementSibling&&(this.previousElementSibling.style.display='none');this.style.opacity='.25'">
-            <img class="prod-img" src="${p.img}" alt="${p.name}" loading="lazy"
-              onload="this.classList.add('loaded')"
-              onerror="this.classList.add('loaded');this.style.opacity='.25'">
           `;
         }
         card.innerHTML = `
-      <div class="prod-img-wrap${isMillet ? ' dual' : ''}">
+      <div class="prod-img-wrap">
         ${imgHtml}
         <div class="img-leaf-bg">${leafIcon}</div>
       </div>
@@ -3466,6 +3468,20 @@
       curProd = p;
       document.getElementById('modalTitle').textContent = lang === 'ta' ? p.ta : p.name;
       document.getElementById('modalImage').src = p.img;
+      const mImg2 = document.getElementById('modalImage2');
+      const mWrap = document.getElementById('modalDualWrap');
+      if (p.category === 'millet') {
+        document.getElementById('modalImage').src = "https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820494/DSC00269_wkw8kn.jpg";
+        mImg2.src = p.img;
+        mImg2.style.display = 'block';
+        document.getElementById('modalImage').style.width = '50%';
+        mImg2.style.width = '50%';
+        mWrap.style.flexDirection = 'row';
+      } else {
+        mImg2.style.display = 'none';
+        document.getElementById('modalImage').style.width = '100%';
+        mWrap.style.flexDirection = 'column';
+      }
       const mrp = getMRP(p.price);
       const origEl = document.getElementById('modalPriceOrig');
       document.getElementById('modalPrice').textContent = p.price;

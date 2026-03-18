@@ -331,10 +331,25 @@
     }
 
     @media(max-width:900px) {
+      .nk-inner {
+        padding: 0 12px;
+        gap: 8px;
+      }
       .n-search {
-        display: none;
+        display: flex;
+        flex: 1;
+        min-width: 100px;
+        max-width: none;
+        padding: 6px 10px;
+      }
+      .n-search-input {
+        font-size: .8rem;
+      }
+      .n-logo-img {
+        height: 44px;
       }
     }
+
 
     .lang-btn {
       background: none;
@@ -622,7 +637,7 @@
     #carNext {
       right: 16px
     }
-    
+
     @media (max-width: 768px) {
       .car-arr {
         display: none

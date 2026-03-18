@@ -51,7 +51,7 @@
       color: var(--tx);
       overflow-x: hidden;
       padding-top: var(--nh);
-      background: url("https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_1400/v1773826161/BANNER2.jpg_1_ytarjs.jpg");
+      background: #040d06;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -157,7 +157,12 @@
     .page {
       display: none;
       position: relative;
-      z-index: 2
+      z-index: 2;
+      min-height: 100vh;
+      background: url("https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773843855/demobg_q5prlv.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     .page.active {
@@ -2569,6 +2574,12 @@
       opacity: 1;
       transform: translateY(0)
     }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
   </style>
 </head>
 

@@ -7,11 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-/* ===== ROOT ===== */
 :root{
   --gd:#0b2e14;--gk:#12472a;--gm:#1e7a3e;--gb:#27a045;--gl:#52c072;--gp:#d4f0de;
-  --am:#d4880c;--go:#f0b822;--gy:#f5d060;
-  --wh:#fff;--cr:#f6fcf8;--bk:#0d1f12;--tx:#2a3d30;--mu:#5a7562;
+  --am:#d4880c;--go:#f0b822;--gy:#f5d060;--wh:#fff;--cr:#f6fcf8;--bk:#0d1f12;
+  --tx:#2a3d30;--mu:#5a7562;
   --s1:0 2px 12px rgba(11,46,20,.11);--s2:0 6px 24px rgba(11,46,20,.17);--s3:0 18px 52px rgba(11,46,20,.28);
   --ez:cubic-bezier(.25,.46,.45,.94);--tr:all .33s cubic-bezier(.25,.46,.45,.94);
   --nh:66px;--rr:16px;--rp:50px;
@@ -19,85 +18,49 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Nunito',system-ui,sans-serif;
-  color:var(--tx);
-  overflow-x:hidden;
+  font-family:'Nunito',system-ui,sans-serif;color:var(--tx);overflow-x:hidden;
   padding-top:var(--nh);
-  background:linear-gradient(160deg,rgba(11,46,20,.78) 0%,rgba(18,71,42,.48) 50%,rgba(11,46,20,.62) 100%),url("images/card-bgs.jpeg");
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
-  position:relative;
+  background:linear-gradient(160deg,rgba(11,46,20,.78) 0%,rgba(18,71,42,.48) 50%,rgba(11,46,20,.62) 100%),url("https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826161/BANNER2.jpg_1_ytarjs.jpg");
+  background-size:cover;background-position:center;background-attachment:fixed;
 }
 
-/* ===== NATURE CANVAS ===== */
-#natureCanvas{
-  position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;
-}
-.fl-leaf{
-  position:absolute;
-  font-size:20px;
-  opacity:0;
-  animation:floatLeaf linear infinite;
-  will-change:transform,opacity;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.2));
-}
-.fl-bee{
-  position:absolute;
-  font-size:16px;
-  animation:beeFly ease-in-out infinite;
-  will-change:transform;
-  filter:drop-shadow(0 1px 3px rgba(0,0,0,.25));
-}
-.fl-pollen{
-  position:absolute;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(240,184,34,.7),rgba(240,184,34,.1));
-  animation:pollenFloat ease-in-out infinite;
-  pointer-events:none;
-}
+/* NATURE CANVAS - reduced for performance */
+#natureCanvas{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.fl-leaf{position:absolute;font-size:18px;opacity:0;animation:floatLeaf linear infinite;will-change:transform,opacity}
+.fl-bee{position:absolute;font-size:15px;animation:beeFly ease-in-out infinite;will-change:transform}
+.fl-pollen{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(240,184,34,.6),rgba(240,184,34,.1));animation:pollenFloat ease-in-out infinite;pointer-events:none}
 
 @keyframes floatLeaf{
   0%{transform:translateY(100vh) rotate(0deg) translateX(0);opacity:0}
-  5%{opacity:.8}
-  90%{opacity:.4}
-  100%{transform:translateY(-120px) rotate(540deg) translateX(80px);opacity:0}
+  5%{opacity:.7}90%{opacity:.3}
+  100%{transform:translateY(-120px) rotate(480deg) translateX(60px);opacity:0}
 }
 @keyframes beeFly{
   0%{transform:translate(0,0) rotate(0deg) scaleX(1)}
-  20%{transform:translate(80px,-50px) rotate(12deg) scaleX(1)}
-  40%{transform:translate(160px,-10px) rotate(-8deg) scaleX(1)}
-  60%{transform:translate(100px,60px) rotate(15deg) scaleX(1)}
-  80%{transform:translate(20px,30px) rotate(-5deg) scaleX(-1)}
+  25%{transform:translate(70px,-40px) rotate(10deg) scaleX(1)}
+  50%{transform:translate(140px,-5px) rotate(-6deg) scaleX(1)}
+  75%{transform:translate(80px,50px) rotate(12deg) scaleX(1)}
   100%{transform:translate(0,0) rotate(0deg) scaleX(1)}
 }
 @keyframes pollenFloat{
-  0%,100%{transform:translateY(0) scale(1);opacity:.25}
-  50%{transform:translateY(-18px) scale(1.6);opacity:.65}
-}
-@keyframes honeydripAnim{
-  0%,100%{transform:translateX(-50%) scaleY(1)}
-  50%{transform:translateX(-50%) scaleY(1.3) translateY(4px)}
+  0%,100%{transform:translateY(0) scale(1);opacity:.2}
+  50%{transform:translateY(-15px) scale(1.5);opacity:.55}
 }
 
-/* ===== HONEYCOMB BG ===== */
 .honeycomb-overlay{
   position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104'%3E%3Cpath d='M30 4L4 20v32l26 16 26-16V20L30 4zm0 72L4 60v32l26 16 26-16V60L30 76z' fill='none' stroke='rgba(255,255,255,0.028)' stroke-width='1'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104'%3E%3Cpath d='M30 4L4 20v32l26 16 26-16V20L30 4zm0 72L4 60v32l26 16 26-16V60L30 76z' fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='1'/%3E%3C/svg%3E");
   background-size:60px 104px;
-  opacity:1;
 }
 
-/* ===== PAGES ===== */
 .page{display:none;position:relative;z-index:2}
 .page.active{display:block}
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 .nk-nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nh);
   background:rgba(255,255,255,.94);backdrop-filter:blur(22px) saturate(1.6);
-  border-bottom:1.5px solid rgba(30,122,62,.14);
-  box-shadow:0 2px 20px rgba(11,46,20,.09);
+  border-bottom:1.5px solid rgba(30,122,62,.14);box-shadow:0 2px 20px rgba(11,46,20,.09);
   transition:var(--tr);
 }
 .nk-nav.scrolled{background:rgba(255,255,255,.98);box-shadow:0 4px 30px rgba(11,46,20,.14)}
@@ -106,26 +69,52 @@ body{
 .n-logo-img{height:52px;width:auto;object-fit:contain;transition:transform .3s var(--ez)}
 .n-logo-img:hover{transform:scale(1.07)}
 .n-links{display:flex;gap:2px}
-.n-link{padding:8px 13px;color:#3a5a42;font-weight:700;font-size:.87rem;text-decoration:none;border-radius:10px;transition:var(--tr);position:relative;cursor:pointer;border:none;background:none;}
-.n-link::after{content:'';position:absolute;bottom:4px;left:13px;right:13px;height:2px;background:linear-gradient(90deg,var(--gm),var(--am));border-radius:2px;transform:scaleX(0);transition:transform .25s var(--ez);transform-origin:left}
-.n-link:hover{color:var(--gd);background:rgba(39,160,69,.08)}.n-link:hover::after{transform:scaleX(1)}
+.n-link{
+  padding:8px 13px;color:#3a5a42;font-weight:700;font-size:.87rem;text-decoration:none;
+  border-radius:10px;transition:var(--tr);position:relative;cursor:pointer;border:none;background:none;
+}
+.n-link::after{
+  content:'';position:absolute;bottom:4px;left:13px;right:13px;height:2px;
+  background:linear-gradient(90deg,var(--gm),var(--am));border-radius:2px;
+  transform:scaleX(0);transition:transform .25s var(--ez);transform-origin:left
+}
+.n-link:hover{color:var(--gd);background:rgba(39,160,69,.08)}
+.n-link:hover::after{transform:scaleX(1)}
 .n-acts{display:flex;align-items:center;gap:10px}
-.lang-btn{background:none;border:1.5px solid var(--gm);color:var(--gd);padding:6px 14px;border-radius:var(--rp);font-size:.82rem;font-weight:700;cursor:pointer;transition:var(--tr);font-family:'Nunito',sans-serif;}
+.lang-btn{
+  background:none;border:1.5px solid var(--gm);color:var(--gd);padding:6px 14px;
+  border-radius:var(--rp);font-size:.82rem;font-weight:700;cursor:pointer;transition:var(--tr);
+  font-family:'Nunito',sans-serif;
+}
 .lang-btn:hover{background:var(--gm);color:#fff}
-.n-cta{background:linear-gradient(135deg,var(--gm),var(--gd));color:#fff!important;padding:9px 22px;border-radius:var(--rp);font-weight:800;font-size:.86rem;text-decoration:none;letter-spacing:.3px;box-shadow:0 4px 14px rgba(30,122,62,.4),inset 0 1px 0 rgba(255,255,255,.15);transition:var(--tr);white-space:nowrap;}
+.n-cta{
+  background:linear-gradient(135deg,var(--gm),var(--gd));color:#fff!important;
+  padding:9px 22px;border-radius:var(--rp);font-weight:800;font-size:.86rem;
+  text-decoration:none;letter-spacing:.3px;
+  box-shadow:0 4px 14px rgba(30,122,62,.4),inset 0 1px 0 rgba(255,255,255,.15);
+  transition:var(--tr);white-space:nowrap;
+}
 .n-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(30,122,62,.55)}
 .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .hbg span{display:block;width:24px;height:2.5px;background:var(--gd);border-radius:2px;transition:var(--tr)}
 .hbg.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
 .hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hbg.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-.mob-menu{background:rgba(255,255,255,.98);border-top:1px solid rgba(30,122,62,.12);max-height:0;overflow:hidden;transition:max-height .4s var(--ez),padding .3s;display:flex;flex-direction:column;gap:2px;padding:0 20px;}
-.mob-menu.open{max-height:300px;padding:10px 20px 16px}
-.mob-lnk{padding:10px 14px;color:var(--gd);font-weight:700;text-decoration:none;border-radius:10px;transition:background .2s;font-size:1rem;border:none;background:none;cursor:pointer;text-align:left;width:100%;}
+.mob-menu{
+  background:rgba(255,255,255,.98);border-top:1px solid rgba(30,122,62,.12);
+  max-height:0;overflow:hidden;transition:max-height .4s var(--ez),padding .3s;
+  display:flex;flex-direction:column;gap:2px;padding:0 20px;
+}
+.mob-menu.open{max-height:320px;padding:10px 20px 16px}
+.mob-lnk{
+  padding:10px 14px;color:var(--gd);font-weight:700;text-decoration:none;
+  border-radius:10px;transition:background .2s;font-size:1rem;border:none;
+  background:none;cursor:pointer;text-align:left;width:100%;
+}
 .mob-lnk:hover{background:rgba(39,160,69,.1)}
 @media(max-width:900px){.n-links,.n-cta,.lang-btn{display:none}.hbg{display:flex}}
 
-/* ===== CAROUSEL ===== */
+/* CAROUSEL */
 .hero-car{position:relative;overflow:hidden;height:clamp(360px,54vw,580px);background:var(--gd)}
 .car-track{display:flex;height:100%;transition:transform .72s cubic-bezier(.77,0,.175,1);will-change:transform}
 .car-slide{flex:0 0 100%;height:100%;position:relative;overflow:hidden;display:flex;align-items:center}
@@ -138,180 +127,141 @@ body{
 .ov3{background:linear-gradient(95deg,rgba(11,46,20,.90) 0%,rgba(18,71,42,.65) 50%,rgba(39,160,69,.12) 78%,transparent 100%)}
 .ov4{background:linear-gradient(112deg,rgba(7,28,12,.92) 0%,rgba(11,46,20,.72) 48%,rgba(39,160,69,.18) 74%,transparent 100%)}
 .sl-con{position:relative;z-index:2;padding:0 6% 0 7%;max-width:560px}
-.sl-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:var(--gy);font-size:.77rem;font-weight:800;padding:5px 16px;border-radius:var(--rp);margin-bottom:16px;letter-spacing:.8px;text-transform:uppercase;backdrop-filter:blur(6px)}
+.sl-badge{
+  display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.28);color:var(--gy);font-size:.77rem;font-weight:800;
+  padding:5px 16px;border-radius:var(--rp);margin-bottom:16px;letter-spacing:.8px;
+  text-transform:uppercase;backdrop-filter:blur(6px)
+}
 .sl-title{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,5.5vw,3.9rem);font-weight:700;color:#fff;line-height:1.05;margin-bottom:13px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
 .sl-title em{color:var(--go);font-style:italic;display:block}
 .sl-desc{color:rgba(255,255,255,.82);font-size:clamp(.84rem,1.5vw,.99rem);line-height:1.7;margin-bottom:26px;font-weight:400;max-width:410px;text-shadow:0 1px 8px rgba(0,0,0,.3)}
-.sl-btn{display:inline-block;background:linear-gradient(135deg,var(--gb),var(--gm));color:#fff;padding:12px 30px;border-radius:var(--rp);font-weight:800;font-size:.9rem;text-decoration:none;letter-spacing:.4px;box-shadow:0 6px 20px rgba(39,160,69,.5),inset 0 1px 0 rgba(255,255,255,.2);transition:var(--tr);}
+.sl-btn{
+  display:inline-block;background:linear-gradient(135deg,var(--gb),var(--gm));color:#fff;
+  padding:12px 30px;border-radius:var(--rp);font-weight:800;font-size:.9rem;text-decoration:none;
+  letter-spacing:.4px;box-shadow:0 6px 20px rgba(39,160,69,.5),inset 0 1px 0 rgba(255,255,255,.2);
+  transition:var(--tr);
+}
 .sl-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 28px rgba(39,160,69,.65);color:#fff}
-.car-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.13);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.3);color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;transition:var(--tr);display:flex;align-items:center;justify-content:center;}
+.car-arr{
+  position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.13);
+  backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.3);color:#fff;
+  width:46px;height:46px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10;
+  transition:var(--tr);display:flex;align-items:center;justify-content:center;
+}
 .car-arr:hover{background:rgba(39,160,69,.48);border-color:rgba(255,255,255,.5);transform:translateY(-50%) scale(1.1)}
 #carPrev{left:16px}#carNext{right:16px}
 .car-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:9px;z-index:10}
 .car-dot{width:8px;height:8px;border-radius:50%;border:2px solid rgba(255,255,255,.6);background:transparent;cursor:pointer;padding:0;transition:var(--tr)}
 .car-dot.on{background:var(--go);border-color:var(--go);width:26px;border-radius:4px;box-shadow:0 0 10px rgba(240,184,34,.6)}
-@media(max-width:560px){.sl-con{max-width:100%}}
 
-/* ===== TRUST STRIP ===== */
-.t-strip{background:linear-gradient(90deg,var(--gk),var(--gm),var(--gk));display:flex;justify-content:space-around;flex-wrap:wrap;padding:13px 20px;gap:8px;border-top:2px solid rgba(240,184,34,.3);border-bottom:2px solid rgba(240,184,34,.2)}
+/* TRUST STRIP */
+.t-strip{
+  background:linear-gradient(90deg,var(--gk),var(--gm),var(--gk));
+  display:flex;justify-content:space-around;flex-wrap:wrap;padding:13px 20px;gap:8px;
+  border-top:2px solid rgba(240,184,34,.3);border-bottom:2px solid rgba(240,184,34,.2)
+}
 .t-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.9);font-weight:700;font-size:.83rem;white-space:nowrap}
 
-/* ===== SECTION HEAD ===== */
+/* SECTION HEAD */
 .sec-hd{text-align:center;margin-bottom:26px;position:relative}
 .sec-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:6px}
 .sec-ttl em{color:var(--go);font-style:italic}
 .sec-sub{color:rgba(255,255,255,.72);font-size:.94rem}
 .sec-deco{display:flex;justify-content:center;gap:14px;font-size:1.3rem;margin-bottom:12px;opacity:.8}
 
-/* ===== TABS ===== */
+/* TABS */
 .tabs-wrap{display:flex;justify-content:center;margin-bottom:24px}
-.shop-tabs{display:flex;gap:7px;padding:7px;background:rgba(255,255,255,.95);border-radius:15px;box-shadow:var(--s1),inset 0 1px 0 rgba(255,255,255,.9);border:1px solid rgba(30,122,62,.12);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%}
+.shop-tabs{
+  display:flex;gap:7px;padding:7px;background:rgba(255,255,255,.95);border-radius:15px;
+  box-shadow:var(--s1),inset 0 1px 0 rgba(255,255,255,.9);border:1px solid rgba(30,122,62,.12);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%;
+}
 .shop-tabs::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:9px 17px;min-height:38px;border-radius:11px;border:none;background:transparent;font-family:'Nunito',sans-serif;font-weight:700;font-size:.87rem;color:#4a7055;cursor:pointer;white-space:nowrap;transition:var(--tr)}
-.tab:hover{background:rgba(39,160,69,.1);color:var(--gd);transform:translateY(-1px)}.tab:active{transform:scale(.96)}
+.tab{
+  flex-shrink:0;padding:9px 17px;min-height:38px;border-radius:11px;border:none;
+  background:transparent;font-family:'Nunito',sans-serif;font-weight:700;font-size:.87rem;
+  color:#4a7055;cursor:pointer;white-space:nowrap;transition:var(--tr);
+}
+.tab:hover{background:rgba(39,160,69,.1);color:var(--gd);transform:translateY(-1px)}
+.tab:active{transform:scale(.96)}
 .tab.active{background:linear-gradient(135deg,var(--gb),var(--gd));color:#fff;box-shadow:0 4px 14px rgba(30,122,62,.44),inset 0 1px 0 rgba(255,255,255,.2)}
 .tab.combo-tab{background:linear-gradient(135deg,#ff6b35,#e04510);color:#fff!important;font-weight:800;box-shadow:0 4px 14px rgba(255,107,53,.44);animation:cpulse 2.5s ease-in-out infinite}
 .tab.combo-tab:hover{transform:translateY(-2px) scale(1.04)}
 @keyframes cpulse{0%,100%{box-shadow:0 4px 14px rgba(255,107,53,.44)}50%{box-shadow:0 4px 24px rgba(255,107,53,.8)}}
-@media(min-width:768px){.shop-tabs{margin:0 auto;overflow-x:visible}}
 
-/* ===== PRODUCT GRID ===== */
+/* PRODUCT GRID */
 #productGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:4px 4px 20px}
 @media(min-width:540px){#productGrid{grid-template-columns:repeat(3,1fr);gap:16px}}
 @media(min-width:860px){#productGrid{grid-template-columns:repeat(4,1fr);gap:20px}}
 @media(min-width:1180px){#productGrid{grid-template-columns:repeat(5,1fr)}}
 
-/* ===== PRODUCT CARD — ENHANCED NATURAL THEME ===== */
+/* PRODUCT CARD */
 .product-card{
-  display:flex;flex-direction:column;
-  background:#fff;
-  border-radius:var(--rr);
-  overflow:hidden;
-  cursor:pointer;
-  position:relative;
-  border:1px solid rgba(30,122,62,.12);
-  box-shadow:var(--s1);
-  transition:transform .38s var(--ez),box-shadow .33s ease,border-color .25s ease;
+  display:flex;flex-direction:column;background:#fff;border-radius:var(--rr);overflow:hidden;
+  cursor:pointer;position:relative;border:1px solid rgba(30,122,62,.12);box-shadow:var(--s1);
+  transition:transform .35s var(--ez),box-shadow .3s ease,border-color .25s ease;
+  transform:translateZ(0);
 }
-.product-card.show{animation:cardIn .5s var(--ez) both}
-@keyframes cardIn{
-  from{opacity:0;transform:translateY(28px) scale(.96)}
-  to{opacity:1;transform:translateY(0) scale(1)}
-}
-.product-card:hover{
-  transform:translateY(-10px) scale(1.025);
-  box-shadow:0 22px 58px rgba(11,46,20,.3);
-  border-color:rgba(39,160,69,.25);
-}
-
-/* top shimmer bar */
+.product-card.show{animation:cardIn .45s var(--ez) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.product-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 18px 48px rgba(11,46,20,.28);border-color:rgba(39,160,69,.22)}
 .product-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3.5px;z-index:4;
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:4;
   background:linear-gradient(90deg,var(--gl),var(--am),var(--go),var(--gm),var(--gl));
-  background-size:200% 100%;
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s var(--ez);
+  background-size:200% 100%;transform:scaleX(0);transform-origin:left;transition:transform .38s var(--ez);
 }
 .product-card:hover::before{transform:scaleX(1)}
-.card-oil::before{background:linear-gradient(90deg,#e8c400,#f0c000,#c8a000,#f5d000,#e8c400)!important;background-size:200% 100%!important}
-.card-combo::before{background:linear-gradient(90deg,#ff6b35,#d44010,#ff8c55,#ff6b35)!important;background-size:200% 100%!important}
-
-/* shimmer sweep */
-.product-card::after{
-  content:'';position:absolute;top:0;left:-120%;width:50%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
-  transform:skewX(-20deg);
-  transition:left .6s ease;pointer-events:none;z-index:2
-}
-.product-card:hover::after{left:170%}
-
-/* card type styles */
+.card-oil::before{background:linear-gradient(90deg,#e8c400,#f0c000,#c8a000,#f5d000,#e8c400)!important}
+.card-combo::before{background:linear-gradient(90deg,#ff6b35,#d44010,#ff8c55,#ff6b35)!important}
 .card-oil{border:2px solid rgba(200,164,0,.32)!important;background:linear-gradient(165deg,#fffde8,#fdf5c0)!important}
 .card-oil .prod-img-wrap{background:linear-gradient(135deg,#fffde8,#fdf5c0);border-bottom:2px solid rgba(240,208,0,.45)}
 .card-combo{border:2px solid rgba(255,107,53,.28)!important;background:linear-gradient(165deg,#fff5ef,#ffe5d0)!important}
 .card-combo .prod-img-wrap{background:linear-gradient(135deg,#fff5ef,#ffe5d0);border-bottom:2px solid rgba(255,107,53,.35)}
-.card-oil:hover{box-shadow:0 18px 40px rgba(200,164,0,.38)!important}
-.card-combo:hover{box-shadow:0 18px 40px rgba(255,107,53,.38)!important}
-
-/* badge */
+.card-oil:hover{box-shadow:0 16px 36px rgba(200,164,0,.35)!important}
+.card-combo:hover{box-shadow:0 16px 36px rgba(255,107,53,.35)!important}
 .card-badge{position:absolute;top:8px;left:8px;z-index:7;font-size:.62rem;font-weight:800;padding:3px 10px;border-radius:20px;color:#fff;pointer-events:none;letter-spacing:.3px}
 .card-oil .card-badge{background:linear-gradient(135deg,#c8a400,#a07800);box-shadow:0 2px 8px rgba(200,164,0,.45)}
 .card-combo .card-badge{background:linear-gradient(135deg,#ff6b35,#d44010);box-shadow:0 2px 8px rgba(255,107,53,.45)}
-
-/* === NATURE DECORATIONS ON CARD === */
-/* leaf corners */
-.lc{position:absolute;font-size:16px;opacity:0;z-index:6;pointer-events:none;transition:opacity .35s ease,transform .35s var(--ez)}
-.lc-tl{top:3px;left:3px;transform:scale(.4) rotate(-30deg);transform-origin:top left}
-.lc-tr{top:3px;right:3px;transform:scale(.4) rotate(30deg) scaleX(-1);transform-origin:top right}
-.product-card:hover .lc{opacity:.9}
-.product-card:hover .lc-tl{transform:scale(1) rotate(-15deg);transform-origin:top left}
-.product-card:hover .lc-tr{transform:scale(1) rotate(15deg) scaleX(-1);transform-origin:top right}
-
-/* bee hover */
-.card-bee{position:absolute;top:-16px;right:10px;font-size:15px;opacity:0;z-index:8;pointer-events:none;transition:opacity .3s ease,transform .4s var(--ez);transform:translateY(8px) scale(.7)}
-.product-card:hover .card-bee{opacity:1;transform:translateY(0) scale(1);animation:beeBob .8s ease-in-out infinite}
-@keyframes beeBob{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-5px) rotate(5deg)}}
-
-/* honey drip */
-.card-drip{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);font-size:13px;opacity:0;z-index:8;pointer-events:none;transition:opacity .3s ease .1s}
-.product-card:hover .card-drip{opacity:1;animation:honeydripAnim .9s ease-in-out infinite}
-
-/* sparkles */
-.card-spark{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--go);opacity:0;pointer-events:none;z-index:8;transition:opacity .2s}
-.card-spark.s1{top:12px;right:30px}
-.card-spark.s2{top:40px;right:14px}
-.card-spark.s3{top:22px;right:48px}
+.card-spark{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--go);opacity:0;pointer-events:none;z-index:8}
+.card-spark.s1{top:12px;right:28px}.card-spark.s2{top:38px;right:12px}.card-spark.s3{top:20px;right:46px}
 @keyframes sparkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}}
 .product-card:hover .card-spark.s1{animation:sparkle .8s ease-in-out .0s infinite}
 .product-card:hover .card-spark.s2{animation:sparkle .8s ease-in-out .25s infinite}
 .product-card:hover .card-spark.s3{animation:sparkle .8s ease-in-out .5s infinite}
-
-/* image wrap */
 .prod-img-wrap{overflow:hidden;aspect-ratio:1/1;background:linear-gradient(135deg,#f0f9f3,#e2f4e8);position:relative}
-@media(min-width:860px){.prod-img-wrap{height:200px;aspect-ratio:unset}}
-.prod-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s var(--ez)}
-.product-card:hover .prod-img{transform:scale(1.1)}
-.prod-img-wrap::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(11,46,20,.52) 0%,rgba(11,46,20,.15) 45%,transparent 68%);
-  opacity:0;transition:opacity .35s ease;pointer-events:none
+@media(min-width:860px){.prod-img-wrap{height:190px;aspect-ratio:unset}}
+.prod-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ez)}
+.product-card:hover .prod-img{transform:scale(1.08)}
+.img-leaf-bg{position:absolute;bottom:-10px;right:-8px;font-size:65px;opacity:.06;z-index:1;pointer-events:none;transform:rotate(-20deg)}
+.prod-info{
+  padding:10px 10px 13px;text-align:center;background:#fff;position:relative;z-index:1;
+  border-top:1px solid rgba(30,122,62,.07);transition:background .3s ease;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
 }
-.product-card:hover .prod-img-wrap::after{opacity:1}
-
-/* leaf watermark on image */
-.img-leaf-bg{position:absolute;bottom:-10px;right:-8px;font-size:70px;opacity:.06;z-index:1;pointer-events:none;transform:rotate(-20deg);transition:opacity .4s,transform .4s var(--ez)}
-.product-card:hover .img-leaf-bg{opacity:.1;transform:rotate(-10deg) scale(1.05)}
-
-/* info */
-.prod-info{padding:10px 10px 14px;text-align:center;background:#fff;position:relative;z-index:1;border-top:1px solid rgba(30,122,62,.07);transition:background .3s ease}
 .product-card:hover .prod-info{background:linear-gradient(180deg,#f2fbf4,#fff)}
-.prod-name{font-size:.87rem;font-weight:800;color:#0d3a1a;min-height:38px;display:flex;align-items:center;justify-content:center;line-height:1.25;text-align:center;transition:color .25s}
+.prod-name{font-size:.86rem;font-weight:800;color:#0d3a1a;min-height:36px;display:flex;align-items:center;justify-content:center;line-height:1.25;text-align:center;transition:color .25s;margin-bottom:2px}
 .product-card:hover .prod-name{color:var(--gd)}
-.prod-sub{font-size:.7rem;color:#7a8a80;margin-bottom:2px;line-height:1.2}
-.prod-price{font-weight:900;font-size:1.03rem;margin-top:4px;color:var(--gm);transition:color .3s;position:relative;display:inline-block}
+.prod-sub{font-size:.69rem;color:#7a8a80;margin-bottom:3px;line-height:1.2}
+.prod-price-wrap{margin-top:4px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.prod-price-original{font-size:.76rem;font-weight:700;color:#bbb;text-decoration:line-through;text-decoration-color:#e05555;text-decoration-thickness:2px;line-height:1}
+.prod-price{font-weight:900;font-size:1.02rem;color:var(--gm);transition:color .3s;display:inline-block;line-height:1}
 .product-card:hover .prod-price{color:var(--am)}
+.prod-discount{display:inline-block;background:linear-gradient(135deg,#e05555,#b02020);color:#fff;font-size:.57rem;font-weight:800;padding:2px 7px;border-radius:20px;letter-spacing:.3px;margin-top:2px}
 
-/* ripple */
 @keyframes nkRipple{0%{transform:scale(1);opacity:1}100%{transform:scale(22);opacity:0}}
 
-/* ===== MODAL ===== */
-.modal-content{position:relative;border-radius:22px;border:1px solid rgba(30,122,62,.14);background:rgba(236,252,241,.96);backdrop-filter:blur(16px);overflow:hidden;box-shadow:0 24px 60px rgba(11,46,20,.28)}
-.modal-content::before{content:"";position:absolute;inset:0;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.04));pointer-events:none;z-index:0}
-.modal-content::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gm),var(--am),var(--gl),var(--go),var(--gm));z-index:10}
-.modal-header,.modal-body{position:relative;z-index:1}
-#modalTitle{font-family:'Playfair Display',serif;background:linear-gradient(135deg,var(--gd),#1a5230);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;font-size:1.3rem}
-#modalImage{box-shadow:0 6px 20px rgba(11,46,20,.15);background:linear-gradient(135deg,#f0f9f3,#e2f4e8);border:1px solid rgba(30,122,62,.1);border-radius:12px}
-#modalPrice{color:var(--gm)!important;font-weight:900!important;font-size:1.2rem!important}
-.modal.fade .modal-dialog{transform:translateY(18px) scale(.97);opacity:0;transition:all .38s cubic-bezier(.22,1,.36,1)}
-.modal.show .modal-dialog{transform:translateY(0) scale(1);opacity:1}
-#instaBtn{background:linear-gradient(135deg,#E1306C,#a01040);color:#fff!important;font-weight:700;padding:12px 20px;border-radius:13px;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:var(--tr);box-shadow:0 4px 14px rgba(225,48,108,.35);width:100%;margin-top:14px;border:none}
-#instaBtn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(225,48,108,.52)}
+/* MODAL - custom */
+#productModal{scrollbar-width:none}
+#productModal::-webkit-scrollbar{display:none}
 #modalDesc strong,#modalDesc b{font-weight:800!important;color:#0a2e14!important}
-@media(min-width:768px){.modal-body{display:flex!important;flex-direction:row!important;gap:28px!important;align-items:flex-start!important}.modal-img-container{flex:0 0 340px!important}.modal-info-container{flex:1!important;display:block!important}#modalDesc{display:block!important;width:100%!important;margin-bottom:18px!important;text-align:left}#instaBtn{display:block!important;width:fit-content!important;margin-top:10px!important}}
-@media(max-width:767px){.modal-body{flex-direction:column!important;gap:8px!important;padding:5px!important}.modal-img-container{flex:none!important;width:100%;max-width:200px;margin:0 auto}#modalImage{max-height:270px!important}#modalDesc{font-size:.94rem!important;line-height:1.4!important;text-align:left!important}}
+@media(min-width:640px){#modalBody{flex-direction:row!important}#modalImgCol{width:280px;}}
+@media(max-width:639px){#modalImgCol{width:100%;max-width:220px;margin:0 auto;}}
 
-/* ===== CONTACT ===== */
-.c-sec{background:radial-gradient(ellipse at 15% 50%,rgba(30,122,62,.12) 0%,transparent 55%),linear-gradient(145deg,#0a2e14 0%,#0d4020 55%,#0a2e14 100%);padding:58px 0 48px;margin-top:50px;position:relative;overflow:hidden}
+/* CONTACT */
+.c-sec{
+  background:radial-gradient(ellipse at 15% 50%,rgba(30,122,62,.12) 0%,transparent 55%),linear-gradient(145deg,#0a2e14 0%,#0d4020 55%,#0a2e14 100%);
+  padding:58px 0 48px;margin-top:50px;position:relative;overflow:hidden
+}
 .c-sec::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gm),var(--am),var(--gl),var(--go),var(--gm))}
 .c-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.7rem);color:#fff;text-align:center;margin-bottom:36px;font-weight:700;text-shadow:0 2px 12px rgba(0,0,0,.3)}
 .c-ttl em{color:var(--go);font-style:italic}
@@ -319,15 +269,15 @@ body{
 @media(min-width:768px){.c-grid{grid-template-columns:repeat(4,1fr)}}
 .c-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--rr);padding:24px 16px;text-align:center;transition:var(--tr);backdrop-filter:blur(10px)}
 .c-card:hover{background:rgba(255,255,255,.13);transform:translateY(-5px);border-color:rgba(39,160,69,.35);box-shadow:0 14px 36px rgba(0,0,0,.3)}
-.c-ico{font-size:2rem;margin-bottom:8px}.c-lbl{color:var(--go);font-weight:800;font-size:.76rem;margin-bottom:9px;letter-spacing:1px;text-transform:uppercase}
+.c-ico{font-size:2rem;margin-bottom:8px}
+.c-lbl{color:var(--go);font-weight:800;font-size:.76rem;margin-bottom:9px;letter-spacing:1px;text-transform:uppercase}
 .c-lnk{display:block;color:rgba(255,255,255,.8);text-decoration:none;font-size:.89rem;margin-bottom:4px;transition:color .2s;font-weight:600}
 .c-lnk:hover{color:var(--go)}
 .wa-cta{background:linear-gradient(135deg,#25d366,#128c3a);color:#fff!important;padding:8px 20px;border-radius:var(--rp);font-weight:800;display:inline-block;margin-top:6px;transition:var(--tr);box-shadow:0 3px 12px rgba(37,211,102,.4)}
 .wa-cta:hover{transform:scale(1.05)}
 .insta-lnk{font-weight:700;text-decoration:none;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#bc1888);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.insta-lnk:hover{opacity:.8}
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 .nk-footer{background:linear-gradient(160deg,#060f08 0%,#0a1a0c 60%,#070f09 100%);color:rgba(255,255,255,.78);font-family:'Nunito',sans-serif;border-top:3px solid rgba(39,160,69,.24)}
 .f-top{padding:54px 0 34px}
 .f-grid{display:grid;grid-template-columns:1fr;gap:34px}
@@ -347,7 +297,7 @@ body{
 .f-col-ttl::after{content:'';position:absolute;bottom:0;left:0;width:25px;height:2px;background:linear-gradient(90deg,var(--gb),var(--am));border-radius:2px}
 .f-ul{list-style:none;padding:0;margin:0}
 .f-ul li{margin-bottom:9px}
-.f-ul a,.f-ul button{color:rgba(255,255,255,.55);text-decoration:none;font-size:.85rem;font-weight:600;transition:var(--tr);display:block;background:none;border:none;cursor:pointer;text-align:left;padding:0;font-family:'Nunito',sans-serif;}
+.f-ul a,.f-ul button{color:rgba(255,255,255,.55);text-decoration:none;font-size:.85rem;font-weight:600;transition:var(--tr);display:block;background:none;border:none;cursor:pointer;text-align:left;padding:0;font-family:'Nunito',sans-serif}
 .f-ul a:hover,.f-ul button:hover{color:var(--go);transform:translateX(5px)}
 .f-ci{margin-bottom:9px;font-size:.85rem;color:rgba(255,255,255,.55)}
 .f-ci a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
@@ -357,15 +307,14 @@ body{
 .f-bot{border-top:1px solid rgba(255,255,255,.07);padding:17px 0}
 .f-bot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.78rem;color:rgba(255,255,255,.3)}
 
-/* ===== FLOAT BUTTONS ===== */
+/* FLOAT BUTTONS */
 .float-wa{position:fixed;bottom:26px;right:22px;z-index:9999;width:58px;height:58px;background:linear-gradient(135deg,#25d366,#128c3a);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(37,211,102,.55),inset 0 1px 0 rgba(255,255,255,.2);text-decoration:none;transition:transform .3s var(--ez),box-shadow .3s ease;animation:popIn .6s 1s cubic-bezier(.22,1,.36,1) both}
 .float-ig{position:fixed;bottom:26px;right:88px;z-index:9999;width:58px;height:58px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#bc1888);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(225,48,108,.55),inset 0 1px 0 rgba(255,255,255,.2);text-decoration:none;transition:transform .3s var(--ez),box-shadow .3s ease;animation:popIn .6s 1.2s cubic-bezier(.22,1,.36,1) both}
 @keyframes popIn{0%{transform:scale(0) rotate(-180deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
 .float-wa:hover{transform:scale(1.12) translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.7)}
 .float-ig:hover{transform:scale(1.12) translateY(-3px);box-shadow:0 10px 30px rgba(225,48,108,.7)}
 .f-pulse{position:absolute;width:100%;height:100%;border-radius:50%;animation:fPulse 2.5s ease-out infinite}
-.float-wa .f-pulse{background:rgba(37,211,102,.35)}
-.float-ig .f-pulse{background:rgba(225,48,108,.35)}
+.float-wa .f-pulse{background:rgba(37,211,102,.35)}.float-ig .f-pulse{background:rgba(225,48,108,.35)}
 @keyframes fPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.2);opacity:0}}
 .f-tip{position:absolute;right:0;bottom:66px;background:var(--bk);color:#fff;font-size:.73rem;font-weight:700;padding:6px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s;border:1px solid rgba(255,255,255,.1)}
 .f-tip::after{content:'';position:absolute;bottom:-6px;right:16px;border:6px solid transparent;border-top-color:var(--bk);border-bottom:none}
@@ -374,14 +323,14 @@ body{
 .scroll-top.vis{opacity:1;transform:translateY(0);pointer-events:auto}
 .scroll-top:hover{transform:translateY(-3px);background:linear-gradient(135deg,var(--gl),var(--gb))}
 
-/* ===== ABOUT PAGE ===== */
+/* ABOUT PAGE */
 #aboutPage{display:none;min-height:100vh}
 #aboutPage.active{display:block}
 .ab-nav{background:rgba(255,255,255,.94);backdrop-filter:blur(20px);border-bottom:1.5px solid rgba(30,122,62,.16);box-shadow:0 2px 16px rgba(11,46,20,.09);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:100}
 .ab-brand{display:flex;align-items:center;gap:10px}
 .ab-logo-img{height:44px;width:auto;object-fit:contain}
 .ab-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--gd)}
-.back-btn{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--gm),var(--gd));color:#fff;padding:9px 22px;border-radius:var(--rp);font-weight:800;font-size:.86rem;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(30,122,62,.35);transition:var(--tr);font-family:'Nunito',sans-serif;}
+.back-btn{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--gm),var(--gd));color:#fff;padding:9px 22px;border-radius:var(--rp);font-weight:800;font-size:.86rem;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(30,122,62,.35);transition:var(--tr);font-family:'Nunito',sans-serif}
 .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(30,122,62,.5)}
 .ab-hero{background:linear-gradient(135deg,var(--gd) 0%,#0f3820 50%,#1a4a2a 100%);padding:64px 24px 52px;text-align:center;position:relative;overflow:hidden}
 .ab-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(39,160,69,.15) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(240,184,34,.08) 0%,transparent 55%);pointer-events:none}
@@ -399,14 +348,17 @@ body{
 @media(min-width:600px){.stats-row{grid-template-columns:repeat(4,1fr)}}
 .stat-c{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--rr);padding:24px 16px;text-align:center;backdrop-filter:blur(10px);transition:var(--tr);position:relative;overflow:hidden}
 .stat-c::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gb),var(--am));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ez)}
-.stat-c:hover{background:rgba(255,255,255,.14);transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,.25)}.stat-c:hover::after{transform:scaleX(1)}
+.stat-c:hover{background:rgba(255,255,255,.14);transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,.25)}
+.stat-c:hover::after{transform:scaleX(1)}
 .stat-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--go);line-height:1;margin-bottom:5px}
 .stat-l{color:rgba(255,255,255,.75);font-size:.82rem;font-weight:700;letter-spacing:.3px}
 .story-c{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);border-radius:var(--rr);padding:36px 32px;margin-bottom:36px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
 .story-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gb),var(--am),var(--gl))}
 .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
 @media(max-width:700px){.story-grid{grid-template-columns:1fr}}
-.story-txt p{color:rgba(255,255,255,.80);line-height:1.80;font-size:.96rem;margin-bottom:14px}.story-txt p:last-child{margin-bottom:0}.story-txt strong{color:#fff;font-weight:800}
+.story-txt p{color:rgba(255,255,255,.80);line-height:1.80;font-size:.96rem;margin-bottom:14px}
+.story-txt p:last-child{margin-bottom:0}
+.story-txt strong{color:#fff;font-weight:800}
 .founder-c{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:24px 20px;text-align:center}
 .founder-av{width:80px;height:80px;margin:0 auto 14px;background:linear-gradient(135deg,var(--gb),var(--gd));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 6px 20px rgba(39,160,69,.35);border:3px solid rgba(255,255,255,.15)}
 .founder-nm{font-family:'Playfair Display',serif;color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:4px}
@@ -416,24 +368,23 @@ body{
 @media(min-width:700px){.vals-grid{grid-template-columns:repeat(3,1fr)}}
 .val-c{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:var(--rr);padding:24px 18px;backdrop-filter:blur(8px);transition:var(--tr)}
 .val-c:hover{background:rgba(255,255,255,.13);transform:translateY(-4px);border-color:rgba(39,160,69,.35);box-shadow:0 14px 32px rgba(0,0,0,.2)}
-.val-ico{font-size:2rem;margin-bottom:12px}.val-ttl{font-family:'Playfair Display',serif;color:#fff;font-weight:700;font-size:1.05rem;margin-bottom:7px}.val-desc{color:rgba(255,255,255,.68);font-size:.86rem;line-height:1.65}
+.val-ico{font-size:2rem;margin-bottom:12px}
+.val-ttl{font-family:'Playfair Display',serif;color:#fff;font-weight:700;font-size:1.05rem;margin-bottom:7px}
+.val-desc{color:rgba(255,255,255,.68);font-size:.86rem;line-height:1.65}
 .why-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:36px}
 @media(min-width:600px){.why-grid{grid-template-columns:repeat(2,1fr)}}
 .why-i{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:18px 16px;transition:var(--tr)}
 .why-i:hover{background:rgba(255,255,255,.12);transform:translateX(4px);border-color:rgba(39,160,69,.3)}
 .why-dot{width:44px;height:44px;flex-shrink:0;border-radius:10px;background:linear-gradient(135deg,var(--gb),var(--gd));display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 12px rgba(39,160,69,.35)}
-.why-i h4{color:#fff;font-weight:800;font-size:.95rem;margin-bottom:4px}.why-i p{color:rgba(255,255,255,.65);font-size:.84rem;line-height:1.6}
-.proc-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:36px}
-@media(min-width:700px){.proc-row{grid-template-columns:repeat(4,1fr)}}
-.proc-s{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:var(--rr);padding:22px 14px;text-align:center;transition:var(--tr)}
-.proc-s:hover{background:rgba(255,255,255,.13);transform:translateY(-4px)}
-.proc-n{width:36px;height:36px;margin:0 auto 12px;background:linear-gradient(135deg,var(--am),#a06008);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.9rem;box-shadow:0 4px 12px rgba(212,136,12,.4)}
-.proc-ic{font-size:1.8rem;margin-bottom:10px}.proc-t{color:#fff;font-weight:800;font-size:.9rem;margin-bottom:5px}.proc-d{color:rgba(255,255,255,.62);font-size:.80rem;line-height:1.55}
+.why-i h4{color:#fff;font-weight:800;font-size:.95rem;margin-bottom:4px}
+.why-i p{color:rgba(255,255,255,.65);font-size:.84rem;line-height:1.6}
 .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:36px}
 @media(min-width:700px){.trust-grid{grid-template-columns:repeat(4,1fr)}}
 .tr-badge{background:rgba(255,255,255,.08);border:1.5px solid rgba(240,184,34,.25);border-radius:12px;padding:20px 14px;text-align:center;transition:var(--tr)}
 .tr-badge:hover{background:rgba(255,255,255,.14);transform:scale(1.04);border-color:rgba(240,184,34,.55);box-shadow:0 8px 24px rgba(240,184,34,.15)}
-.tr-ic{font-size:2.2rem;margin-bottom:8px}.tr-t{color:var(--gy);font-weight:800;font-size:.84rem;margin-bottom:4px}.tr-d{color:rgba(255,255,255,.60);font-size:.76rem;line-height:1.5}
+.tr-ic{font-size:2.2rem;margin-bottom:8px}
+.tr-t{color:var(--gy);font-weight:800;font-size:.84rem;margin-bottom:4px}
+.tr-d{color:rgba(255,255,255,.60);font-size:.76rem;line-height:1.5}
 .testi-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:36px}
 @media(min-width:600px){.testi-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:900px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
@@ -443,36 +394,36 @@ body{
 .testi-txt{color:rgba(255,255,255,.78);font-size:.89rem;line-height:1.70;font-style:italic;margin-bottom:14px}
 .testi-au{display:flex;align-items:center;gap:10px}
 .testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gb),var(--gd));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.testi-nm{color:#fff;font-weight:800;font-size:.86rem}.testi-ci{color:rgba(255,255,255,.52);font-size:.75rem}
-.vid-sec{margin-bottom:36px;text-align:center}
-.vid-wrap{width:380px;max-width:100%;margin:22px auto 0;border-radius:18px;overflow:hidden;box-shadow:0 12px 36px rgba(11,46,20,.35),0 0 0 4px rgba(39,160,69,.14);border:2px solid rgba(39,160,69,.2)}
-.vid-wrap video{width:100%;height:auto;display:block}
+.testi-nm{color:#fff;font-weight:800;font-size:.86rem}
+.testi-ci{color:rgba(255,255,255,.52);font-size:.75rem}
 .ab-cta{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:var(--rr);padding:40px 28px;text-align:center;backdrop-filter:blur(10px)}
-.ab-cta h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-bottom:10px}.ab-cta h2 em{color:var(--go);font-style:italic}
+.ab-cta h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-bottom:10px}
+.ab-cta h2 em{color:var(--go);font-style:italic}
 .ab-cta p{color:rgba(255,255,255,.72);font-size:.95rem;margin-bottom:24px;line-height:1.7}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.cta-p{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gb),var(--gd));color:#fff;padding:13px 28px;border-radius:var(--rp);font-weight:800;font-size:.92rem;text-decoration:none;box-shadow:0 6px 20px rgba(39,160,69,.5);transition:var(--tr);border:none;cursor:pointer;font-family:'Nunito',sans-serif;}
+.cta-p{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gb),var(--gd));color:#fff;padding:13px 28px;border-radius:var(--rp);font-weight:800;font-size:.92rem;text-decoration:none;box-shadow:0 6px 20px rgba(39,160,69,.5);transition:var(--tr);border:none;cursor:pointer;font-family:'Nunito',sans-serif}
 .cta-p:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(39,160,69,.65);color:#fff}
-.cta-s{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:13px 28px;border-radius:var(--rp);font-weight:700;font-size:.92rem;text-decoration:none;transition:var(--tr);cursor:pointer;font-family:'Nunito',sans-serif;}
+.cta-s{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:13px 28px;border-radius:var(--rp);font-weight:700;font-size:.92rem;text-decoration:none;transition:var(--tr);cursor:pointer;font-family:'Nunito',sans-serif}
 .cta-s:hover{background:rgba(255,255,255,.18);transform:translateY(-2px);color:#fff}
 .ab-footer{background:rgba(6,15,8,.95);border-top:2px solid rgba(39,160,69,.2);padding:18px 24px;text-align:center}
-.ab-footer p{color:rgba(255,255,255,.4);font-size:.80rem}.ab-footer a{color:rgba(255,255,255,.5);text-decoration:none}.ab-footer a:hover{color:var(--go)}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}.reveal.shown{opacity:1;transform:translateY(0)}
+.ab-footer p{color:rgba(255,255,255,.4);font-size:.80rem}
+.ab-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.ab-footer a:hover{color:var(--go)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.reveal.shown{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<!-- NATURE CANVAS -->
 <div id="natureCanvas"></div>
 <div class="honeycomb-overlay"></div>
 
-<!-- ======== NAVBAR ======== -->
+<!-- NAVBAR -->
 <nav class="nk-nav" id="nkNav">
   <div class="nk-inner">
     <div class="n-brand" onclick="showPage('home')">
-  <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826549/kalappai_PNG_rzunzz.png" alt="Namma Kalappai Logo" 
-       style="height: 100px; width:auto; object-fit:contain; cursor:pointer;">
-</div>
+      <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826549/kalappai_PNG_rzunzz.png" alt="Namma Kalappai" style="height:100px;width:auto;object-fit:contain;cursor:pointer;">
+    </div>
     <div class="n-links">
       <button class="n-link" onclick="showPage('home')">Home</button>
       <button class="n-link" onclick="showPage('home');setTimeout(()=>document.getElementById('products').scrollIntoView({behavior:'smooth'}),100)">Products</button>
@@ -494,217 +445,290 @@ body{
   </div>
 </nav>
 
-<!-- ======== HOME PAGE ======== -->
+<!-- HOME PAGE -->
 <div id="homePage" class="page active">
 
-<!-- CAROUSEL -->
-<section class="hero-car" id="hero">
-  <div class="car-track" id="carTrack">
-    <div class="car-slide on">
-      <div class="sl-bg"><img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826161/BANNER2.jpg_1_ytarjs.jpg" class="sl-img" alt="Honey" onerror="this.src='images/mfhoney.jpg'"><div class="sl-ov ov1"></div></div>
-    </div>
-    <div class="car-slide">
-      <div class="sl-bg"><img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773825620/b2_phmpqy.jpg" class="sl-img" alt="Healthmix" onerror="this.src='images/shmix.jpg'"><div class="sl-ov ov2"></div></div>
-      <div class="sl-con"><span class="sl-badge">🌾 Ancient Grains</span><h1 class="sl-title">Millet<em>Health Mix</em></h1><p class="sl-desc">Multi-millet blends rooted in tradition — wholesome nutrition for every age, every morning.</p><a href="#products" class="sl-btn" onclick="filterProducts('mix')">Shop Healthmix →</a></div>
-    </div>
-        <div class="car-slide">
-      <div class="sl-bg"><img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826063/BANNER.jpg_eishlt.jpg" class="sl-img" style="object-position:center top" alt="Combos"><div class="sl-ov ov4"></div></div>
-    </div>
-    <div class="car-slide">
-      <div class="sl-bg"><img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773825620/b3_kbydkl.jpg" class="sl-img" alt="Ghee" onerror="this.src='images/a1.jpg'"><div class="sl-ov ov3"></div></div>
-      <div class="sl-con"><span class="sl-badge">🥛 Bilona Method</span><h1 class="sl-title">Traditional<em>Ghee &amp; Oils</em></h1><p class="sl-desc">Hand-churned A2 ghee &amp; cold-pressed chekku oils — crafted the honest, time-tested way.</p><a href="#products" class="sl-btn" onclick="filterProducts('ghee')">Shop Ghee →</a></div>
-    </div>
-
-  </div>
-    
-  <button class="car-arr" id="carPrev">&#8592;</button>
-  <button class="car-arr" id="carNext" style="right:16px;left:auto">&#8594;</button>
-  <div class="car-dots" id="carDots">
-    <button class="car-dot on" data-i="0"></button><button class="car-dot" data-i="1"></button>
-    <button class="car-dot" data-i="2"></button><button class="car-dot" data-i="3"></button>
-  </div>
-</section>
-
-<!-- TRUST STRIP -->
-<div class="t-strip">
-  <div class="t-item"><span>🌿</span><span>100% Natural</span></div>
-  <div class="t-item"><span>🚫</span><span>No Preservatives</span></div>
-  <div class="t-item"><span>🏡</span><span>Farm Direct</span></div>
-  <div class="t-item"><span>🚚</span><span>Delivered Fresh</span></div>
-  <div class="t-item"><span>💚</span><span>5000+ Families</span></div>
-</div>
-
-<!-- PRODUCTS -->
-<main class="container mt-4" id="products">
-  <div class="sec-hd">
-    <div class="sec-deco">🌿 🍯 🐝 🌸 🍃</div>
-    <h2 class="sec-ttl">Our <em>Products</em></h2>
-    <p class="sec-sub">Tap a product to view details &amp; health benefits.</p>
-  </div>
-  <div class="tabs-wrap">
-    <div class="shop-tabs">
-      <button class="tab" data-cat="honey">🍯 Honey</button>
-      <button class="tab" data-cat="mix">🌾 Healthmix</button>
-      <button class="tab" data-cat="ghee">🥛 Ghee</button>
-      <button class="tab" data-cat="oil">🫒 Oil</button>
-      <button class="tab" data-cat="millet">🍪 Biscuits</button>
-      <button class="tab" data-cat="sugar">🍬 Sugar</button>
-      <button class="tab combo-tab" data-cat="combo">🎁 Combo</button>
-      <button class="tab active" data-cat="all">✨ All</button>
-    </div>
-  </div>
-  <div id="productGrid"></div>
-</main>
-
-<!-- MODAL -->
-<div class="modal fade" id="productModal">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content p-3">
-      <div class="modal-header border-0">
-        <h5 id="modalTitle"></h5>
-        <button class="btn-close" data-bs-dismiss="modal"></button>
+  <!-- CAROUSEL -->
+  <section class="hero-car" id="hero">
+    <div class="car-track" id="carTrack">
+      <div class="car-slide on">
+        <div class="sl-bg">
+          <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826161/BANNER2.jpg_1_ytarjs.jpg" class="sl-img" alt="Honey">
+          <div class="sl-ov ov1"></div>
+        </div>
+        <div class="sl-con">
+          <span class="sl-badge">🍯 Pure Forest Honey</span>
+          <h1 class="sl-title">Nature's <em>Finest Honey</em></h1>
+          <p class="sl-desc">Raw, unheated forest honey straight from the hive — full of enzymes, pollen and goodness.</p>
+          <a href="#products" class="sl-btn" onclick="filterProducts('honey')">Shop Honey →</a>
+        </div>
       </div>
-      <div class="modal-body d-flex flex-column flex-md-row gap-3">
-        <div class="modal-img-container"><img id="modalImage" class="w-100 rounded" alt="Product"><div id="modalPrice" class="mt-2 fw-bold"></div></div>
-        <div class="modal-info-container d-flex flex-column"><div id="modalDesc"></div><a id="instaBtn" target="_blank">▶ Watch on Instagram</a></div>
+      <div class="car-slide">
+        <div class="sl-bg">
+          <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773828894/2_soqaja.png" class="sl-img" alt="Healthmix">
+          <div class="sl-ov ov2"></div>
+        </div>
+        <div class="sl-con">
+          <span class="sl-badge">🌾 Ancient Grains</span>
+          <h1 class="sl-title">Millet <em>Health Mix</em></h1>
+          <p class="sl-desc">Multi-millet blends rooted in tradition — wholesome nutrition for every age, every morning.</p>
+          <a href="#products" class="sl-btn" onclick="filterProducts('mix')">Shop Healthmix →</a>
+        </div>
+      </div>
+      <div class="car-slide">
+        <div class="sl-bg">
+          <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826063/BANNER.jpg_eishlt.jpg" class="sl-img" style="object-position:center top" alt="Combos">
+          <div class="sl-ov ov4"></div>
+        </div>
+        <div class="sl-con">
+          <span class="sl-badge">🎁 Value Combos</span>
+          <h1 class="sl-title">Special <em>Combo Packs</em></h1>
+          <p class="sl-desc">Curated health bundles for the whole family — best value, maximum goodness.</p>
+          <a href="#products" class="sl-btn" onclick="filterProducts('combo')">Shop Combos →</a>
+        </div>
+      </div>
+      <div class="car-slide">
+        <div class="sl-bg">
+          <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773828939/04_ujzdga.png" class="sl-img" alt="Ghee">
+          <div class="sl-ov ov3"></div>
+        </div>
+        <div class="sl-con">
+          <span class="sl-badge">🥛 Bilona Method</span>
+          <h1 class="sl-title">Traditional <em>Ghee &amp; Oils</em></h1>
+          <p class="sl-desc">Hand-churned A2 ghee &amp; cold-pressed chekku oils — crafted the honest, time-tested way.</p>
+          <a href="#products" class="sl-btn" onclick="filterProducts('ghee')">Shop Ghee →</a>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    <button class="car-arr" id="carPrev">&#8592;</button>
+    <button class="car-arr" id="carNext" style="right:16px;left:auto">&#8594;</button>
+    <div class="car-dots" id="carDots">
+      <button class="car-dot on" data-i="0"></button>
+      <button class="car-dot" data-i="1"></button>
+      <button class="car-dot" data-i="2"></button>
+      <button class="car-dot" data-i="3"></button>
+    </div>
+  </section>
 
-<!-- CONTACT -->
-<section class="c-sec" id="contact">
-  <div class="container">
-    <h2 class="c-ttl">Get In <em>Touch</em></h2>
-    <div class="c-grid">
-      <div class="c-card"><div class="c-ico">📞</div><div class="c-lbl">Phone</div><a href="tel:7448773399" class="c-lnk">7448773399</a><a href="tel:7448772299" class="c-lnk">7448772299</a></div>
-      <div class="c-card"><div class="c-ico">📧</div><div class="c-lbl">Email</div><a href="mailto:nammkalappai@gmail.com" class="c-lnk">nammkalappai@gmail.com</a></div>
-      <div class="c-card"><div class="c-ico">📸</div><div class="c-lbl">Instagram</div><a href="https://www.instagram.com/namma_kalappai/" target="_blank" class="insta-lnk">@namma_kalappai</a></div>
-      <div class="c-card"><div class="c-ico">💬</div><div class="c-lbl">WhatsApp</div><a href="https://wa.me/917448773399" target="_blank" class="c-lnk wa-cta">Chat with Us</a></div>
+  <!-- TRUST STRIP -->
+  <div class="t-strip">
+    <div class="t-item"><span>🌿</span><span>100% Natural</span></div>
+    <div class="t-item"><span>🚫</span><span>No Preservatives</span></div>
+    <div class="t-item"><span>🏡</span><span>Farm Direct</span></div>
+    <div class="t-item"><span>🚚</span><span>Delivered Fresh</span></div>
+    <div class="t-item"><span>💚</span><span>5000+ Families</span></div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <main class="container mt-4" id="products">
+    <div class="sec-hd">
+      <div class="sec-deco">🌿 🍯 🐝 🌸 🍃</div>
+      <h2 class="sec-ttl">Our <em>Products</em></h2>
+      <p class="sec-sub">Tap a product to view details &amp; health benefits.</p>
+    </div>
+    <div class="tabs-wrap">
+      <div class="shop-tabs">
+        <button class="tab active" data-cat="all">✨ All</button>
+        <button class="tab" data-cat="honey">🍯 Honey</button>
+        <button class="tab" data-cat="mix">🌾 Healthmix</button>
+        <button class="tab" data-cat="ghee">🥛 Ghee</button>
+        <button class="tab" data-cat="oil">🫒 Oil</button>
+        <button class="tab" data-cat="millet">🍪 Biscuits</button>
+        <button class="tab" data-cat="sugar">🍬 Sugar</button>
+        <button class="tab combo-tab" data-cat="combo">🎁 Combo</button>
+      </div>
+    </div>
+    <div id="productGrid"></div>
+  </main>
+
+  <!-- CUSTOM MODAL -->
+  <div id="productModal" style="display:none;position:fixed;inset:0;z-index:9000;overflow-y:auto;align-items:center;justify-content:center;min-height:100vh;padding:20px;">
+    <!-- Backdrop -->
+    <div id="modalBackdrop" onclick="closeModal()" style="position:fixed;inset:0;background:rgba(5,20,8,.72);backdrop-filter:blur(6px);z-index:0;"></div>
+    <!-- Box -->
+    <div id="modalBox" style="position:relative;z-index:1;width:100%;max-width:820px;margin:auto;border-radius:22px;background:rgba(236,252,241,.97);border:1px solid rgba(30,122,62,.15);box-shadow:0 24px 64px rgba(11,46,20,.35);overflow:hidden;transform:translateY(30px) scale(.96);opacity:0;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .3s ease;">
+      <!-- Top colour bar -->
+      <div style="height:4px;background:linear-gradient(90deg,#1e7a3e,#d4880c,#52c072,#f0b822,#1e7a3e);"></div>
+      <!-- Header -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px 8px;">
+        <h5 id="modalTitle" style="margin:0;font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;background:linear-gradient(135deg,#0b2e14,#1a5230);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;max-width:80%;"></h5>
+        <button onclick="closeModal()" style="width:34px;height:34px;border-radius:50%;border:none;background:rgba(11,46,20,.1);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;" onmouseover="this.style.background='rgba(11,46,20,.2)'" onmouseout="this.style.background='rgba(11,46,20,.1)'">✕</button>
+      </div>
+      <!-- Body -->
+      <div id="modalBody" style="padding:8px 20px 22px;display:flex;flex-direction:column;gap:16px;">
+        <!-- Image + price column -->
+        <div id="modalImgCol" style="flex-shrink:0;">
+          <img id="modalImage" style="width:100%;max-height:280px;object-fit:cover;border-radius:12px;border:1px solid rgba(30,122,62,.12);box-shadow:0 6px 20px rgba(11,46,20,.15);display:block;" alt="Product">
+          <div style="margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span id="modalPriceOrig" style="font-size:.9rem;color:#aaa;text-decoration:line-through;text-decoration-color:#e05555;text-decoration-thickness:2px;font-weight:700;"></span>
+            <span id="modalPrice" style="font-weight:900;font-size:1.4rem;color:#1e7a3e;"></span>
+            <span id="modalDiscount" style="background:linear-gradient(135deg,#e05555,#b02020);color:#fff;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:20px;"></span>
+          </div>
+        </div>
+        <!-- Info column -->
+        <div id="modalInfoCol" style="flex:1;min-width:0;">
+          <div id="modalDesc" style="font-size:.95rem;line-height:1.65;color:#2a3d30;"></div>
+          <a id="instaBtn" target="_blank" style="display:none;margin-top:14px;background:linear-gradient(135deg,#E1306C,#a01040);color:#fff;font-weight:700;padding:12px 20px;border-radius:13px;text-decoration:none;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 14px rgba(225,48,108,.35);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 22px rgba(225,48,108,.52)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(225,48,108,.35)'">▶ Watch on Instagram</a>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer class="nk-footer">
-  <div class="f-top"><div class="container"><div class="f-grid">
-    <div>
-      <div class="f-logo">
-        <img src="images/kalappai PNG.png" alt="Namma Kalappai" class="f-logo-img" onerror="this.style.display='none'">
-        <div><div class="f-brand">Namma Kalappai</div><div class="f-tag">Pure • Traditional • Honest</div></div>
-      </div>
-      <p class="f-desc">Nature's finest — unprocessed honey, traditional ghee, cold-pressed oils, and millet goodness — straight to your home.</p>
-      <div class="f-soc">
-        <a href="https://www.instagram.com/namma_kalappai/" target="_blank" class="f-sbtn f-ig">📸 Instagram</a>
-        <a href="https://wa.me/917448773399" target="_blank" class="f-sbtn f-wa">💬 WhatsApp</a>
+  <!-- CONTACT -->
+  <section class="c-sec" id="contact">
+    <div class="container">
+      <h2 class="c-ttl">Get In <em>Touch</em></h2>
+      <div class="c-grid">
+        <div class="c-card">
+          <div class="c-ico">📞</div>
+          <div class="c-lbl">Phone</div>
+          <a href="tel:7448773399" class="c-lnk">7448773399</a>
+          <a href="tel:7448772299" class="c-lnk">7448772299</a>
+        </div>
+        <div class="c-card">
+          <div class="c-ico">📧</div>
+          <div class="c-lbl">Email</div>
+          <a href="/cdn-cgi/l/email-protection#c8a6a9a5a5a3a9a4a9b8b8a9a188afa5a9a1a4e6aba7a5" class="c-lnk"><span class="__cf_email__" data-cfemail="610f000c0c0a000d001111000821060c00080d4f020e0c">[email&#160;protected]</span></a>
+        </div>
+        <div class="c-card">
+          <div class="c-ico">📸</div>
+          <div class="c-lbl">Instagram</div>
+          <a href="https://www.instagram.com/namma_kalappai/" target="_blank" class="insta-lnk">@namma_kalappai</a>
+        </div>
+        <div class="c-card">
+          <div class="c-ico">💬</div>
+          <div class="c-lbl">WhatsApp</div>
+          <a href="https://wa.me/917448773399" target="_blank" class="c-lnk wa-cta">Chat with Us</a>
+        </div>
       </div>
     </div>
-    <div><h4 class="f-col-ttl">Products</h4><ul class="f-ul">
-      <li><button onclick="filterProducts('honey');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🍯 Honey Range</button></li>
-      <li><button onclick="filterProducts('mix');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🌾 Health Mixes</button></li>
-      <li><button onclick="filterProducts('ghee');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🥛 Ghee</button></li>
-      <li><button onclick="filterProducts('oil');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🫒 Cold Pressed Oils</button></li>
-      <li><button onclick="filterProducts('millet');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🍪 Millet Biscuits</button></li>
-      <li><button onclick="filterProducts('combo');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🎁 Combo Packs</button></li>
-    </ul></div>
-    <div><h4 class="f-col-ttl">Quick Links</h4><ul class="f-ul">
-      <li><button onclick="window.scrollTo({top:0,behavior:'smooth'})">🏠 Home</button></li>
-      <li><button onclick="showPage('about')">🌿 About Us</button></li>
-      <li><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">🛒 Shop All</button></li>
-      <li><button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📞 Contact</button></li>
-      <li><a href="https://wa.me/917448773399" target="_blank">💬 WhatsApp Order</a></li>
-    </ul></div>
-    <div><h4 class="f-col-ttl">Contact Us</h4>
-      <div class="f-ci">📞 <a href="tel:7448773399">7448773399</a></div>
-      <div class="f-ci">📞 <a href="tel:7448772299">7448772299</a></div>
-      <div class="f-ci">📧 <a href="mailto:nammkalappai@gmail.com">nammkalappai@gmail.com</a></div>
-      <div class="f-ci">📸 <a href="https://instagram.com/namma_kalappai" target="_blank">@namma_kalappai</a></div>
-      <div class="f-badges"><span class="f-bge">🌿 Natural</span><span class="f-bge">✅ Trusted</span><span class="f-bge">🏡 Homemade</span></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nk-footer">
+    <div class="f-top">
+      <div class="container">
+        <div class="f-grid">
+          <div>
+            <div class="f-logo">
+              <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826549/kalappai_PNG_rzunzz.png" alt="Namma Kalappai" class="f-logo-img">
+              <div><div class="f-brand">Namma Kalappai</div><div class="f-tag">Pure • Traditional • Honest</div></div>
+            </div>
+            <p class="f-desc">Nature's finest — unprocessed honey, traditional ghee, cold-pressed oils, and millet goodness — straight to your home.</p>
+            <div class="f-soc">
+              <a href="https://www.instagram.com/namma_kalappai/" target="_blank" class="f-sbtn f-ig">📸 Instagram</a>
+              <a href="https://wa.me/917448773399" target="_blank" class="f-sbtn f-wa">💬 WhatsApp</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="f-col-ttl">Products</h4>
+            <ul class="f-ul">
+              <li><button onclick="filterProducts('honey');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🍯 Honey Range</button></li>
+              <li><button onclick="filterProducts('mix');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🌾 Health Mixes</button></li>
+              <li><button onclick="filterProducts('ghee');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🥛 Ghee</button></li>
+              <li><button onclick="filterProducts('oil');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🫒 Cold Pressed Oils</button></li>
+              <li><button onclick="filterProducts('millet');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🍪 Millet Biscuits</button></li>
+              <li><button onclick="filterProducts('combo');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🎁 Combo Packs</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="f-col-ttl">Quick Links</h4>
+            <ul class="f-ul">
+              <li><button onclick="window.scrollTo({top:0,behavior:'smooth'})">🏠 Home</button></li>
+              <li><button onclick="showPage('about')">🌿 About Us</button></li>
+              <li><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">🛒 Shop All</button></li>
+              <li><button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📞 Contact</button></li>
+              <li><a href="https://wa.me/917448773399" target="_blank">💬 WhatsApp Order</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="f-col-ttl">Contact Us</h4>
+            <div class="f-ci">📞 <a href="tel:7448773399">7448773399</a></div>
+            <div class="f-ci">📞 <a href="tel:7448772299">7448772299</a></div>
+            <div class="f-ci">📧 <a href="/cdn-cgi/l/email-protection#254b4448484e4449445555444c654248444c490b464a48"><span class="__cf_email__" data-cfemail="7a141b1717111b161b0a0a1b133a1d171b131654191517">[email&#160;protected]</span></a></div>
+            <div class="f-ci">📸 <a href="https://instagram.com/namma_kalappai" target="_blank">@namma_kalappai</a></div>
+            <div class="f-badges"><span class="f-bge">🌿 Natural</span><span class="f-bge">✅ Trusted</span><span class="f-bge">🏡 Homemade</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div></div></div>
-  <div class="f-bot"><div class="container"><div class="f-bot-in"><span>© 2025 Namma Kalappai. All rights reserved.</span><span>Made with 💚 for healthy living</span></div></div></div>
-</footer>
+    <div class="f-bot">
+      <div class="container">
+        <div class="f-bot-in"><span>© 2025 Namma Kalappai. All rights reserved.</span><span>Made with 💚 for healthy living</span></div>
+      </div>
+    </div>
+  </footer>
 
 </div><!-- end homePage -->
 
-<!-- ======== ABOUT PAGE ======== -->
+<!-- ABOUT PAGE -->
 <div id="aboutPage" class="page">
-<div class="ab-nav">
-  <div class="ab-brand">
-    <img src="images/kalappai PNG.png" alt="NK" class="ab-logo-img" onerror="this.style.display='none'">
-    <span class="ab-title">Namma Kalappai</span>
+  <div class="ab-nav">
+    <div class="ab-brand">
+      <img src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773826549/kalappai_PNG_rzunzz.png" alt="NK" class="ab-logo-img">
+      <span class="ab-title">Namma Kalappai</span>
+    </div>
+    <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
   </div>
-  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
-</div>
-<div class="ab-hero">
-  <div class="ab-badge">🌿 Our Story</div>
-  <h1 class="ab-h1">We Are <em>Namma Kalappai</em></h1>
-  <p>A family rooted in tradition, committed to bringing you the purest foods nature offers — unprocessed, unadulterated, and full of life.</p>
-</div>
-<div class="ab-main">
+  <div class="ab-hero">
+    <div class="ab-badge">🌿 Our Story</div>
+    <h1 class="ab-h1">We Are <em>Namma Kalappai</em></h1>
+    <p>A family rooted in tradition, committed to bringing you the purest foods nature offers — unprocessed, unadulterated, and full of life.</p>
+  </div>
+  <div class="ab-main">
     <div class="stats-row reveal shown">
-        <div class="stat-c"><div class="stat-n">5000+</div><div class="stat-l">Happy Families</div></div>
-        <div class="stat-c"><div class="stat-n">35+</div><div class="stat-l">Natural Products</div></div>
-        <div class="stat-c"><div class="stat-n">100%</div><div class="stat-l">No Chemicals</div></div>
-        <div class="stat-c"><div class="stat-n">4+ yrs</div><div class="stat-l">Trusted Since</div></div>
+      <div class="stat-c"><div class="stat-n">5000+</div><div class="stat-l">Happy Families</div></div>
+      <div class="stat-c"><div class="stat-n">35+</div><div class="stat-l">Natural Products</div></div>
+      <div class="stat-c"><div class="stat-n">100%</div><div class="stat-l">No Chemicals</div></div>
+      <div class="stat-c"><div class="stat-n">4+ yrs</div><div class="stat-l">Trusted Since</div></div>
     </div>
     <div class="story-c reveal shown">
-        <div class="ab-label">📖 Our Story</div>
-        <div class="story-grid">
-            <div class="story-txt">
-                <p><strong>Namma Kalappai</strong> was born from a simple belief — that the best food comes from nature, processed only by honest hands. We started as a small family initiative in Tamil Nadu, sourcing raw honey directly from forest beekeepers and cold-pressed oils from traditional chekku mills.</p>
-                <p>The name <strong>"Kalappai"</strong> (கலப்பை) means plough — the symbol of farming, hard work, and connection to the earth. We carry that spirit in every product we deliver.</p>
-                <p>Today we serve over <strong>5000+ families</strong> across Tamil Nadu, offering everything from forest honey and multi-millet health mixes to A2 ghee and cold-pressed oils — all made the traditional, honest way.</p>
-            </div>
-            <div class="founder-c">
-                <div class="founder-av">👨‍🌾</div>
-                <div class="founder-nm">Our Founders</div>
-                <div class="founder-rl">Family-Run Business</div>
-                <p class="founder-q">"We started Namma Kalappai because we couldn't find truly pure, traditional foods for our own family. So we decided to make it ourselves — and share it with yours."</p>
-            </div>
+      <div class="ab-label">📖 Our Story</div>
+      <div class="story-grid">
+        <div class="story-txt">
+          <p><strong>Namma Kalappai</strong> was born from a simple belief — that the best food comes from nature, processed only by honest hands. We started as a small family initiative in Tamil Nadu, sourcing raw honey directly from forest beekeepers and cold-pressed oils from traditional chekku mills.</p>
+          <p>The name <strong>"Kalappai"</strong> (கலப்பை) means plough — the symbol of farming, hard work, and connection to the earth. We carry that spirit in every product we deliver.</p>
+          <p>Today we serve over <strong>5000+ families</strong> across Tamil Nadu, offering everything from forest honey and multi-millet health mixes to A2 ghee and cold-pressed oils — all made the traditional, honest way.</p>
         </div>
+        <div class="founder-c">
+          <div class="founder-av">👨‍🌾</div>
+          <div class="founder-nm">Our Founders</div>
+          <div class="founder-rl">Family-Run Business</div>
+          <p class="founder-q">"We started Namma Kalappai because we couldn't find truly pure, traditional foods for our own family. So we decided to make it ourselves — and share it with yours."</p>
+        </div>
+      </div>
     </div>
     <div class="ab-label reveal shown">💚 What We Stand For</div>
     <h2 class="ab-sec-ttl reveal shown">Our <em>Core Values</em></h2>
     <div class="vals-grid reveal shown">
-        <div class="val-c"><div class="val-ico">🌿</div><div class="val-ttl">100% Natural</div><div class="val-desc">Zero artificial preservatives, colors, or additives. Every product is exactly what nature made it.</div></div>
-        <div class="val-c"><div class="val-ico">🤝</div><div class="val-ttl">Honest Sourcing</div><div class="val-desc">We work directly with farmers, forest beekeepers, and traditional chekku oil mills — no middlemen.</div></div>
-        <div class="val-c"><div class="val-ico">🏡</div><div class="val-ttl">Family First</div><div class="val-desc">Every product is made to the standard we'd feed our own children — nothing less, nothing fake.</div></div>
-        <div class="val-c"><div class="val-ico">⚗️</div><div class="val-ttl">Traditional Methods</div><div class="val-desc">Bilona ghee, wooden chekku oils, hand-harvested honey — ancient methods that preserve nutrients.</div></div>
-        <div class="val-c"><div class="val-ico">💰</div><div class="val-ttl">Fair Pricing</div><div class="val-desc">Premium quality shouldn't mean unaffordable. We price fairly so every family can eat well.</div></div>
-        <div class="val-c"><div class="val-ico">🌱</div><div class="val-ttl">Supporting Farmers</div><div class="val-desc">We pay fair prices to our farmers and beekeepers, helping sustain traditional livelihoods.</div></div>
+      <div class="val-c"><div class="val-ico">🌿</div><div class="val-ttl">100% Natural</div><div class="val-desc">Zero artificial preservatives, colors, or additives. Every product is exactly what nature made it.</div></div>
+      <div class="val-c"><div class="val-ico">🤝</div><div class="val-ttl">Honest Sourcing</div><div class="val-desc">We work directly with farmers, forest beekeepers, and traditional chekku oil mills — no middlemen.</div></div>
+      <div class="val-c"><div class="val-ico">🏡</div><div class="val-ttl">Family First</div><div class="val-desc">Every product is made to the standard we'd feed our own children — nothing less, nothing fake.</div></div>
+      <div class="val-c"><div class="val-ico">⚗️</div><div class="val-ttl">Traditional Methods</div><div class="val-desc">Bilona ghee, wooden chekku oils, hand-harvested honey — ancient methods that preserve nutrients.</div></div>
+      <div class="val-c"><div class="val-ico">💰</div><div class="val-ttl">Fair Pricing</div><div class="val-desc">Premium quality shouldn't mean unaffordable. We price fairly so every family can eat well.</div></div>
+      <div class="val-c"><div class="val-ico">🌱</div><div class="val-ttl">Supporting Farmers</div><div class="val-desc">We pay fair prices to our farmers and beekeepers, helping sustain traditional livelihoods.</div></div>
     </div>
-    <div class="ab-label reveal shown">✅ Why Choose Us</div>
-    <h2 class="ab-sec-ttl reveal shown">Why 5000+ Families <em>Trust Us</em></h2>
     <div class="why-grid reveal shown">
-        <div class="why-i"><div class="why-dot">🍯</div><div><h4>Raw &amp; Unheated Honey</h4><p>Never heated or filtered — retains all enzymes, pollen, and natural goodness exactly as the bees made it.</p></div></div>
-        <div class="why-i"><div class="why-dot">🌾</div><div><h4>Stone-Ground Millets</h4><p>Health mixes made from traditionally processed millets — roasted and ground the old way for maximum nutrition.</p></div></div>
-        <div class="why-i"><div class="why-dot">🥛</div><div><h4>Bilona Method Ghee</h4><p>A2 ghee made from desi cow curd, hand-churned using the ancient Bilona method — the gold standard of purity.</p></div></div>
-        <div class="why-i"><div class="why-dot">🫒</div><div><h4>Cold-Pressed at Source</h4><p>Oils extracted using traditional wooden chekku presses — no heat, no chemicals, full flavor and nutrition.</p></div></div>
-        <div class="why-i"><div class="why-dot">📦</div><div><h4>Delivered Farm-Fresh</h4><p>Prepared fresh per order. No warehousing — straight from source to your door.</p></div></div>
-        <div class="why-i"><div class="why-dot">💬</div><div><h4>Personal Service</h4><p>Reach us on WhatsApp anytime — we're a family business, not a call centre.</p></div></div>
-    </div>
-    <div class="vid-sec reveal shown">
-        <div class="ab-label" style="justify-content:center">🎬 See For Yourself</div>
-        <h2 class="ab-sec-ttl">Watch Our <em>Story</em></h2>
-        <p class="ab-desc" style="margin:8px auto 0;text-align:center">See how we source, prepare and pack our products — from forest and farm to your family's table.</p>
-        <div class="vid-wrap">
-            <video autoplay muted loop preload="metadata" playsinline>
-                <source src="images/nammakalapai.mp4" type="video/mp4">
-            </video>
-        </div>
+      <div class="why-i"><div class="why-dot">🍯</div><div><h4>Raw &amp; Unheated Honey</h4><p>Never heated or filtered — retains all enzymes, pollen, and natural goodness exactly as the bees made it.</p></div></div>
+      <div class="why-i"><div class="why-dot">🌾</div><div><h4>Stone-Ground Millets</h4><p>Health mixes made from traditionally processed millets — roasted and ground the old way for maximum nutrition.</p></div></div>
+      <div class="why-i"><div class="why-dot">🥛</div><div><h4>Bilona Method Ghee</h4><p>A2 ghee made from desi cow curd, hand-churned using the ancient Bilona method — the gold standard of purity.</p></div></div>
+      <div class="why-i"><div class="why-dot">🫒</div><div><h4>Cold-Pressed at Source</h4><p>Oils extracted using traditional wooden chekku presses — no heat, no chemicals, full flavor and nutrition.</p></div></div>
+      <div class="why-i"><div class="why-dot">📦</div><div><h4>Delivered Farm-Fresh</h4><p>Prepared fresh per order. No warehousing — straight from source to your door.</p></div></div>
+      <div class="why-i"><div class="why-dot">💬</div><div><h4>Personal Service</h4><p>Reach us on WhatsApp anytime — we're a family business, not a call centre.</p></div></div>
     </div>
     <div class="ab-cta reveal shown">
-        <h2>Ready to Eat <em>Truly Pure?</em></h2>
-        <p>Join 5000+ families who have made the switch to honest, natural food. Your body will thank you.</p>
-        <div class="cta-btns">
-            <button class="cta-p" onclick="showPage('home');setTimeout(()=>document.getElementById('products').scrollIntoView({behavior:'smooth'}),100)">🛒 Shop All Products</button>
-            <a href="https://wa.me/917448773399" target="_blank" class="cta-s">💬 WhatsApp Us</a>
-        </div>
+      <h2>Ready to Eat <em>Truly Pure?</em></h2>
+      <p>Join 5000+ families who have made the switch to honest, natural food. Your body will thank you.</p>
+      <div class="cta-btns">
+        <button class="cta-p" onclick="showPage('home');setTimeout(()=>document.getElementById('products').scrollIntoView({behavior:'smooth'}),100)">🛒 Shop All Products</button>
+        <a href="https://wa.me/917448773399" target="_blank" class="cta-s">💬 WhatsApp Us</a>
+      </div>
     </div>
+  </div>
+  <div class="ab-footer">
+    <p>© 2025 Namma Kalappai · Pure • Traditional • Honest · <a href="tel:7448773399">7448773399</a> · <a href="/cdn-cgi/l/email-protection#80eee1ededebe1ece1f0f0e1e9c0e7ede1e9ecaee3efed"><span class="__cf_email__" data-cfemail="553b3438383e3439342525343c153238343c397b363a38">[email&#160;protected]</span></a></p>
+  </div>
 </div>
-<div class="ab-footer"><p>© 2025 Namma Kalappai · Pure • Traditional • Honest · <a href="tel:7448773399">7448773399</a> · <a href="mailto:nammkalappai@gmail.com">nammkalappai@gmail.com</a></p></div>
-</div><!-- end aboutPage -->
 
 <!-- FLOAT BUTTONS -->
 <a href="https://www.instagram.com/namma_kalappai/" target="_blank" class="float-ig" aria-label="Instagram">
@@ -717,37 +741,36 @@ body{
 </a>
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// ── NATURE CANVAS ─────────────────────────────────────────
-(function spawnNature(){
-  const canvas = document.getElementById('natureCanvas');
-  const leafEmojis = ['🌿','🍃','🌱','🍀','🌾','🌺','🌸'];
-  for(let i=0;i<22;i++){
+// ── NATURE CANVAS (performance optimised — fewer elements) ─────
+(function(){
+  const c=document.getElementById('natureCanvas');
+  const leafs=['🌿','🍃','🌱','🍀','🌾'];
+  for(let i=0;i<14;i++){
     const el=document.createElement('div');
     el.className='fl-leaf';
-    el.textContent=leafEmojis[Math.floor(Math.random()*leafEmojis.length)];
-    const sz=14+Math.random()*14;
-    el.style.cssText=`left:${Math.random()*100}vw;bottom:-40px;font-size:${sz}px;animation-duration:${14+Math.random()*20}s;animation-delay:${Math.random()*25}s`;
-    canvas.appendChild(el);
+    el.textContent=leafs[i%leafs.length];
+    const sz=13+Math.random()*12;
+    el.style.cssText=`left:${Math.random()*100}vw;bottom:-40px;font-size:${sz}px;animation-duration:${16+Math.random()*18}s;animation-delay:${Math.random()*28}s`;
+    c.appendChild(el);
   }
-  for(let i=0;i<4;i++){
+  for(let i=0;i<3;i++){
     const bee=document.createElement('div');
-    bee.className='fl-bee';
-    bee.textContent='🐝';
-    bee.style.cssText=`left:${5+Math.random()*65}vw;top:${8+Math.random()*55}vh;font-size:${15+Math.random()*8}px;animation-duration:${9+Math.random()*12}s;animation-delay:${Math.random()*8}s`;
-    canvas.appendChild(bee);
+    bee.className='fl-bee';bee.textContent='🐝';
+    bee.style.cssText=`left:${5+Math.random()*60}vw;top:${10+Math.random()*50}vh;animation-duration:${10+Math.random()*10}s;animation-delay:${Math.random()*8}s`;
+    c.appendChild(bee);
   }
-  for(let i=0;i<30;i++){
+  for(let i=0;i<18;i++){
     const dot=document.createElement('div');
     dot.className='fl-pollen';
-    const sz=3+Math.random()*5;
-    dot.style.cssText=`left:${Math.random()*100}vw;top:${Math.random()*100}vh;width:${sz}px;height:${sz}px;animation-duration:${2.5+Math.random()*4}s;animation-delay:${Math.random()*6}s`;
-    canvas.appendChild(dot);
+    const sz=3+Math.random()*4;
+    dot.style.cssText=`left:${Math.random()*100}vw;top:${Math.random()*100}vh;width:${sz}px;height:${sz}px;animation-duration:${3+Math.random()*4}s;animation-delay:${Math.random()*6}s`;
+    c.appendChild(dot);
   }
 })();
 
-// ── PAGE SWITCHER ──────────────────────────────────────────
+// ── PAGE SWITCHER ──────────────────────────────────────────────
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   if(name==='about'){
@@ -760,157 +783,300 @@ function showPage(name){
   }
 }
 
-// ── PRODUCT DATA ──────────────────────────────────────────
+// ── PRICE HELPERS ──────────────────────────────────────────────
+function parsePrice(s){
+  if(!s)return null;
+  const n=parseFloat(String(s).replace(/[^0-9.]/g,''));
+  return isNaN(n)?null:n;
+}
+function getMRP(actualStr){
+  const a=parsePrice(actualStr);
+  if(!a)return null;
+  return '₹'+(Math.ceil(a*1.20/10)*10-1);
+}
+
+// ── CORRECTED PRODUCT DATA ─────────────────────────────────────
 const products=[
-{name:'Wild Forest Honey - 500g',ta:'காடு செறிந்த தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820520/DSC00206_kanmje.jpg',category:'honey',descEn:`<strong>Description:</strong> Sourced directly from forest beehives, this honey is unprocessed and retains all natural enzymes and pollen.<br><strong>Ingredients:</strong> 100% Pure Forest Nectar.<br><strong>Health Benefits:</strong> Boosts immunity, treats cough and cold, rich in antioxidants, natural energy booster.`,descTa:`<strong>விளக்கம்:</strong> காடுகளில் உள்ள தேன்கூடுகளில் இருந்து நேரடியாக எடுக்கப்படும் சுத்தமான தேன்.<br><strong>பொருட்கள்:</strong> 100% தூய காட்டு மலர் தேன்.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, இருமல் மற்றும் சளியை குணப்படுத்துகிறது.`,insta:'https://www.instagram.com/reel/DJeJ8F4ymt-/?igsh=MXgwMG1ja2xleGtvbg=='},
-{name:'Multi Floral Honey - 500g',ta:'பல மலர் தேன் - 500கிராம்',price:'₹449',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820517/DSC00210_qbss0s.jpg',category:'honey',descEn:`<strong>Description:</strong> Collected by bees from a variety of seasonal wildflowers, offering a complex flavor profile and diverse nutrients.<br><strong>Ingredients:</strong> Nectar from various wildflowers.<br><strong>Health Benefits:</strong> Aids digestion, improves skin health, provides seasonal allergy relief.`,descTa:`<strong>விளக்கம்:</strong> பல்வேறு பருவகால காட்டுப்பூக்களில் இருந்து தேனீக்களால் சேகரிக்கப்படும் தேன்.<br><strong>பொருட்கள்:</strong> பல்வேறு மலர்களின் தேன் துளிகள்.<br><strong>நன்மைகள்:</strong> செரிமானத்திற்கு உதவுகிறது, சரும ஆரோக்கியத்தை மேம்படுத்துகிறது.`,insta:'https://www.instagram.com/reel/DKkAxWTyqzy/?igsh=NTQybHp0aGVscm0x'},
-{name:'Fennel Honey - 500g',ta:'சோம்பு தேன் - 500கிராம்',price:'₹599',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820533/DSC00214_xbarhw.jpg',category:'honey',descEn:`<strong>Description:</strong> Honey produced by bees that primarily forage on fennel flowers, carrying a distinct aromatic flavor.<br><strong>Ingredients:</strong> Fennel flower nectar.<br><strong>Health Benefits:</strong> Relieves bloating, improves digestion, freshens breath, reduces menstrual cramps.`,descTa:`<strong>விளக்கம்:</strong> சோம்பு மலர்களில் இருந்து சேகரிக்கப்படும் தேன்.<br><strong>பொருட்கள்:</strong> சோம்பு மலர் தேன்.<br><strong>நன்மைகள்:</strong> வயிற்று உப்பசத்தை குறைக்கிறது, செரிமானத்தை தூண்டுகிறது.`,insta:'https://www.instagram.com/reel/DQMSv6NElYV/?igsh=MTdiazlxdnFwcjR1ag=='},
-{name:'Tulsi Honey - 500g',ta:'துளசி தேன் - 500கிராம்',price:'₹599',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820463/DSC00220_rgwtbb.jpg',category:'honey',descEn:`<strong>Description:</strong> Honey infused with the essence of Holy Basil (Tulsi), widely used in Ayurvedic remedies.<br><strong>Ingredients:</strong> Tulsi flower nectar / Tulsi extract.<br><strong>Health Benefits:</strong> Relieves stress, treats respiratory issues, antibacterial properties, strengthens heart.`,descTa:`<strong>விளக்கம்:</strong> துளசி மலர்களின் சாறு நிறைந்த தேன்.<br><strong>பொருட்கள்:</strong> துளசி மலர் தேன்.<br><strong>நன்மைகள்:</strong> மன அழுத்தத்தை குறைக்கிறது, சுவாச கோளாறுகளை நீக்குகிறது.`,insta:'https://www.instagram.com/reel/DQT7pYCDBYO/?igsh=MTV2dmdqMWdkc25tdQ=='},
-{name:'Kashmiri Aqua Honey - 500g',ta:'காஷ்மீர் அக்வா தேன் - 500கிராம்',price:'₹599',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820455/DSC00218_dbgo0w.jpg',category:'honey',descEn:`<strong>Description:</strong> A premium, light-colored honey collected from the pristine valleys of Kashmir.<br><strong>Ingredients:</strong> Nectar from Himalayan wildflowers.<br><strong>Health Benefits:</strong> Blood purifier, improves skin glow, rich in enzymes, natural sleep aid.`,descTa:`<strong>விளக்கம்:</strong> காஷ்மீர் பள்ளத்தாக்குகளில் இருந்து சேகரிக்கப்படும் பிரீமியம் தேன்.<br><strong>பொருட்கள்:</strong> இமயமலை மலர் தேன்.<br><strong>நன்மைகள்:</strong> ரத்தத்தை சுத்திகரிக்கிறது, சரும பொலிவை தருகிறது.`,insta:'https://www.instagram.com/reel/DQmC2IoEh_d/?igsh=MXdiOXByMmhkZmkyNg=='},
-{name:'Neem Honey - 500g',ta:'வேம்பு தேன் - 500கிராம்',price:'₹699',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820455/DSC00216_v0vfsk.jpg',category:'honey',descEn:`<strong>Description:</strong> A dark, medicinal honey collected from Neem flowers.<br><strong>Ingredients:</strong> Neem flower nectar.<br><strong>Health Benefits:</strong> Natural antiseptic, treats skin allergies, supports liver health, helps in deworming.`,descTa:`<strong>விளக்கம்:</strong> வேப்பம் பூக்களில் இருந்து எடுக்கப்படும் மருத்துவ குணம் நிறைந்த தேன்.<br><strong>பொருட்கள்:</strong> வேப்பம் பூ தேன்.<br><strong>நன்மைகள்:</strong> சிறந்த கிருமிநாசினி, தோல் ஒவ்வாமையை நீக்குகிறது.`,insta:'https://www.instagram.com/reel/DQbtC7ujApT/?igsh=b2x4cGNyamV2bWtv'},
-{name:'Moringa Honey - 500g',ta:'முருங்கை தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820472/DSC00222_px0j3o.jpg',category:'honey',descEn:`<strong>Description:</strong> A premium medicinal honey collected from moringa flowers.<br><strong>Ingredients:</strong> Raw moringa flower honey.<br><strong>Health Benefits:</strong> Increases immunity, treats anemia, boosts energy, improves skin health.`,descTa:`<strong>விளக்கம்:</strong> முருங்கை பூக்களின் தேனிலிருந்து சேகரிக்கப்படும் மருத்துவ குணம் நிறைந்த தேன்.<br><strong>பொருட்கள்:</strong> சுத்தமான முருங்கைத் தேன்.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, இரத்த சோகையை குணப்படுத்துகிறது.`,insta:'https://www.instagram.com/reel/DOAh-7yAKCh/?igsh=OTVyM2hydXVtN2d3'},
-{name:'Pomegranate Honey - 500g',ta:'மாதுளை தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820527/DSC00212_zgcjfv.jpg',category:'honey',descEn:`<strong>Description:</strong> Premium honey infused with Pomegranate essence.<br><strong>Ingredients:</strong> Pure Honey blended with Pomegranate extract.<br><strong>Health Benefits:</strong> Rich in antioxidants, improves blood circulation, supports heart health.`,descTa:`<strong>விளக்கம்:</strong> மாதுளை சாறு கலந்த உயர்தர தேன்.<br><strong>பொருட்கள்:</strong> தூய தேன், மாதுளை சாறு.<br><strong>நன்மைகள்:</strong> ஆன்டிஆக்ஸிடன்ட் நிறைந்தது, ரத்த ஓட்டத்தை மேம்படுத்துகிறது.`},
-{name:'Little Bee (Kombu) Honey - 500g',ta:'சிறு தேனீ (கொம்பு) தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820518/DSC00208_yv4spm.jpg',category:'honey',descEn:`<strong>Description:</strong> Rare medicinal honey collected from Little Bees (Kombu Then).<br><strong>Ingredients:</strong> Raw Honey from Little Bee hives.<br><strong>Health Benefits:</strong> Powerful immunity booster, helps control diabetes, improves digestion.`,descTa:`<strong>விளக்கம்:</strong> சிறு தேனீக்களால் சேகரிக்கப்படும் அரிய மருத்துவ குணம் நிறைந்த கொம்பு தேன்.<br><strong>பொருட்கள்:</strong> சிறு தேனீக்களின் தூய தேன்.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, சர்க்கரை அளவை கட்டுப்படுத்துகிறது.`},
-//balance
-{name:'Cavity Honey - 500g',ta:'பல் பாதுகாப்பு தேன் - 500கிராம்',price:'₹449',img:'',category:'combo',descEn:`<strong>Description:</strong> Specially prepared honey with antibacterial properties for oral hygiene.<br><strong>Ingredients:</strong> Natural Honey enriched with medicinal floral nectar.<br><strong>Health Benefits:</strong> Helps prevent cavities, reduces oral bacteria, supports gum health.`,descTa:`<strong>விளக்கம்:</strong> பல் மற்றும் வாய்ப்பகுதி ஆரோக்கியத்திற்கு உதவும் சிறப்பு தேன்.<br><strong>பொருட்கள்:</strong> மருத்துவ குணம் கொண்ட மலர் தேன்.<br><strong>நன்மைகள்:</strong> பல் துளைகளைத் தடுக்கும், வாயில் கிருமிகளை குறைக்கும்.`},
-{name:'Multi Millet Health Mix - 500g',ta:'பல சிறுதானிய சத்துமாவு - 500கிராம்',price:'₹349',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820485/DSC00251_axpagy.jpg',category:'mix',descEn:`<strong>Description:</strong> A nutrient-dense blend of various millets and pulses, ideal as a breakfast for all ages.<br><strong>Ingredients:</strong> Ragi, Bajra, Jowar, Foxtail Millet, Little Millet, Roasted Gram, Cardamom.<br><strong>Health Benefits:</strong> High in fiber, controls blood sugar, weight management, rich in minerals.`,descTa:`<strong>விளக்கம்:</strong> பல்வேறு சிறுதானியங்கள் மற்றும் பருப்பு வகைகளின் கலவை.<br><strong>பொருட்கள்:</strong> ராகி, கம்பு, சோளம், தினை, சாமை, பொட்டுகடலை, ஏலக்காய்.<br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், சர்க்கரை அளவை கட்டுப்படுத்துகிறது.`,insta:'https://www.instagram.com/reel/DTAqoSbkjKi/?igsh=YnhkeHplM3hpbXcw'},
-{name:'Sprouted Health Mix - 250g',ta:'முளைகட்டிய சத்துமாவு - 250கிராம்',price:'₹175',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820469/DSC00253_d2p7tn.jpg',category:'mix',descEn:`<strong>Description:</strong> Made from sprouted grains which enhances nutrient absorption and digestion.<br><strong>Ingredients:</strong> Sprouted Ragi, Green Gram, Wheat, Bajra, Almonds, Cashews.<br><strong>Health Benefits:</strong> Maximum nutrient absorption, protein-rich, boosts growth in children.`,descTa:`<strong>விளக்கம்:</strong> முளைகட்டிய தானியங்களால் தயாரிக்கப்பட்டது.<br><strong>பொருட்கள்:</strong> முளைகட்டிய ராகி, பச்சைப்பயறு, கோதுமை, கம்பு, பாதாம், முந்திரி.<br><strong>நன்மைகள்:</strong> புரதச்சத்து நிறைந்தது, குழந்தைகளின் வளர்ச்சிக்கு உதவுகிறது.`,insta:'https://www.instagram.com/reel/DNIetWISdHk/?igsh=dm1tbTF5bjhpbnJp'},
-{name:'ABC Malt - 180g',ta:'ABC மால்ட் - 180கிராம்',price:'₹249',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820475/DSC00257_ommysm.jpg',category:'mix',descEn:`<strong>Description:</strong> A healthy powdered drink mix made from Apple, Beetroot, and Carrot.<br><strong>Ingredients:</strong> Dried Apple, Beetroot, Carrot, Almonds, Country Sugar/Jaggery.<br><strong>Health Benefits:</strong> Increases hemoglobin, glows skin, detoxifies the body.`,descTa:`<strong>விளக்கம்:</strong> ஆப்பிள், பீட்ரூட் மற்றும் கேரட் கொண்டு தயாரிக்கப்படும் "அதிசய பானம்".<br><strong>பொருட்கள்:</strong> ஆப்பிள், பீட்ரூட், கேரட், பாதாம், நாட்டுச்சர்க்கரை.<br><strong>நன்மைகள்:</strong> ரத்த சிவப்பணுக்களை அதிகரிக்கிறது, கண் பார்வையை மேம்படுத்துகிறது.`,insta:'https://www.instagram.com/reel/DPBqp0LkryZ/?igsh=aW1pZXpqbzBxem0w'},
-{name:'Ulundhu Kanji Mix - 250g',ta:'உளுந்து கஞ்சி மாவு - 250கிராம்',price:'₹199',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820470/DSC00255_s6kb6y.jpg',category:'mix',descEn:`<strong>Description:</strong> Traditional nutritious porridge mix made from Black Gram (Ulundhu).<br><strong>Ingredients:</strong> Black Gram, Rice, Jeera, Pepper, Dry Ginger.<br><strong>Health Benefits:</strong> Strengthens bones, improves digestion, recommended for postnatal care.`,descTa:`<strong>விளக்கம்:</strong> உளுந்தை முக்கியமாகக் கொண்டு தயாரிக்கப்படும் பாரம்பரிய கஞ்சி மாவு.<br><strong>பொருட்கள்:</strong> உளுந்து, அரிசி, சீரகம், மிளகு, சுக்கு.<br><strong>நன்மைகள்:</strong> எலும்புகளை வலுப்படுத்துகிறது, பிரசவத்திற்குப் பிந்தைய பராமரிப்பிற்கு ஏற்றது.`},
-{name:'A1 Ghee - 500ml',ta:'A1 நெய் - 500மி.லி',price:'₹449',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820461/DSC00224_y9hkkw.jpg',category:'ghee',descEn:`<strong>Description:</strong> Prepared from the milk of hybrid cow breeds for everyday cooking.<br><strong>Ingredients:</strong> Milk fat from hybrid cow breeds (HF/Jersey).<br><strong>Health Benefits:</strong> Source of fat-soluble vitamins, provides essential calories, enhances food flavor.`,descTa:`<strong>விளக்கம்:</strong> கலப்பின பசுக்களின் பாலில் இருந்து தயாரிக்கப்படும் நெய்.<br><strong>பொருட்கள்:</strong> கலப்பின பசுவின் பால் கொழுப்பு.<br><strong>நன்மைகள்:</strong> வைட்டமின்கள் நிறைந்தது, உடலுக்குத் தேவையான கலோரிகளை வழங்குகிறது.`,insta:'https://www.instagram.com/reel/DMh7X8UyNr8/?igsh=aXdnOWp0NmNibGll'},
-{name:'A2 Ghee - 500ml',ta:'A2 நாட்டுமாட்டு நெய் - 500மி.லி',price:'₹799',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820462/DSC00225_wpgzb2.jpg',category:'ghee',descEn:`<strong>Description:</strong> Hand-churned using the traditional Bilona method from indigenous (Desi) cows.<br><strong>Ingredients:</strong> Pure A2 Cow Milk Fat.<br><strong>Health Benefits:</strong> Easy to digest, improves brain health, strengthens bones, promotes heart health.`,descTa:`<strong>விளக்கம்:</strong> நாட்டுப் பசுக்களின் பாலில் இருந்து பாரம்பரிய பிலோனா முறையில் தயாரிக்கப்படும் உயர்தர நெய்.<br><strong>பொருட்கள்:</strong> தூய A2 நாட்டுப் பசுவின் பால் கொழுப்பு.<br><strong>நன்மைகள்:</strong> எளிதில் செரிமானமாகும், மூளை வளர்ச்சியை மேம்படுத்தும்.`,insta:'https://www.instagram.com/reel/DLZ6MU1y49R/?igsh=MWhhdjIwZmRkdTU2Zg=='},
-//sugar
-{name:'Palm Sugar - 250g',ta:'பனங்கற்கண்டு - 250கிராம்',price:'₹175',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820477/DSC00261_vscqrx.jpg',category:'sugar',descEn:`<strong>Description:</strong> A natural sweetener extracted from the sap of palm trees.<br><strong>Ingredients:</strong> Palm Tree Sap (Neera).<br><strong>Health Benefits:</strong> Cleanses respiratory tract, rich in iron, low glycemic index, treats sore throat.`,descTa:`<strong>விளக்கம்:</strong> பனை மரத்தின் பதநீரில் இருந்து எடுக்கப்படும் இயற்கை இனிப்பு.<br><strong>பொருட்கள்:</strong> பனை பதநீர்.<br><strong>நன்மைகள்:</strong> சுவாசப்பாதையை சுத்தப்படுத்துகிறது, இரும்புச்சத்து நிறைந்தது.`,insta:'https://www.instagram.com/reel/DM0LrgyS4yC/?igsh=dDIxMW4zdDhob3Bw'},
-{name:'Coconut Sugar - 250g',ta:'தேங்காய் சர்க்கரை - 250கிராம்',price:'₹150',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820475/DSC00259_o1xzzj.jpg',category:'sugar',descEn:`<strong>Description:</strong> Produced from coconut palm blossoms, a healthy alternative to refined sugar.<br><strong>Ingredients:</strong> Coconut Blossom Nectar.<br><strong>Health Benefits:</strong> Contains electrolytes, supports gut health, rich in Zinc and Potassium.`,descTa:`<strong>விளக்கம்:</strong> தென்னை மர பூக்களின் சாற்றில் இருந்து தயாரிக்கப்படும் சர்க்கரை.<br><strong>பொருட்கள்:</strong> தென்னை மலர் சாறு.<br><strong>நன்மைகள்:</strong> தாதுக்கள் நிறைந்தது, குடல் ஆரோக்கியத்தை மேம்படுத்துகிறது.`,insta:'https://www.instagram.com/reel/DM0LrgyS4yC/?igsh=dDIxMW4zdDhob3Bw'},
-//biscuits
-{name:'Finger Millet Biscuit - 80g',ta:'ராகி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820496/DSC00286_nk5svh.jpg',category:'millet',descEn:`<strong>Description:</strong> Crunchy biscuits made from Finger Millet (Ragi).<br><strong>Ingredients:</strong> Finger Millet (Ragi), Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Rich in calcium, strengthens bones, supports digestion.`,descTa:`<strong>விளக்கம்:</strong> ராகியால் தயாரிக்கப்பட்ட சத்தான பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> ராகி, கோதுமை மாவு, நாட்டுச் சர்க்கரை, சமையல் எண்ணெய்.<br><strong>நன்மைகள்:</strong> கால்சியம் நிறைந்தது, எலும்புகளை வலுப்படுத்துகிறது.`},
-{name:'Black Rice Biscuit - 80g',ta:'கருப்பு கவுனி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820481/DSC00271_z0vkzo.jpg',category:'millet',descEn:`<strong>Description:</strong> Healthy biscuits using antioxidant-rich Black Rice.<br><strong>Ingredients:</strong> Black Rice Flour, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> High antioxidants, improves heart health, boosts immunity.`,descTa:`<strong>விளக்கம்:</strong> கருப்பு கவுனி அரிசியால் தயாரிக்கப்பட்ட பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> கருப்பு அரிசி மாவு, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> ஆன்டிஆக்ஸிடன்ட் அதிகம், இதய ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
-{name:'Pearl Millet Biscuit - 80g',ta:'கம்பு பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820507/DSC00291_bvlkhp.jpg',category:'millet',descEn:`<strong>Description:</strong> Tasty biscuits made from Pearl Millet (Bajra).<br><strong>Ingredients:</strong> Pearl Millet (Bajra), Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Improves digestion, controls blood sugar, high fiber.`,descTa:`<strong>விளக்கம்:</strong> கம்பு கொண்டு தயாரிக்கப்பட்ட சத்தான பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> கம்பு, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், சர்க்கரை அளவை கட்டுப்படுத்துகிறது.`},
-{name:'Barnyard Millet Biscuit - 80g',ta:'குதிரைவாலி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820498/DSC00290_gjzumn.jpg',category:'millet',descEn:`<strong>Description:</strong> Light crispy biscuits from Barnyard Millet, diabetic-friendly.<br><strong>Ingredients:</strong> Barnyard Millet, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Low glycemic index, supports weight management.`,descTa:`<strong>விளக்கம்:</strong> குதிரைவாலி கொண்டு தயாரிக்கப்பட்ட பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> குதிரைவாலி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> குறைந்த கிளைசெமிக் குறியீடு, உடல் எடை கட்டுப்பாடு.`},
-{name:'Little Millet Biscuit - 80g',ta:'சாமை பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820496/DSC00278_axx0lg.jpg',category:'millet',descEn:`<strong>Description:</strong> Wholesome biscuits from Little Millet with balanced nutrition.<br><strong>Ingredients:</strong> Little Millet, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Improves metabolism, rich in fiber and minerals.`,descTa:`<strong>விளக்கம்:</strong> சாமை கொண்டு தயாரிக்கப்பட்ட பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> சாமை, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> உடல் மாற்றுச்செயலை மேம்படுத்துகிறது, நார்ச்சத்து அதிகம்.`},
-{name:'Multi Grain Biscuit - 80g',ta:'நவதானிய பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820493/DSC00288_lfvrxo.jpg',category:'millet',descEn:`<strong>Description:</strong> Biscuits from a blend of multiple grains for complete nutrition.<br><strong>Ingredients:</strong> Mixed Millets, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Balanced nutrients, boosts energy, supports digestion.`,descTa:`<strong>விளக்கம்:</strong> பல தானியங்களின் கலவையால் தயாரிக்கப்பட்ட பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> சிறுதானிய கலவை, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> சக்தியை அதிகரிக்கிறது, செரிமானத்திற்கு உதவுகிறது.`},
-{name:'Moringa Leaf Biscuit - 80g',ta:'முருங்கை இலை பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820503/DSC00273_dxng1q.jpg',category:'millet',descEn:`<strong>Description:</strong> Herbal biscuits enriched with Moringa leaves.<br><strong>Ingredients:</strong> Moringa Leaf Powder, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Boosts immunity, rich in iron and vitamins.`,descTa:`<strong>விளக்கம்:</strong> முருங்கை இலைகள் சேர்க்கப்பட்ட மூலிகை பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> முருங்கை இலை பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`},
-{name:'Tulsi Biscuit - 80g',ta:'துளசி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820484/DSC00275_jzdnsx.jpg',category:'millet',descEn:`<strong>Description:</strong> Biscuits infused with Tulsi for its medicinal properties.<br><strong>Ingredients:</strong> Tulsi Powder, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Improves respiratory health, boosts immunity.`,descTa:`<strong>விளக்கம்:</strong> துளசி சேர்க்கப்பட்ட மருத்துவ குணம் நிறைந்த பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> துளசி பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> சுவாச ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
-{name:'Hibiscus Biscuit - 80g',ta:'செம்பருத்தி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820495/DSC00282_wnelza.jpg',category:'millet',descEn:`<strong>Description:</strong> Herbal biscuits with Hibiscus flowers, mild tangy taste.<br><strong>Ingredients:</strong> Hibiscus Powder, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Supports hair health, rich in antioxidants.`,descTa:`<strong>விளக்கம்:</strong> செம்பருத்தி பூக்கள் சேர்க்கப்பட்ட மூலிகை பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> செம்பருத்தி பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> முடி ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
-{name:'Amla Biscuit - 80g',ta:'நெல்லிக்காய் பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820487/DSC00279_zqvske.jpg',category:'millet',descEn:`<strong>Description:</strong> Nutritious biscuits enriched with Amla for daily wellness.<br><strong>Ingredients:</strong> Amla Powder, Wheat Flour, Country Sugar, Edible Oil.<br><strong>Health Benefits:</strong> Improves digestion, boosts immunity, rich in Vitamin C.`,descTa:`<strong>விளக்கம்:</strong> நெல்லிக்காய் சேர்க்கப்பட்ட சத்தான பிஸ்கட்கள்.<br><strong>பொருட்கள்:</strong> நெல்லிக்காய் பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><strong>நன்மைகள்:</strong> செரிமானத்தை மேம்படுத்துகிறது, வைட்டமின் C அதிகம்.`},
-//oils
-{name:'Cold Pressed Groundnut Oil - 1L',ta:'நாட்டு கடலை எண்ணெய் - 1லிட்டர்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820480/DSC00236_s4v7v9.jpg',category:'oil',descEn:`<strong>Description:</strong> Traditional cold-pressed groundnut oil using the wooden chekku method.<br><strong>Ingredients:</strong> 100% Pure Cold Pressed Groundnut.<br><strong>Health Benefits:</strong> Rich in Vitamin E, supports heart health, natural antioxidants.`,descTa:`<strong>விளக்கம்:</strong> மரச்செக்கு முறையில் அழுத்தி எடுக்கப்படும் நாட்டு கடலை எண்ணெய்.<br><strong>பொருட்கள்:</strong> 100% தூய நாட்டு கடலை.<br><strong>நன்மைகள்:</strong> வைட்டமின் E நிறைந்தது, இதய ஆரோக்கியத்திற்கு உதவுகிறது.`},
-{name:'Cold Pressed Sesame Oil - 500ml',ta:'செக்கு நல்லெண்ணெய்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820465/DSC00234_pghgbv.jpg',category:'oil',descEn:`<strong>Description:</strong> Pure cold-pressed sesame oil using the traditional wooden chekku method.<br><strong>Ingredients:</strong> 100% Pure Cold Pressed Sesame Seeds.<br><strong>Health Benefits:</strong> Strengthens bones, rich in calcium & magnesium, promotes hair and skin health.`,descTa:`<strong>விளக்கம்:</strong> பாரம்பரிய மரச்செக்கு முறையில் தயாரிக்கப்படும் தூய நல்லெண்ணெய்.<br><strong>பொருட்கள்:</strong> 100% தூய எள் விதைகள்.<br><strong>நன்மைகள்:</strong> எலும்புகளை வலுப்படுத்துகிறது, முடி மற்றும் சரும ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
-{name:'Cold Pressed Coconut Oil - 1L',ta:'செக்கு தேங்காய் எண்ணெய் - 1லிட்டர்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820460/DSC00230_blgrvt.jpg',category:'oil',descEn:`<strong>Description:</strong> Fresh cold-pressed coconut oil from pure coconut kernels.<br><strong>Ingredients:</strong> 100% Pure Fresh Coconut Kernels.<br><strong>Health Benefits:</strong> Boosts immunity, improves brain function, promotes hair growth.`,descTa:`<strong>விளக்கம்:</strong> தூய தேங்காய் பருப்பிலிருந்து மரச்செக்கு முறையில் எடுக்கப்படும் தேங்காய் எண்ணெய்.<br><strong>பொருட்கள்:</strong> 100% தூய தேங்காய் பருப்பு.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, முடி வளர்ச்சிக்கு சிறந்தது.`},
-{name:'Cold Pressed Coconut Oil - 500ml',ta:'செக்கு தேங்காய் எண்ணெய்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820460/DSC00230_blgrvt.jpg',category:'oil',descEn:`<strong>Description:</strong> Fresh cold-pressed coconut oil from pure coconut kernels.<br><strong>Ingredients:</strong> 100% Pure Fresh Coconut Kernels.<br><strong>Health Benefits:</strong> Boosts immunity, improves brain function, promotes hair growth.`,descTa:`<strong>விளக்கம்:</strong> தூய தேங்காய் பருப்பிலிருந்து மரச்செக்கு முறையில் எடுக்கப்படும் தேங்காய் எண்ணெய்.<br><strong>பொருட்கள்:</strong> 100% தூய தேங்காய் பருப்பு.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, முடி வளர்ச்சிக்கு சிறந்தது.`},
-//combos
-{name:'Honey + Ghee Combo',ta:'தேன் + நெய் கலவை',price:'Coming Soon',img:'images/honey-ghee-combo.jpg',category:'combo',descEn:`<strong>Description:</strong> Pure Forest Honey (500g) and premium A2 Desi Ghee (500ml) bundled together.<br><strong>Includes:</strong> Wild Forest Honey 500g + A2 Ghee 500ml.<br><strong>Health Benefits:</strong> Boosts immunity, improves digestion, enhances brain health.`,descTa:`<strong>விளக்கம்:</strong> தூய காட்டு தேன் (500கிராம்) மற்றும் உயர்தர A2 நாட்டு நெய் (500மி.லி).<br><strong>உள்ளடக்கம்:</strong> காட்டு தேன் 500கிராம் + A2 நெய் 500மி.லி.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தி, செரிமான மேம்பாடு, மூளை ஆரோக்கியம்.`},
-{name:'Health Mix + Honey Combo',ta:'சத்துமாவு + தேன் கலவை',price:'Coming Soon',img:'images/mix-honey-combo.jpg',category:'combo',descEn:`<strong>Description:</strong> Multi Millet Health Mix (500g) paired with Multi Floral Honey (500g).<br><strong>Includes:</strong> Multi Millet Health Mix 500g + Multi Floral Honey 500g.<br><strong>Health Benefits:</strong> High fiber, controls blood sugar, boosts immunity.`,descTa:`<strong>விளக்கம்:</strong> பல சிறுதானிய சத்துமாவு (500கிராம்) மற்றும் பல மலர் தேன் (500கிராம்).<br><strong>உள்ளடக்கம்:</strong> சத்துமாவு 500கிராம் + பல மலர் தேன் 500கிராம்.<br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், நோய் எதிர்ப்பு சக்தி.`},
-{name:'Sugar + Oil Combo',ta:'சர்க்கரை + எண்ணெய் கலவை',price:'Coming Soon',img:'images/sugar-oil-combo.jpg',category:'combo',descEn:`<strong>Description:</strong> Palm Sugar (250g) and Cold Pressed Sesame Oil (500ml) bundled.<br><strong>Includes:</strong> Palm Sugar 250g + Cold Pressed Sesame Oil 500ml.<br><strong>Health Benefits:</strong> Low glycemic sweetener, heart-healthy oil.`,descTa:`<strong>விளக்கம்:</strong> இயற்கை பனங்கற்கண்டு (250கிராம்) மற்றும் செக்கு நல்லெண்ணெய் (500மி.லி).<br><strong>உள்ளடக்கம்:</strong> பனங்கற்கண்டு 250கிராம் + செக்கு நல்லெண்ணெய் 500மி.லி.<br><strong>நன்மைகள்:</strong> குறைந்த கிளைசெமிக் இனிப்பு, இதய ஆரோக்கியம்.`},
-{name:'Biscuit Variety Pack',ta:'பிஸ்கட் வகை தொகுப்பு',price:'Coming Soon',img:'images/biscuit-combo.jpg',category:'combo',descEn:`<strong>Description:</strong> Assortment of bestselling millet biscuits — Ragi, Kambu, Moringa, Tulsi and more.<br><strong>Includes:</strong> 6 assorted millet biscuit packs (80g each).<br><strong>Health Benefits:</strong> Multigrain nutrition, rich in fiber, healthy snacking for all ages.`,descTa:`<strong>விளக்கம்:</strong> எங்களது சிறந்த சிறுதானிய பிஸ்கட்களின் கலவை தொகுப்பு.<br><strong>உள்ளடக்கம்:</strong> 6 வகை சிறுதானிய பிஸ்கட் பொட்டலங்கள் (தலா 80கிராம்).<br><strong>நன்மைகள்:</strong> பல தானிய ஊட்டச்சத்து, நார்ச்சத்து நிறைந்தது.`},
-{name:'Honey Variety Pack',ta:'தேன் வகை தொகுப்பு',price:'₹999',img:'images/mfhoney.jpg',category:'combo',descEn:`<strong>Description:</strong> A curated collection of our bestselling honeys — perfect for gifting or trying multiple varieties at once.<br><strong>Includes:</strong> Multi Floral Honey 500g + Tulsi Honey 500g + Fennel Honey 500g.<br><strong>Health Benefits:</strong> Immunity, digestion, respiratory health and more.`,descTa:`<strong>விளக்கம்:</strong> எங்களது சிறந்த தேன் வகைகளின் சிறப்பு தொகுப்பு.<br><strong>உள்ளடக்கம்:</strong> பல மலர் தேன் 500கிராம் + துளசி தேன் 500கிராம் + சோம்பு தேன் 500கிராம்.<br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தி, செரிமானம், சுவாச ஆரோக்கியம்.`},
-{name:'Millet Biscuit + Health Mix Combo',ta:'பிஸ்கட் + சத்துமாவு தொகுப்பு',price:'₹999',img:'images/mmhx.jpg',category:'combo',descEn:`<strong>Description:</strong> The perfect wholesome snacking bundle for the whole family.<br><strong>Includes:</strong> Multi Millet Health Mix 500g + 4 Assorted Millet Biscuit Packs (Ragi, Kambu, Moringa & Tulsi 80g each).<br><strong>Health Benefits:</strong> High fiber, calcium for bones, natural energy, immunity support.`,descTa:`<strong>விளக்கம்:</strong> சிறுதானிய சத்துமாவு மற்றும் பிஸ்கட்கள் சேர்ந்த குடும்ப தொகுப்பு.<br><strong>உள்ளடக்கம்:</strong> பல சிறுதானிய சத்துமாவு 500கிராம் + 4 வகை சிறுதானிய பிஸ்கட் (தலா 80கிராம்).<br><strong>நன்மைகள்:</strong> நார்ச்சத்து, கால்சியம், நோய் எதிர்ப்பு சக்தி.`},
+  // HONEY
+  {name:'Wild Forest Honey - 500g',ta:'காடு செறிந்த தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820520/DSC00206_kanmje.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Sourced directly from forest beehives — unprocessed, raw honey retaining all natural enzymes and pollen.<br><br><strong>Ingredients:</strong> 100% Pure Forest Nectar.<br><br><strong>Health Benefits:</strong> Boosts immunity, treats cough and cold, rich in antioxidants, natural energy booster.`,
+   descTa:`<strong>விளக்கம்:</strong> காடுகளில் உள்ள தேன்கூடுகளில் இருந்து நேரடியாக எடுக்கப்படும் சுத்தமான மலைத் தேன்.<br><br><strong>பொருட்கள்:</strong> 100% தூய காட்டு மலர் தேன்.<br><br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, இருமல் மற்றும் சளியை குணப்படுத்துகிறது.`,
+   insta:'https://www.instagram.com/reel/DJeJ8F4ymt-/?igsh=MXgwMG1ja2xleGtvbg=='},
+
+  {name:'Cavity Honey (Multi Floral) - 500g',ta:'பன்மலர் தேன் - 500கிராம்',price:'₹449',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820517/DSC00210_qbss0s.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Collected by bees from a variety of seasonal wildflowers — complex flavour, diverse nutrients.<br><br><strong>Ingredients:</strong> Nectar from various wildflowers.<br><br><strong>Health Benefits:</strong> Aids digestion, improves skin health, provides seasonal allergy relief.`,
+   descTa:`<strong>விளக்கம்:</strong> பல்வேறு பருவகால காட்டுப்பூக்களில் இருந்து தேனீக்களால் சேகரிக்கப்படும் தேன்.<br><br><strong>பொருட்கள்:</strong> பல்வேறு மலர்களின் தேன் துளிகள்.<br><br><strong>நன்மைகள்:</strong> செரிமானத்திற்கு உதவுகிறது, சரும ஆரோக்கியத்தை மேம்படுத்துகிறது.`,
+   insta:'https://www.instagram.com/reel/DKkAxWTyqzy/?igsh=NTQybHp0aGVscm0x'},
+
+  {name:'Moringa Honey - 500g',ta:'முருங்கைத் தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820472/DSC00222_px0j3o.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Premium medicinal honey collected from moringa flowers — rare and nutritious.<br><br><strong>Ingredients:</strong> Raw moringa flower honey.<br><br><strong>Health Benefits:</strong> Increases immunity, treats anaemia, boosts energy, improves skin health.`,
+   descTa:`<strong>விளக்கம்:</strong> முருங்கை பூக்களின் தேனிலிருந்து சேகரிக்கப்படும் மருத்துவ குணம் நிறைந்த தேன்.<br><br><strong>பொருட்கள்:</strong> சுத்தமான முருங்கைத் தேன்.<br><br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, இரத்த சோகையை குணப்படுத்துகிறது.`,
+   insta:'https://www.instagram.com/reel/DOAh-7yAKCh/?igsh=OTVyM2hydXVtN2d3'},
+
+  {name:'Pomegranate Honey - 500g',ta:'மாதுளம் பூ தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820527/DSC00212_zgcjfv.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Premium honey collected from pomegranate blossoms — rich flavour, loaded with antioxidants.<br><br><strong>Ingredients:</strong> Pure Pomegranate Blossom Honey.<br><br><strong>Health Benefits:</strong> Rich in antioxidants, improves blood circulation, supports heart health.`,
+   descTa:`<strong>விளக்கம்:</strong> மாதுளம் பூக்களில் இருந்து சேகரிக்கப்படும் உயர்தர தேன்.<br><br><strong>பொருட்கள்:</strong> தூய மாதுளம் பூ தேன்.<br><br><strong>நன்மைகள்:</strong> ஆன்டிஆக்ஸிடன்ட் நிறைந்தது, ரத்த ஓட்டத்தை மேம்படுத்துகிறது.`},
+
+  {name:'Tulsi Honey - 500g',ta:'துளசி தேன் - 500கிராம்',price:'₹599',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820463/DSC00220_rgwtbb.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Honey infused with Holy Basil (Tulsi) — widely used in Ayurvedic remedies.<br><br><strong>Ingredients:</strong> Tulsi flower nectar / Tulsi extract.<br><br><strong>Health Benefits:</strong> Relieves stress, treats respiratory issues, antibacterial properties, strengthens heart.`,
+   descTa:`<strong>விளக்கம்:</strong> துளசி மலர்களின் சாறு நிறைந்த தேன்.<br><br><strong>பொருட்கள்:</strong> துளசி மலர் தேன்.<br><br><strong>நன்மைகள்:</strong> மன அழுத்தத்தை குறைக்கிறது, சுவாச கோளாறுகளை நீக்குகிறது.`,
+   insta:'https://www.instagram.com/reel/DQT7pYCDBYO/?igsh=MTV2dmdqMWdkc25tdQ=='},
+
+  {name:'Fennel Honey - 500g',ta:'சோம்பு தேன் - 500கிராம்',price:'₹599',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820533/DSC00214_xbarhw.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Honey produced by bees foraging on fennel flowers — distinct aromatic flavour.<br><br><strong>Ingredients:</strong> Fennel flower nectar.<br><br><strong>Health Benefits:</strong> Relieves bloating, improves digestion, freshens breath, reduces menstrual cramps.`,
+   descTa:`<strong>விளக்கம்:</strong> சோம்பு மலர்களில் இருந்து சேகரிக்கப்படும் தேன்.<br><br><strong>பொருட்கள்:</strong> சோம்பு மலர் தேன்.<br><br><strong>நன்மைகள்:</strong> வயிற்று உப்பசத்தை குறைக்கிறது, செரிமானத்தை தூண்டுகிறது.`,
+   insta:'https://www.instagram.com/reel/DQMSv6NElYV/?igsh=MTdiazlxdnFwcjR1ag=='},
+
+  {name:'Kashmiri Aqua Honey - 500g',ta:'காஷ்மீரி அக்வா தேன் - 500கிராம்',price:'₹599',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820455/DSC00218_dbgo0w.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Premium light-colored honey from the pristine valleys of Kashmir.<br><br><strong>Ingredients:</strong> Nectar from Himalayan wildflowers.<br><br><strong>Health Benefits:</strong> Blood purifier, improves skin glow, rich in enzymes, natural sleep aid.`,
+   descTa:`<strong>விளக்கம்:</strong> காஷ்மீர் பள்ளத்தாக்குகளில் இருந்து சேகரிக்கப்படும் பிரீமியம் தேன்.<br><br><strong>பொருட்கள்:</strong> இமயமலை மலர் தேன்.<br><br><strong>நன்மைகள்:</strong> ரத்தத்தை சுத்திகரிக்கிறது, சரும பொலிவை தருகிறது.`,
+   insta:'https://www.instagram.com/reel/DQmC2IoEh_d/?igsh=MXdiOXByMmhkZmkyNg=='},
+
+  {name:'Neem Honey - 500g',ta:'வேப்பம் பூ தேன் - 500கிராம்',price:'₹699',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820455/DSC00216_v0vfsk.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Dark medicinal honey collected from Neem flowers — powerful natural antiseptic.<br><br><strong>Ingredients:</strong> Neem flower nectar.<br><br><strong>Health Benefits:</strong> Natural antiseptic, treats skin allergies, supports liver health, helps in deworming.`,
+   descTa:`<strong>விளக்கம்:</strong> வேப்பம் பூக்களில் இருந்து எடுக்கப்படும் மருத்துவ குணம் நிறைந்த தேன்.<br><br><strong>பொருட்கள்:</strong> வேப்பம் பூ தேன்.<br><br><strong>நன்மைகள்:</strong> சிறந்த கிருமிநாசினி, தோல் ஒவ்வாமையை நீக்குகிறது.`,
+   insta:'https://www.instagram.com/reel/DQbtC7ujApT/?igsh=b2x4cGNyamV2bWtv'},
+
+  {name:'Little Bee (Kombu) Honey - 500g',ta:'கொம்பு தேன் - 500கிராம்',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820518/DSC00208_yv4spm.jpg',category:'honey',
+   descEn:`<strong>Description:</strong> Rare medicinal honey collected from Little Bees (Kombu Then) — highly prized.<br><br><strong>Ingredients:</strong> Raw Honey from Little Bee hives.<br><br><strong>Health Benefits:</strong> Powerful immunity booster, helps control diabetes, improves digestion.`,
+   descTa:`<strong>விளக்கம்:</strong> சிறு தேனீக்களால் சேகரிக்கப்படும் அரிய மருத்துவ குணம் நிறைந்த கொம்பு தேன்.<br><br><strong>பொருட்கள்:</strong> சிறு தேனீக்களின் தூய தேன்.<br><br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, சர்க்கரை அளவை கட்டுப்படுத்துகிறது.`},
+
+  // MILLET BISCUITS - ₹49
+  {name:'Black Rice Biscuit - 80g',ta:'கருப்பு கவுனி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820481/DSC00271_z0vkzo.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Healthy biscuits using antioxidant-rich Black Rice (Karuppu Kavuni).<br><br><strong>Ingredients:</strong> Black Rice Flour, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> High antioxidants, improves heart health, boosts immunity.`,
+   descTa:`<strong>விளக்கம்:</strong> கருப்பு கவுனி அரிசியால் தயாரிக்கப்பட்ட சத்தான பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> கருப்பு அரிசி மாவு, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> ஆன்டிஆக்ஸிடன்ட் அதிகம், இதய ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
+
+  {name:'Finger Millet Biscuit - 80g',ta:'ராகி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820496/DSC00286_nk5svh.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Crunchy biscuits made from Finger Millet (Ragi) — calcium-rich and delicious.<br><br><strong>Ingredients:</strong> Finger Millet (Ragi), Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Rich in calcium, strengthens bones, supports digestion.`,
+   descTa:`<strong>விளக்கம்:</strong> ராகியால் தயாரிக்கப்பட்ட சத்தான பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> ராகி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> கால்சியம் நிறைந்தது, எலும்புகளை வலுப்படுத்துகிறது.`},
+
+  {name:'Pearl Millet Biscuit - 80g',ta:'கம்பு பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820507/DSC00291_bvlkhp.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Tasty biscuits made from Pearl Millet (Kambu/Bajra) — high fiber, low glycemic.<br><br><strong>Ingredients:</strong> Pearl Millet, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Improves digestion, controls blood sugar, high fiber content.`,
+   descTa:`<strong>விளக்கம்:</strong> கம்பு கொண்டு தயாரிக்கப்பட்ட சத்தான பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> கம்பு, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், சர்க்கரை அளவை கட்டுப்படுத்துகிறது.`},
+
+  {name:'Barnyard Millet Biscuit - 80g',ta:'குதிரைவாலி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820498/DSC00290_gjzumn.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Light crispy biscuits from Barnyard Millet — diabetic-friendly, low glycemic.<br><br><strong>Ingredients:</strong> Barnyard Millet, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Low glycemic index, supports weight management, diabetic-friendly.`,
+   descTa:`<strong>விளக்கம்:</strong> குதிரைவாலி கொண்டு தயாரிக்கப்பட்ட பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> குதிரைவாலி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> குறைந்த கிளைசெமிக் குறியீடு, உடல் எடை கட்டுப்பாடு.`},
+
+  {name:'Little Millet Biscuit - 80g',ta:'சாமை பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820496/DSC00278_axx0lg.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Wholesome biscuits from Little Millet (Samai) — balanced nutrition in every bite.<br><br><strong>Ingredients:</strong> Little Millet, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Improves metabolism, rich in fiber and minerals.`,
+   descTa:`<strong>விளக்கம்:</strong> சாமை கொண்டு தயாரிக்கப்பட்ட பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> சாமை, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> உடல் மாற்றுச்செயலை மேம்படுத்துகிறது, நார்ச்சத்து அதிகம்.`},
+
+  {name:'Multi Grains Biscuit - 80g',ta:'நவதானியங்கள் பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820493/DSC00288_lfvrxo.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Biscuits from a blend of multiple grains (Navadhanyam) for complete nutrition.<br><br><strong>Ingredients:</strong> Mixed Millets blend, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Balanced nutrients, boosts energy, supports digestion.`,
+   descTa:`<strong>விளக்கம்:</strong> நவதானியங்களின் கலவையால் தயாரிக்கப்பட்ட பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> நவதானிய கலவை, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> சக்தியை அதிகரிக்கிறது, செரிமானத்திற்கு உதவுகிறது.`},
+
+  {name:'Moringa Leaf Biscuit - 80g',ta:'முருங்கை கீரை பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820503/DSC00273_dxng1q.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Herbal biscuits enriched with Moringa leaves — superfoood goodness in a biscuit.<br><br><strong>Ingredients:</strong> Moringa Leaf Powder, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Boosts immunity, rich in iron and vitamins.`,
+   descTa:`<strong>விளக்கம்:</strong> முருங்கை கீரை சேர்க்கப்பட்ட மூலிகை பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> முருங்கை இலை பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`},
+
+  {name:'Tulsi Biscuit - 80g',ta:'துளசி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820484/DSC00275_jzdnsx.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Biscuits infused with Tulsi (Holy Basil) for its powerful medicinal properties.<br><br><strong>Ingredients:</strong> Tulsi Powder, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Improves respiratory health, boosts immunity, antibacterial.`,
+   descTa:`<strong>விளக்கம்:</strong> துளசி சேர்க்கப்பட்ட மருத்துவ குணம் நிறைந்த பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> துளசி பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> சுவாச ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
+
+  {name:'Hibiscus Biscuit - 80g',ta:'செம்பருத்தி பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820495/DSC00282_wnelza.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Herbal biscuits with Hibiscus flowers — mild tangy taste with beauty benefits.<br><br><strong>Ingredients:</strong> Hibiscus Powder, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Supports hair health, rich in antioxidants, regulates blood pressure.`,
+   descTa:`<strong>விளக்கம்:</strong> செம்பருத்தி பூக்கள் சேர்க்கப்பட்ட மூலிகை பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> செம்பருத்தி பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> முடி ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
+
+  {name:'Amla Biscuit - 80g',ta:'நெல்லிக்காய் பிஸ்கட் - 80கிராம்',price:'₹49',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820487/DSC00279_zqvske.jpg',category:'millet',
+   descEn:`<strong>Description:</strong> Nutritious biscuits enriched with Amla (Indian Gooseberry) for daily wellness.<br><br><strong>Ingredients:</strong> Amla Powder, Wheat Flour, Country Sugar, Edible Oil.<br><br><strong>Health Benefits:</strong> Improves digestion, boosts immunity, extremely rich in Vitamin C.`,
+   descTa:`<strong>விளக்கம்:</strong> நெல்லிக்காய் சேர்க்கப்பட்ட சத்தான பிஸ்கட்கள்.<br><br><strong>பொருட்கள்:</strong> நெல்லிக்காய் பொடி, கோதுமை மாவு, நாட்டுச் சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> செரிமானத்தை மேம்படுத்துகிறது, வைட்டமின் C அதிகம்.`},
+
+  // GHEE
+  {name:'A1 Ghee (Normal Cow) - 500ml',ta:'A1 நெய் (நாட்டு பசு) - 500மி.லி',price:'₹499',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820461/DSC00224_y9hkkw.jpg',category:'ghee',
+   descEn:`<strong>Description:</strong> Pure ghee prepared from hybrid cow milk using traditional methods — ideal for everyday cooking.<br><br><strong>Ingredients:</strong> Milk fat from cow (HF/Jersey breeds).<br><br><strong>Health Benefits:</strong> Source of fat-soluble vitamins A, D, E & K, provides essential calories, enhances food flavour.`,
+   descTa:`<strong>விளக்கம்:</strong> பசுக்களின் பாலில் இருந்து பாரம்பரிய முறையில் தயாரிக்கப்படும் தூய நெய்.<br><br><strong>பொருட்கள்:</strong> பசுவின் பால் கொழுப்பு.<br><br><strong>நன்மைகள்:</strong> வைட்டமின்கள் நிறைந்தது, உடலுக்குத் தேவையான கலோரிகளை வழங்குகிறது.`,
+   insta:'https://www.instagram.com/reel/DMh7X8UyNr8/?igsh=aXdnOWp0NmNibGll'},
+
+  {name:'A2 Ghee (Desi Cow) - 500ml',ta:'A2 நாட்டுமாட்டு நெய் - 500மி.லி',price:'₹999',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820462/DSC00225_wpgzb2.jpg',category:'ghee',
+   descEn:`<strong>Description:</strong> Hand-churned using the traditional Bilona method from indigenous (Desi) cows — the purest ghee.<br><br><strong>Ingredients:</strong> Pure A2 Desi Cow Milk Fat (Bilona Method).<br><br><strong>Health Benefits:</strong> Easy to digest, improves brain health, strengthens bones, promotes heart health, contains CLA.`,
+   descTa:`<strong>விளக்கம்:</strong> நாட்டுப் பசுக்களின் பாலில் இருந்து பாரம்பரிய பிலோனா முறையில் தயாரிக்கப்படும் உயர்தர நெய்.<br><br><strong>பொருட்கள்:</strong> தூய A2 நாட்டுப் பசுவின் பால் கொழுப்பு.<br><br><strong>நன்மைகள்:</strong> எளிதில் செரிமானமாகும், மூளை வளர்ச்சியை மேம்படுத்தும்.`,
+   insta:'https://www.instagram.com/reel/DLZ6MU1y49R/?igsh=MWhhdjIwZmRkdTU2Zg=='},
+
+  // HEALTH MIX
+  {name:'Multi Millet Health Mix - 500g',ta:'பல சிறு தானிய சத்துமாவு - 500கிராம்',price:'₹399',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820485/DSC00251_axpagy.jpg',category:'mix',
+   descEn:`<strong>Description:</strong> A nutrient-dense blend of various millets and pulses — ideal as breakfast for all ages.<br><br><strong>Ingredients:</strong> Ragi, Bajra, Jowar, Foxtail Millet, Little Millet, Roasted Gram, Cardamom.<br><br><strong>Health Benefits:</strong> High in fiber, controls blood sugar, weight management, rich in minerals.`,
+   descTa:`<strong>விளக்கம்:</strong> பல்வேறு சிறுதானியங்கள் மற்றும் பருப்பு வகைகளின் கலவை — அனைத்து வயதினருக்கும் ஏற்ற காலை உணவு.<br><br><strong>பொருட்கள்:</strong> ராகி, கம்பு, சோளம், தினை, சாமை, பொட்டுகடலை, ஏலக்காய்.<br><br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், சர்க்கரை அளவை கட்டுப்படுத்துகிறது.`,
+   insta:'https://www.instagram.com/reel/DTAqoSbkjKi/?igsh=YnhkeHplM3hpbXcw'},
+
+  {name:'Sprouted Health Mix - 250g',ta:'முளைகட்டிய சத்துமாவு - 250கிராம்',price:'₹199',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820469/DSC00253_d2p7tn.jpg',category:'mix',
+   descEn:`<strong>Description:</strong> Made from sprouted grains — sprouting enhances nutrient absorption and digestibility.<br><br><strong>Ingredients:</strong> Sprouted Ragi, Green Gram, Wheat, Bajra, Almonds, Cashews.<br><br><strong>Health Benefits:</strong> Maximum nutrient absorption, protein-rich, boosts growth in children.`,
+   descTa:`<strong>விளக்கம்:</strong> முளைகட்டிய தானியங்களால் தயாரிக்கப்பட்ட சத்துமாவு — ஊட்டசத்து உறிஞ்சுதல் அதிகம்.<br><br><strong>பொருட்கள்:</strong> முளைகட்டிய ராகி, பச்சைப்பயறு, கோதுமை, கம்பு, பாதாம், முந்திரி.<br><br><strong>நன்மைகள்:</strong> புரதச்சத்து நிறைந்தது, குழந்தைகளின் வளர்ச்சிக்கு உதவுகிறது.`,
+   insta:'https://www.instagram.com/reel/DNIetWISdHk/?igsh=dm1tbTF5bjhpbnJp'},
+
+  {name:'ABC Malt - 180g',ta:'ABC மால்ட் - 180கிராம்',price:'₹249',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820475/DSC00257_ommysm.jpg',category:'mix',
+   descEn:`<strong>Description:</strong> Healthy powdered drink mix made from Apple, Beetroot and Carrot — the ultimate detox combo.<br><br><strong>Ingredients:</strong> Dried Apple, Beetroot, Carrot, Almonds, Country Sugar/Jaggery.<br><br><strong>Health Benefits:</strong> Increases haemoglobin, glows skin, detoxifies the body, improves eyesight.`,
+   descTa:`<strong>விளக்கம்:</strong> ஆப்பிள், பீட்ரூட் மற்றும் கேரட் கொண்டு தயாரிக்கப்படும் ABC மால்ட்.<br><br><strong>பொருட்கள்:</strong> ஆப்பிள், பீட்ரூட், கேரட், பாதாம், நாட்டுச்சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> ரத்த சிவப்பணுக்களை அதிகரிக்கிறது, கண் பார்வையை மேம்படுத்துகிறது.`,
+   insta:'https://www.instagram.com/reel/DPBqp0LkryZ/?igsh=aW1pZXpqbzBxem0w'},
+
+  {name:'Ulundhu Kanji Mix - 250g',ta:'உளுந்து கஞ்சி மாவு - 250கிராம்',price:'₹199',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820470/DSC00255_s6kb6y.jpg',category:'mix',
+   descEn:`<strong>Description:</strong> Traditional nutritious porridge mix made from Black Gram (Ulundhu) — a postnatal classic.<br><br><strong>Ingredients:</strong> Black Gram, Rice, Jeera, Pepper, Dry Ginger.<br><br><strong>Health Benefits:</strong> Strengthens bones, improves digestion, ideal for postnatal care and new mothers.`,
+   descTa:`<strong>விளக்கம்:</strong> உளுந்தை முக்கியமாகக் கொண்டு தயாரிக்கப்படும் பாரம்பரிய கஞ்சி மாவு.<br><br><strong>பொருட்கள்:</strong> உளுந்து, அரிசி, சீரகம், மிளகு, சுக்கு.<br><br><strong>நன்மைகள்:</strong> எலும்புகளை வலுப்படுத்துகிறது, பிரசவத்திற்குப் பிந்தைய பராமரிப்பிற்கு சிறந்தது.`},
+
+  // SUGAR
+  {name:'Coconut Sugar - 250g',ta:'தேங்காய் சர்க்கரை - 250கிராம்',price:'₹199',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820475/DSC00259_o1xzzj.jpg',category:'sugar',
+   descEn:`<strong>Description:</strong> Produced from coconut palm blossoms — healthy alternative to refined sugar.<br><br><strong>Ingredients:</strong> Coconut Blossom Nectar.<br><br><strong>Health Benefits:</strong> Contains electrolytes, supports gut health, rich in Zinc and Potassium, low glycemic.`,
+   descTa:`<strong>விளக்கம்:</strong> தென்னை மர பூக்களின் சாற்றில் இருந்து தயாரிக்கப்படும் இயற்கை சர்க்கரை.<br><br><strong>பொருட்கள்:</strong> தென்னை மலர் சாறு.<br><br><strong>நன்மைகள்:</strong> தாதுக்கள் நிறைந்தது, குடல் ஆரோக்கியத்தை மேம்படுத்துகிறது.`,
+   insta:'https://www.instagram.com/reel/DM0LrgyS4yC/?igsh=dDIxMW4zdDhob3Bw'},
+
+  {name:'Palm Sugar - 250g',ta:'பனை சர்க்கரை - 250கிராம்',price:'₹219',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820477/DSC00261_vscqrx.jpg',category:'sugar',
+   descEn:`<strong>Description:</strong> Natural sweetener extracted from the sap of palm trees (Panai Karkandu) — a Tamil Nadu tradition.<br><br><strong>Ingredients:</strong> Palm Tree Sap (Neera).<br><br><strong>Health Benefits:</strong> Cleanses respiratory tract, rich in iron, low glycemic index, treats sore throat.`,
+   descTa:`<strong>விளக்கம்:</strong> பனை மரத்தின் பதநீரில் இருந்து எடுக்கப்படும் இயற்கை பனை சர்க்கரை.<br><br><strong>பொருட்கள்:</strong> பனை பதநீர்.<br><br><strong>நன்மைகள்:</strong> சுவாசப்பாதையை சுத்தப்படுத்துகிறது, இரும்புச்சத்து நிறைந்தது.`,
+   insta:'https://www.instagram.com/reel/DM0LrgyS4yC/?igsh=dDIxMW4zdDhob3Bw'},
+
+  // OIL
+  {name:'Cold Pressed Groundnut Oil - 1L',ta:'நாட்டு கடலை எண்ணெய் - 1லிட்டர்',price:'₹280',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820480/DSC00236_s4v7v9.jpg',category:'oil',
+   descEn:`<strong>Description:</strong> Traditional cold-pressed groundnut oil using the wooden chekku method — full of natural flavour.<br><br><strong>Ingredients:</strong> 100% Pure Cold Pressed Groundnut.<br><br><strong>Health Benefits:</strong> Rich in Vitamin E, supports heart health, natural antioxidants, cholesterol-balancing.`,
+   descTa:`<strong>விளக்கம்:</strong> மரச்செக்கு முறையில் அழுத்தி எடுக்கப்படும் நாட்டு கடலை எண்ணெய்.<br><br><strong>பொருட்கள்:</strong> 100% தூய நாட்டு கடலை.<br><br><strong>நன்மைகள்:</strong> வைட்டமின் E நிறைந்தது, இதய ஆரோக்கியத்திற்கு உதவுகிறது.`},
+
+  {name:'Cold Pressed Sesame Oil - 500ml',ta:'செக்கு நல்லெண்ணெய் - 500மி.லி',price:'₹260',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820465/DSC00234_pghgbv.jpg',category:'oil',
+   descEn:`<strong>Description:</strong> Pure cold-pressed sesame oil using the traditional wooden chekku method — golden and aromatic.<br><br><strong>Ingredients:</strong> 100% Pure Cold Pressed Sesame Seeds.<br><br><strong>Health Benefits:</strong> Strengthens bones, rich in calcium & magnesium, promotes hair and skin health.`,
+   descTa:`<strong>விளக்கம்:</strong> பாரம்பரிய மரச்செக்கு முறையில் தயாரிக்கப்படும் தூய நல்லெண்ணெய்.<br><br><strong>பொருட்கள்:</strong> 100% தூய எள் விதைகள்.<br><br><strong>நன்மைகள்:</strong> எலும்புகளை வலுப்படுத்துகிறது, முடி மற்றும் சரும ஆரோக்கியத்தை மேம்படுத்துகிறது.`},
+
+  {name:'Cold Pressed Coconut Oil - 1L',ta:'செக்கு தேங்காய் எண்ணெய் - 1லிட்டர்',price:'₹320',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820460/DSC00230_blgrvt.jpg',category:'oil',
+   descEn:`<strong>Description:</strong> Fresh cold-pressed coconut oil from pure coconut kernels — chemical-free, full potency.<br><br><strong>Ingredients:</strong> 100% Pure Fresh Coconut Kernels.<br><br><strong>Health Benefits:</strong> Boosts immunity, improves brain function, promotes hair growth, antifungal properties.`,
+   descTa:`<strong>விளக்கம்:</strong> தூய தேங்காய் பருப்பிலிருந்து மரச்செக்கு முறையில் எடுக்கப்படும் தேங்காய் எண்ணெய்.<br><br><strong>பொருட்கள்:</strong> 100% தூய தேங்காய் பருப்பு.<br><br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, முடி வளர்ச்சிக்கு சிறந்தது.`},
+
+  {name:'Cold Pressed Coconut Oil - 500ml',ta:'செக்கு தேங்காய் எண்ணெய் - 500மி.லி',price:'₹175',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820460/DSC00230_blgrvt.jpg',category:'oil',
+   descEn:`<strong>Description:</strong> Fresh cold-pressed coconut oil — 500ml pack, perfect for daily hair and cooking use.<br><br><strong>Ingredients:</strong> 100% Pure Fresh Coconut Kernels.<br><br><strong>Health Benefits:</strong> Boosts immunity, improves brain function, promotes hair growth.`,
+   descTa:`<strong>விளக்கம்:</strong> தூய செக்கு தேங்காய் எண்ணெய் — 500மி.லி பேக்.<br><br><strong>பொருட்கள்:</strong> 100% தூய தேங்காய் பருப்பு.<br><br><strong>நன்மைகள்:</strong> நோய் எதிர்ப்பு சக்தியை அதிகரிக்கிறது, முடி வளர்ச்சிக்கு சிறந்தது.`},
+
+  // COMBOS
+  {name:'Women Combo — Health Mix + Honey',ta:'பெண்கள் கொம்போ — சத்துமாவு + தேன்',price:'₹639',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820503/DSC00297_uaevf0.jpg',category:'combo',
+   descEn:`<strong>Description:</strong> Multi Millet Health Mix (500g) paired with Multi Floral Honey (500g) — perfect for women's wellness.<br><br><strong>Includes:</strong> Multi Millet Health Mix 500g + Cavity (Multi Floral) Honey 500g.<br><br><strong>Health Benefits:</strong> High fiber, controls blood sugar, boosts immunity, hormonal balance.`,
+   descTa:`<strong>விளக்கம்:</strong> பெண்களுக்கு ஏற்ற ஆரோக்கிய கொம்போ — சத்துமாவு + பன்மலர் தேன்.<br><br><strong>உள்ளடக்கம்:</strong> சத்துமாவு 500கிராம் + பன்மலர் தேன் 500கிராம்.<br><br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், நோய் எதிர்ப்பு சக்தி, ஹார்மோன் சமன்பாடு.`},
+
+  {name:'Cooking Combo — Oils + Honey',ta:'சமையல் கொம்போ — எண்ணெய்கள் + தேன்',price:'₹1,299',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820527/DSC00298_qmyldw.jpg',category:'combo',
+   descEn:`<strong>Description:</strong> The ultimate kitchen combo — Cold Pressed Groundnut Oil + Coconut Oil + Sesame Oil + Honey.<br><br><strong>Includes:</strong> Groundnut Oil 1L + Coconut Oil 500ml + Sesame Oil 500ml + Honey 500g.<br><br><strong>Health Benefits:</strong> Heart-healthy oils, natural sweetener — complete kitchen upgrade!`,
+   descTa:`<strong>விளக்கம்:</strong> முழு சமையலறை கொம்போ — கடலை எண்ணெய் + தேங்காய் எண்ணெய் + நல்லெண்ணெய் + தேன்.<br><br><strong>உள்ளடக்கம்:</strong> கடலை எண்ணெய் 1லி + தேங்காய் எண்ணெய் 500மி.லி + நல்லெண்ணெய் 500மி.லி + தேன் 500கிராம்.<br><br><strong>நன்மைகள்:</strong> இதய ஆரோக்கியம், இயற்கை இனிப்பு.`},
+
+  {name:'Daily Combo — Health Mix + Honey',ta:'தினசரி கொம்போ — சத்துமாவு + தேன்',price:'₹763',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820502/DSC00302_s7h1xl.jpg',category:'combo',
+   descEn:`<strong>Description:</strong> Everyday essentials — Multi Millet Health Mix + Honey for a wholesome daily routine.<br><br><strong>Includes:</strong> Multi Millet Health Mix 500g + Wild Forest Honey 500g.<br><br><strong>Health Benefits:</strong> Complete breakfast nutrition, immunity boost, sustained energy.`,
+   descTa:`<strong>விளக்கம்:</strong> தினசரி ஆரோக்கியத்திற்கு சத்துமாவு + காட்டு தேன் கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> சத்துமாவு 500கிராம் + காடு செறிந்த தேன் 500கிராம்.<br><br><strong>நன்மைகள்:</strong> முழுமையான காலை உணவு ஊட்டச்சத்து, நோய் எதிர்ப்பு சக்தி.`},
+
+  {name:'Haemoglobin Combo — Pomegranate Honey + ABC Malt',ta:'ஹீமோகுளோபின் கொம்போ — மாதுளம் பூ தேன் + ABC மால்ட்',price:'₹1,129',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820508/DSC00304_e9gpfy.jpg',category:'combo',
+   descEn:`<strong>Description:</strong> Specially curated to boost haemoglobin and iron levels naturally.<br><br><strong>Includes:</strong> Pomegranate Blossom Honey 500g + ABC Malt 180g.<br><br><strong>Health Benefits:</strong> Increases haemoglobin, blood purifier, rich in iron, glowing skin.`,
+   descTa:`<strong>விளக்கம்:</strong> ஹீமோகுளோபின் மற்றும் இரும்புச்சத்தை இயற்கையாக அதிகரிக்க சிறப்பு கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> மாதுளம் பூ தேன் 500கிராம் + ABC மால்ட் 180கிராம்.<br><br><strong>நன்மைகள்:</strong> ஹீமோகுளோபின் அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`},
+
+  {name:'Weight Loss Combo — Honey + Ulundhu Kanji',ta:'உடல் எடை குறைப்பு கொம்போ — தேன் + உளுந்து கஞ்சி',price:'₹699',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820532/DSC00310_dytxbt.jpg',category:'combo',
+   descEn:`<strong>Description:</strong> Perfect combo for weight management — forest honey with traditional Ulundhu Kanji.<br><br><strong>Includes:</strong> Wild Forest Honey 500g + Ulundhu Kanji Mix 250g.<br><br><strong>Health Benefits:</strong> Boosts metabolism, supports digestion, natural weight management.`,
+   descTa:`<strong>விளக்கம்:</strong> உடல் எடை கட்டுப்பாட்டிற்கு சிறந்த கொம்போ — காட்டு தேன் + உளுந்து கஞ்சி மாவு.<br><br><strong>உள்ளடக்கம்:</strong> காட்டு தேன் 500கிராம் + உளுந்து கஞ்சி மாவு 250கிராம்.<br><br><strong>நன்மைகள்:</strong> வளர்சிதை மாற்றத்தை மேம்படுத்துகிறது, செரிமான ஆரோக்கியம்.`},
+
+  {name:'Gym Combo — Honey + Health Mixes',ta:'ஜிம் கொம்போ — தேன் + சத்துமாவு',price:'₹921',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820532/DSC00312_onkbud.jpg',category:'combo',
+   descEn:`<strong>Description:</strong> Power-packed combo for fitness enthusiasts — forest honey, sprouted mix & multi millet mix.<br><br><strong>Includes:</strong> Wild Forest Honey 500g + Sprouted Health Mix 250g + Multi Millet Health Mix 500g.<br><br><strong>Health Benefits:</strong> High protein, muscle recovery, sustained energy, natural pre/post-workout fuel.`,
+   descTa:`<strong>விளக்கம்:</strong> உடற்பயிற்சி ஆர்வலர்களுக்கான சிறப்பு கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> காட்டு தேன் 500கிராம் + முளைகட்டிய சத்துமாவு 250கிராம் + சிறுதானிய சத்துமாவு 500கிராம்.<br><br><strong>நன்மைகள்:</strong> புரதச்சத்து அதிகம், தசை மீட்பு, நிலையான ஆற்றல்.`},
+
+  {name:'Kids Combo — Honey + Health Mix + Ghee',ta:'குழந்தைகள் கொம்போ — தேன் + சத்துமாவு + நெய்',price:'₹2,278',img:'https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820509/DSC00307_cplfik.jpg',category:'combo',
+   descEn:`<strong>Description:</strong> Complete nutrition pack for growing children — honey, sprouted health mix and pure A2 ghee.<br><br><strong>Includes:</strong> Wild Forest Honey 500g + Sprouted Health Mix 250g + A2 Desi Ghee 500ml.<br><br><strong>Health Benefits:</strong> Bone strength, brain development, immunity, healthy weight gain for kids.`,
+   descTa:`<strong>விளக்கம்:</strong> வளரும் குழந்தைகளுக்கான முழுமையான ஊட்டச்சத்து கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> காட்டு தேன் 500கிராம் + முளைகட்டிய சத்துமாவு 250கிராம் + A2 நாட்டுமாட்டு நெய் 500மி.லி.<br><br><strong>நன்மைகள்:</strong> எலும்பு வலிமை, மூளை வளர்ச்சி, நோய் எதிர்ப்பு சக்தி.`},
 ];
 
-// ── STATE ────────────────────────────────────────────────
-let lang='en';
-let curProd=null;
-let bsModal;
+// ── STATE ────────────────────────────────────────────────────
+let lang='en', curProd=null;
 
-// ── RENDER PRODUCTS ──────────────────────────────────────
-function renderProducts(){
+// ── RENDER PRODUCTS ──────────────────────────────────────────
+function renderProducts(filterCat){
   const grid=document.getElementById('productGrid');
   grid.innerHTML='';
-  products.forEach((p,i)=>{
-    const isOil=p.category==='oil';
-    const isCombo=p.category==='combo';
+  const filtered=filterCat&&filterCat!=='all'?products.filter(p=>p.category===filterCat):products;
+  filtered.forEach((p,i)=>{
+    const isOil=p.category==='oil', isCombo=p.category==='combo';
     const card=document.createElement('div');
     card.className='product-card'+(isOil?' card-oil':'')+(isCombo?' card-combo':'');
     card.dataset.category=p.category;
     const title=lang==='ta'?p.ta:p.name;
     const sub=lang==='ta'?p.name:p.ta;
-    const badge=isOil?'<span class="card-badge">🆕 New</span>':isCombo?'<span class="card-badge">🔥 Hot</span>':'';
-    // leaf icons per category
+    const badge=isOil?'<span class="card-badge">🆕 Fresh</span>':isCombo?'<span class="card-badge">🔥 Hot</span>':'';
     const leafIcon=p.category==='honey'?'🍯':p.category==='mix'?'🌾':p.category==='ghee'?'🥛':p.category==='oil'?'🫒':p.category==='millet'?'🌿':p.category==='sugar'?'🍃':'🌱';
+    const mrp=getMRP(p.price);
+    const priceHtml=mrp
+      ?`<div class="prod-price-wrap"><span class="prod-price-original">${mrp}</span><span class="prod-price">${p.price}</span><span class="prod-discount">20% OFF</span></div>`
+      :`<div class="prod-price-wrap"><span class="prod-price">${p.price}</span></div>`;
     card.innerHTML=`
       <div class="prod-img-wrap">
         ${badge}
-        <span class="lc lc-tl">🌿</span>
-        <span class="lc lc-tr">🌿</span>
-        <img class="prod-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.opacity='.35'">
-        <div class="img-overlay"></div>
+        <img class="prod-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.opacity='.3'">
         <div class="img-leaf-bg">${leafIcon}</div>
       </div>
       <div class="prod-info">
-        <span class="card-bee">🐝</span>
-        <div class="card-spark s1"></div>
-        <div class="card-spark s2"></div>
-        <div class="card-spark s3"></div>
+        <div class="card-spark s1"></div><div class="card-spark s2"></div><div class="card-spark s3"></div>
         <div class="prod-name">${title}</div>
         <div class="prod-sub">${sub}</div>
-        <div class="prod-price">${p.price}</div>
-      </div>
-      <div class="card-drip">🍯</div>`;
-    card.style.animationDelay=(i%12)*0.055+'s';
+        ${priceHtml}
+      </div>`;
+    card.style.animationDelay=(i%10)*0.05+'s';
     card.classList.add('show');
     card.onclick=()=>openProd(p);
+    // hover 3D
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const rx=((e.clientY-r.top-r.height/2)/(r.height/2))*-4;
+      const ry=((e.clientX-r.left-r.width/2)/(r.width/2))*4;
+      card.style.transform=`translateY(-8px) scale(1.02) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
     grid.appendChild(card);
   });
-  attachCardFX();
 }
 
-// ── MODAL ────────────────────────────────────────────────
+// ── MODAL ────────────────────────────────────────────────────
 function openProd(p){
   curProd=p;
   document.getElementById('modalTitle').textContent=lang==='ta'?p.ta:p.name;
   document.getElementById('modalImage').src=p.img;
+  const mrp=getMRP(p.price);
+  const origEl=document.getElementById('modalPriceOrig');
+  const discEl=document.getElementById('modalDiscount');
   document.getElementById('modalPrice').textContent=p.price;
+  if(mrp){origEl.textContent=mrp;origEl.style.display='inline';discEl.textContent='20% OFF';discEl.style.display='inline';}
+  else{origEl.style.display='none';discEl.style.display='none';}
   document.getElementById('modalDesc').innerHTML=`
     <button style="background:#1e7a3e;color:#fff;border-radius:20px;border:none;padding:6px 16px;font-weight:700;cursor:pointer;margin-bottom:12px;font-family:Nunito,sans-serif" onclick="toggleLang(true)">
       ${lang==='en'?'தமிழ்':'English'}
     </button>
     <div>${lang==='ta'?p.descTa:p.descEn}</div>`;
   const btn=document.getElementById('instaBtn');
-  btn.href=p.insta||'#';
-  btn.style.display=p.insta?'flex':'none';
-  bsModal.show();
+  if(p.insta){btn.href=p.insta;btn.style.display='flex';}
+  else{btn.style.display='none';}
+  const overlay=document.getElementById('productModal');
+  const box=document.getElementById('modalBox');
+  overlay.style.display='flex';
+  document.body.style.overflow='hidden';
+  requestAnimationFrame(()=>{requestAnimationFrame(()=>{
+    box.style.transform='translateY(0) scale(1)';
+    box.style.opacity='1';
+  });});
 }
 
-// ── LANGUAGE ─────────────────────────────────────────────
+function closeModal(){
+  const box=document.getElementById('modalBox');
+  box.style.transform='translateY(30px) scale(.96)';
+  box.style.opacity='0';
+  setTimeout(()=>{
+    document.getElementById('productModal').style.display='none';
+    document.body.style.overflow='';
+  },300);
+}
+
+// ── LANGUAGE ─────────────────────────────────────────────────
 function toggleLang(modalOnly){
   lang=lang==='en'?'ta':'en';
   document.getElementById('navLangBtn').textContent=lang==='en'?'தமிழ்':'English';
-  if(curProd)openProd(curProd);
-  if(!modalOnly)renderProducts();
+  if(curProd) openProd(curProd);
+  if(!modalOnly){
+    const activeCat=document.querySelector('.tab.active')?.dataset.cat||'all';
+    renderProducts(activeCat);
+  }
 }
 
-// ── FILTER ───────────────────────────────────────────────
+// ── FILTER ───────────────────────────────────────────────────
 function filterProducts(cat){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>{if(t.dataset.cat===cat)t.classList.add('active');});
-  document.querySelectorAll('.product-card').forEach(c=>{
-    const show=cat==='all'||c.dataset.category===cat;
-    c.style.display=show?'':'none';
-    if(show){c.classList.remove('show');void c.offsetWidth;c.classList.add('show');}
-  });
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===cat));
+  renderProducts(cat);
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
 }
 
-// ── CARD 3D + RIPPLE ─────────────────────────────────────
-function attachCardFX(){
-  document.querySelectorAll('.product-card:not([data-fx])').forEach(card=>{
-    card.dataset.fx='1';
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const rx=((e.clientY-r.top-r.height/2)/(r.height/2))*-5;
-      const ry=((e.clientX-r.left-r.width/2)/(r.width/2))*5;
-      card.style.transform=`translateY(-10px) scale(1.025) rotateX(${rx}deg) rotateY(${ry}deg)`;
-    });
-    card.addEventListener('mouseleave',()=>{card.style.transform='';});
-    card.addEventListener('click',e=>{
-      const rip=document.createElement('span');
-      const r=card.getBoundingClientRect();
-      rip.style.cssText=`position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(39,160,69,.28);pointer-events:none;z-index:10;left:${e.clientX-r.left-5}px;top:${e.clientY-r.top-5}px;animation:nkRipple .55s ease-out forwards`;
-      card.appendChild(rip);setTimeout(()=>rip.remove(),600);
-    });
-  });
-}
-
-// ── NAVBAR ───────────────────────────────────────────────
+// ── NAVBAR ───────────────────────────────────────────────────
 const navbar=document.getElementById('nkNav');
 const hbgBtn=document.getElementById('hbg');
 const mobMenu=document.getElementById('mobMenu');
@@ -924,7 +1090,7 @@ function closeMob(){hbgBtn.classList.remove('open');mobMenu.classList.remove('op
 document.addEventListener('click',e=>{if(!navbar.contains(e.target))closeMob();});
 stBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// ── CAROUSEL ─────────────────────────────────────────────
+// ── CAROUSEL ─────────────────────────────────────────────────
 const carTrack=document.getElementById('carTrack');
 const carDotEls=document.querySelectorAll('.car-dot');
 let curSlide=0,carTimer;
@@ -946,7 +1112,7 @@ document.querySelector('.hero-car').addEventListener('touchend',e=>{
   if(Math.abs(diff)>40){goTo(diff>0?curSlide+1:curSlide-1);carPlay();}
 });
 
-// ── ABOUT SCROLL REVEAL ──────────────────────────────────
+// ── ABOUT SCROLL REVEAL ──────────────────────────────────────
 function initReveal(){
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('shown');obs.unobserve(e.target);}});
@@ -956,15 +1122,17 @@ function initReveal(){
   });
 }
 
-// ── INIT ─────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded',()=>{
-  bsModal=new bootstrap.Modal(document.getElementById('productModal'));
-  renderProducts();
-  document.querySelectorAll('.tab').forEach(t=>{
-    t.addEventListener('click',()=>filterProducts(t.dataset.cat));
-  });
-  goTo(0);carPlay();
+// ── INIT ─────────────────────────────────────────────────────
+// Escape key closes modal
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeModal();
 });
+
+renderProducts('all');
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>filterProducts(t.dataset.cat));
+});
+goTo(0);carPlay();
 </script>
 </body>
 </html>

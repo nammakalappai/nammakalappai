@@ -3429,10 +3429,10 @@
         if (isMillet) {
           imgHtml = `
             <div class="img-skeleton"></div>
-            <img class="prod-img" src="${p.img}" alt="${p.name}" loading="lazy"
+            <img class="prod-img" src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1773820494/DSC00269_wkw8kn.jpg" alt="${p.name}" loading="lazy"
               onload="this.classList.add('loaded');this.previousElementSibling&&(this.previousElementSibling.style.display='none')"
               onerror="this.classList.add('loaded');this.previousElementSibling&&(this.previousElementSibling.style.display='none');this.style.opacity='.25'">
-            <img class="prod-img" src="${p.img2 || p.img}" alt="${p.name}" loading="lazy"
+            <img class="prod-img" src="${p.img}" alt="${p.name}" loading="lazy"
               onload="this.classList.add('loaded')"
               onerror="this.classList.add('loaded');this.style.opacity='.25'">
           `;

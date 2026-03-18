@@ -2574,12 +2574,12 @@
       opacity: 1;
       transform: translateY(0)
     }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px
     }
-
   </style>
 </head>
 
@@ -2649,8 +2649,8 @@
           </div>
           <div class="sl-con">
             <span class="sl-badge">🌾 Ancient Grains</span>
-            <h1 class="sl-title">Millet <em>Health Mix</em></h1>
-            <p class="sl-desc">Multi-millet blends rooted in tradition — wholesome nutrition for every age, every
+            <h1 class="sl-title">Farm <em>To table</em></h1>
+            <p class="sl-desc">Multi- blends rooted in tradition — wholesome nutrition for every age, every
               morning.</p>
             <a href="#products" class="sl-btn" onclick="filterProducts('mix')">Shop Healthmix →</a>
           </div>
@@ -2670,11 +2670,11 @@
             <div class="sl-ov ov3"></div>
           </div>
           <div class="sl-con">
-            <span class="sl-badge">🥛 Bilona Method</span>
-            <h1 class="sl-title">Traditional <em>Ghee &amp; Oils</em></h1>
-            <p class="sl-desc">Hand-churned A2 ghee &amp; cold-pressed chekku oils — crafted the honest, time-tested
+            <span class="sl-badge">🥛 Healthy</span>
+            <h1 class="sl-title">Pure <em>and Natural</em></h1>
+            <p class="sl-desc">We care for your health
               way.</p>
-            <a href="#products" class="sl-btn" onclick="filterProducts('ghee')">Shop Ghee →</a>
+            <a href="#products" class="sl-btn" onclick="filterProducts('ghee')">Explore →</a>
           </div>
         </div>
       </div>
@@ -2751,8 +2751,6 @@
               <span id="modalPriceOrig"
                 style="font-size:.9rem;color:#aaa;text-decoration:line-through;text-decoration-color:#e05555;text-decoration-thickness:2px;font-weight:700;"></span>
               <span id="modalPrice" style="font-weight:900;font-size:1.4rem;color:#1e7a3e;"></span>
-              <span id="modalDiscount"
-                style="background:linear-gradient(135deg,#e05555,#b02020);color:#fff;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:20px;"></span>
             </div>
           </div>
           <!-- Info column -->
@@ -3417,7 +3415,7 @@
         const leafIcon = p.category === 'honey' ? '🍯' : p.category === 'mix' ? '🌾' : p.category === 'ghee' ? '🥛' : p.category === 'oil' ? '🫒' : p.category === 'millet' ? '🌿' : p.category === 'sugar' ? '🍃' : '🌱';
         const mrp = getMRP(p.price);
         const priceHtml = (mrp && isCombo)
-          ? `<div class="prod-price-wrap"><span class="prod-price-original">${mrp}</span><span class="prod-price">${p.price}</span><span class="prod-discount">20% OFF</span></div>`
+          ? `<div class="prod-price-wrap"><span class="prod-price-original">${mrp}</span><span class="prod-price">${p.price}</span></div>`
           : `<div class="prod-price-wrap"><span class="prod-price">${p.price}</span></div>`;
         const isMillet = p.category === 'millet';
         let imgHtml = `
@@ -3470,11 +3468,10 @@
       document.getElementById('modalImage').src = p.img;
       const mrp = getMRP(p.price);
       const origEl = document.getElementById('modalPriceOrig');
-      const discEl = document.getElementById('modalDiscount');
       document.getElementById('modalPrice').textContent = p.price;
       const isCombo = p.category === 'combo';
-      if (mrp && isCombo) { origEl.textContent = mrp; origEl.style.display = 'inline'; discEl.textContent = '20% OFF'; discEl.style.display = 'inline'; }
-      else { origEl.style.display = 'none'; discEl.style.display = 'none'; }
+      if (mrp && isCombo) { origEl.textContent = mrp; origEl.style.display = 'inline'; }
+      else { origEl.style.display = 'none'; }
       document.getElementById('modalDesc').innerHTML = `
     <button style="background:#1e7a3e;color:#fff;border-radius:20px;border:none;padding:6px 16px;font-weight:700;cursor:pointer;margin-bottom:12px;font-family:Nunito,sans-serif" onclick="toggleLang(true)">
       ${lang === 'en' ? 'தமிழ்' : 'English'}

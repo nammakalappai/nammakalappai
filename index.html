@@ -3411,15 +3411,15 @@
       }
       // Show count
       const countEl = document.getElementById('searchCount');
+      const term = (document.getElementById('navSearchInput') ? document.getElementById('navSearchInput').value : searchQuery);
       if (searchQuery && countEl) {
-        countEl.textContent = filtered.length > 0 ? `${filtered.length} result${filtered.length > 1 ? 's' : ''} for "${document.getElementById('searchInput').value}"` : '';
+        countEl.textContent = filtered.length > 0 ? `${filtered.length} result${filtered.length > 1 ? 's' : ''} for "${term}"` : '';
       } else if (countEl) {
         countEl.textContent = '';
       }
       // No results
       if (filtered.length === 0) {
-        var sq = document.getElementById('searchInput') ? document.getElementById('searchInput').value : '';
-        grid.innerHTML = '<div class="no-results" style="grid-column:1/-1"><div class="nr-ico">🔍</div><p>No products found for \'<strong style=\"color:#fff\">' + sq + '</strong>\'</p><p style="margin-top:8px;font-size:.82rem">Try: honey, ghee, oil, ragi, combo…</p></div>';
+        grid.innerHTML = '<div class="no-results" style="grid-column:1/-1"><div class="nr-ico">🔍</div><p>No products found for \'<strong style=\"color:#fff\">' + term + '</strong>\'</p><p style="margin-top:8px;font-size:.82rem">Try: honey, ghee, oil, ragi, combo…</p></div>';
         return;
       }
       filtered.forEach((p, i) => {

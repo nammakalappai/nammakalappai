@@ -3101,6 +3101,11 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    window.addEventListener('beforeunload', (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+    });
+
     // ── NATURE CANVAS (performance optimised — fewer elements) ─────
     (function () {
       const c = document.getElementById('natureCanvas');
@@ -3370,13 +3375,13 @@
       },
 
       {
-        name: 'Cooking Combo — Oils + Honey', ta: 'சமையல் கொம்போ — எண்ணெய்கள் + தேன்', price: '₹1,299', actualPrice: '₹1396', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820527/DSC00298_qmyldw.jpg', category: 'combo',
+        name: 'Cooking Combo — Groundnut Oil + Coconut Oil + Sesame Oil + A1 Ghee', ta: 'சமையல் கொம்போ — கடலை எண்ணெய் + தேங்காய் எண்ணெய் + எள்ளு எண்ணெய் + A1 நெய்', price: '₹1,299', actualPrice: '₹1396', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820527/DSC00298_qmyldw.jpg', category: 'combo',
         descEn: `<strong>Includes:</strong> GROUNDNUT OIL + COCONUT OIL + SESAME Oil + A1 Ghee.<br><br><strong>Health Benefits:</strong> Heart-healthy oils, natural sweetener — complete kitchen upgrade!`,
         descTa: `<strong>உள்ளடக்கம்:</strong> கடலை எண்ணெய் + தேங்காய் எண்ணெய் + எள்ளு எண்ணெய் + A1 நெய்.<br><br><strong>நன்மைகள்:</strong> இதய ஆரோக்கியம், இயற்கை இனிப்பு.`
       },
 
       {
-        name: 'Daily Combo — Health Mix + Honey', ta: 'தினசரி கொம்போ — சத்துமாவு + தேன்', price: '₹763', actualPrice: '₹848', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820502/DSC00302_s7h1xl.jpg', category: 'combo',
+        name: 'Daily Combo — Multi Millet Health Mix + Honey', ta: 'தினசரி கொம்போ — பல சிறு தானிய சத்துமாவு + தேன்', price: '₹763', actualPrice: '₹848', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820502/DSC00302_s7h1xl.jpg', category: 'combo',
         descEn: `<strong>Includes:</strong> Multi Millet Health Mix + Honey.<br><br><strong>Health Benefits:</strong> Complete breakfast nutrition, immunity boost, sustained energy.`,
         descTa: `<strong>உள்ளடக்கம்:</strong> பல சிறு தானிய சத்துமாவு + தேன்.<br><br><strong>நன்மைகள்:</strong> முழுமையான காலை உணவு ஊட்டச்சத்து, நோய் எதிர்ப்பு சக்தி.`
       },
@@ -3388,19 +3393,19 @@
       },
 
       {
-        name: 'Weight Loss Combo — Honey + Ulundhu Kanji', ta: 'உடல் எடை குறைப்பு கொம்போ — தேன் + உளுந்து கஞ்சி', price: '₹699', actualPrice: '₹798', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00310_dytxbt.jpg', category: 'combo',
+        name: 'Weight Loss Combo — Forest Honey + Ulundhu Kanji', ta: 'உடல் எடை குறைப்பு கொம்போ — காட்டு தேன் + உளுந்து கஞ்சி மாவு', price: '₹699', actualPrice: '₹798', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00310_dytxbt.jpg', category: 'combo',
         descEn: `<strong>Includes:</strong> Honey 500g + Ulundhu Kanji Mix 250g.<br><br><strong>Health Benefits:</strong> Boosts metabolism, supports digestion, natural weight management.`,
         descTa: `<strong>உள்ளடக்கம்:</strong> தேன் 500கிராம் + உளுந்து கஞ்சி மாவு 250கிராம்.<br><br><strong>நன்மைகள்:</strong> வளர்சிதை மாற்றத்தை மேம்படுத்துகிறது, செரிமான ஆரோக்கியம்.`
       },
 
       {
-        name: 'Gym Combo — Honey + Health Mixes', ta: 'ஜிம் கொம்போ — தேன் + சத்துமாவு', price: '₹921', actualPrice: '₹1047', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00312_onkbud.jpg', category: 'combo',
+        name: 'Gym Combo — Honey + Sprouted Mix + Multi Millet Mix', ta: 'ஜிம் கொம்போ — தேன் + முளைகட்டிய சத்துமாவு + பல சிறு தானிய சத்துமாவு', price: '₹921', actualPrice: '₹1047', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00312_onkbud.jpg', category: 'combo',
         descEn: `<strong>Includes:</strong> Honey + Sprouted Health Mix + Multi Millet Health Mix.<br><br><strong>Health Benefits:</strong> High protein, muscle recovery, sustained energy, natural pre/post-workout fuel.`,
         descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + முளைகட்டிய சத்துமாவு + பல சிறு தானிய சத்துமாவு.<br><br><strong>நன்மைகள்:</strong> புரதச்சத்து அதிகம், தசை மீட்பு, நிலையான ஆற்றல்.`
       },
 
       {
-        name: 'Kids Combo — Honey + Health Mix + Ghee', ta: 'குழந்தைகள் கொம்போ — தேன் + சத்துமாவு + நெய்', price: '₹2,278', actualPrice: '₹2397', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820509/DSC00307_cplfik.jpg', category: 'combo',
+        name: 'Kids Combo — Honey + Multi Millet + A2 Desi Ghee', ta: 'குழந்தைகள் கொம்போ — தேன் + பல சிறு தானிய சத்துமாவு + A2 நாட்டுமாட்டு நெய்', price: '₹2,278', actualPrice: '₹2397', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820509/DSC00307_cplfik.jpg', category: 'combo',
         descEn: `<strong>Includes:</strong> Honey + Multi Millet + A2 Desi Ghee.<br><br><strong>Health Benefits:</strong> Bone strength, brain development, immunity, healthy weight gain for kids.`,
         descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + பல சிறு தானிய சத்துமாவு + A2 நாட்டுமாட்டு நெய்.<br><br><strong>நன்மைகள்:</strong> எலும்பு வலிமை, மூளை வளர்ச்சி, நோய் எதிர்ப்பு சக்தி.`
       },

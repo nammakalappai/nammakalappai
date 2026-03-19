@@ -3106,6 +3106,17 @@
       e.returnValue = '';
     });
 
+    // Mobile Back Button / Gesture prevention
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', function () {
+      if (confirm("நீங்கள் இங்கிருந்து வெளியேற விரும்புகிறீர்களா? (Do you want to leave this page?)")) {
+        // User confirmed exit
+      } else {
+        // User cancelled exit, push state again to stay
+        history.pushState(null, null, location.href);
+      }
+    });
+
     // ── NATURE CANVAS (performance optimised — fewer elements) ─────
     (function () {
       const c = document.getElementById('natureCanvas');

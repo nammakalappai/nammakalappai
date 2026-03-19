@@ -335,6 +335,7 @@
         padding: 0 12px;
         gap: 8px;
       }
+
       .n-search {
         display: flex;
         flex: 1;
@@ -342,9 +343,11 @@
         max-width: none;
         padding: 6px 10px;
       }
+
       .n-search-input {
         font-size: .8rem;
       }
+
       .n-logo-img {
         height: 44px;
       }
@@ -2739,6 +2742,7 @@
           <button class="tab" data-cat="oil">🫒 Oil</button>
           <button class="tab" data-cat="millet">🍪 Biscuits</button>
           <button class="tab" data-cat="sugar">🍬 Sugar</button>
+
           <button class="tab combo-tab" data-cat="combo">🎁 Combo</button>
           <button class="tab active" data-cat="all">✨ All</button>
         </div>
@@ -3143,8 +3147,9 @@
       const n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
       return isNaN(n) ? null : n;
     }
-    function getMRP(actualStr) {
-      const a = parsePrice(actualStr);
+    function getMRP(p) {
+      if (p.actualPrice) return p.actualPrice;
+      const a = parsePrice(p.price);
       if (!a) return null;
       return '₹' + (Math.ceil(a * 1.20 / 10) * 10 - 1);
     }
@@ -3359,45 +3364,45 @@
 
       // COMBOS
       {
-        name: 'Women Combo — Health Mix + Honey', ta: 'பெண்கள் கொம்போ — சத்துமாவு + தேன்', price: '₹639', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820503/DSC00297_uaevf0.jpg', category: 'combo',
-        descEn: `<strong>Description:</strong> Multi Millet Health Mix (500g) paired with Multi Floral Honey (500g) — perfect for women's wellness.<br><br><strong>Includes:</strong> Multi Millet Health Mix 500g + Cavity (Multi Floral) Honey 500g.<br><br><strong>Health Benefits:</strong> High fiber, controls blood sugar, boosts immunity, hormonal balance.`,
-        descTa: `<strong>விளக்கம்:</strong> பெண்களுக்கு ஏற்ற ஆரோக்கிய கொம்போ — சத்துமாவு + பன்மலர் தேன்.<br><br><strong>உள்ளடக்கம்:</strong> சத்துமாவு 500கிராம் + பன்மலர் தேன் 500கிராம்.<br><br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், நோய் எதிர்ப்பு சக்தி, ஹார்மோன் சமன்பாடு.`
+        name: 'Women Combo — Health Mix + Honey', ta: 'பெண்கள் கொம்போ — சத்துமாவு + தேன்', price: '₹639', actualPrice: '₹667', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820503/DSC00297_uaevf0.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> SESAME Oil + Ulundhu Kanji Mix + Palm Sugar.<br><br><strong>Health Benefits:</strong> High fiber, controls blood sugar, boosts immunity, hormonal balance.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> எள்ளு எண்ணெய் + உளுந்து கஞ்சி மாவு + பனை சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், நோய் எதிர்ப்பு சக்தி, ஹார்மோன் சமன்பாடு.`
       },
 
       {
-        name: 'Cooking Combo — Oils + Honey', ta: 'சமையல் கொம்போ — எண்ணெய்கள் + தேன்', price: '₹1,299', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820527/DSC00298_qmyldw.jpg', category: 'combo',
-        descEn: `<strong>Description:</strong> The ultimate kitchen combo — Cold Pressed Groundnut Oil + Coconut Oil + Sesame Oil + Honey.<br><br><strong>Includes:</strong> Groundnut Oil 1L + Coconut Oil 500ml + Sesame Oil 500ml + Honey 500g.<br><br><strong>Health Benefits:</strong> Heart-healthy oils, natural sweetener — complete kitchen upgrade!`,
-        descTa: `<strong>விளக்கம்:</strong> முழு சமையலறை கொம்போ — கடலை எண்ணெய் + தேங்காய் எண்ணெய் + நல்லெண்ணெய் + தேன்.<br><br><strong>உள்ளடக்கம்:</strong> கடலை எண்ணெய் 1லி + தேங்காய் எண்ணெய் 500மி.லி + நல்லெண்ணெய் 500மி.லி + தேன் 500கிராம்.<br><br><strong>நன்மைகள்:</strong> இதய ஆரோக்கியம், இயற்கை இனிப்பு.`
+        name: 'Cooking Combo — Oils + Honey', ta: 'சமையல் கொம்போ — எண்ணெய்கள் + தேன்', price: '₹1,299', actualPrice: '₹1396', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820527/DSC00298_qmyldw.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> GROUNDNUT OIL + COCONUT OIL + SESAME Oil + A1 Ghee.<br><br><strong>Health Benefits:</strong> Heart-healthy oils, natural sweetener — complete kitchen upgrade!`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> கடலை எண்ணெய் + தேங்காய் எண்ணெய் + எள்ளு எண்ணெய் + A1 நெய்.<br><br><strong>நன்மைகள்:</strong> இதய ஆரோக்கியம், இயற்கை இனிப்பு.`
       },
 
       {
-        name: 'Daily Combo — Health Mix + Honey', ta: 'தினசரி கொம்போ — சத்துமாவு + தேன்', price: '₹763', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820502/DSC00302_s7h1xl.jpg', category: 'combo',
-        descEn: `<strong>Description:</strong> Everyday essentials — Multi Millet Health Mix + Honey for a wholesome daily routine.<br><br><strong>Includes:</strong> Multi Millet Health Mix 500g + Wild Forest Honey 500g.<br><br><strong>Health Benefits:</strong> Complete breakfast nutrition, immunity boost, sustained energy.`,
-        descTa: `<strong>விளக்கம்:</strong> தினசரி ஆரோக்கியத்திற்கு சத்துமாவு + காட்டு தேன் கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> சத்துமாவு 500கிராம் + காடு செறிந்த தேன் 500கிராம்.<br><br><strong>நன்மைகள்:</strong> முழுமையான காலை உணவு ஊட்டச்சத்து, நோய் எதிர்ப்பு சக்தி.`
+        name: 'Daily Combo — Health Mix + Honey', ta: 'தினசரி கொம்போ — சத்துமாவு + தேன்', price: '₹763', actualPrice: '₹848', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820502/DSC00302_s7h1xl.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Multi Millet Health Mix + Honey.<br><br><strong>Health Benefits:</strong> Complete breakfast nutrition, immunity boost, sustained energy.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> பல சிறு தானிய சத்துமாவு + தேன்.<br><br><strong>நன்மைகள்:</strong> முழுமையான காலை உணவு ஊட்டச்சத்து, நோய் எதிர்ப்பு சக்தி.`
       },
 
       {
-        name: 'Haemoglobin Combo — Pomegranate Honey + ABC Malt', ta: 'ஹீமோகுளோபின் கொம்போ — மாதுளம் பூ தேன் + ABC மால்ட்', price: '₹1,129', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820508/DSC00304_e9gpfy.jpg', category: 'combo',
-        descEn: `<strong>Description:</strong> Specially curated to boost haemoglobin and iron levels naturally.<br><br><strong>Includes:</strong> Pomegranate Blossom Honey 500g + ABC Malt 180g.<br><br><strong>Health Benefits:</strong> Increases haemoglobin, blood purifier, rich in iron, glowing skin.`,
-        descTa: `<strong>விளக்கம்:</strong> ஹீமோகுளோபின் மற்றும் இரும்புச்சத்தை இயற்கையாக அதிகரிக்க சிறப்பு கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> மாதுளம் பூ தேன் 500கிராம் + ABC மால்ட் 180கிராம்.<br><br><strong>நன்மைகள்:</strong> ஹீமோகுளோபின் அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`
+        name: 'Haemoglobin Combo — Pomegranate Honey + ABC Malt', ta: 'ஹீமோகுளோபின் கொம்போ — மாதுளம் பூ தேன் + ABC மால்ட்', price: '₹1,129', actualPrice: '₹1248', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820508/DSC00304_e9gpfy.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey + ABC Malt.<br><br><strong>Health Benefits:</strong> Increases haemoglobin, blood purifier, rich in iron, glowing skin.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + ABC மால்ட்.<br><br><strong>நன்மைகள்:</strong> ஹீமோகுளோபின் அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`
       },
 
       {
-        name: 'Weight Loss Combo — Honey + Ulundhu Kanji', ta: 'உடல் எடை குறைப்பு கொம்போ — தேன் + உளுந்து கஞ்சி', price: '₹699', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00310_dytxbt.jpg', category: 'combo',
-        descEn: `<strong>Description:</strong> Perfect combo for weight management — forest honey with traditional Ulundhu Kanji.<br><br><strong>Includes:</strong> Wild Forest Honey 500g + Ulundhu Kanji Mix 250g.<br><br><strong>Health Benefits:</strong> Boosts metabolism, supports digestion, natural weight management.`,
-        descTa: `<strong>விளக்கம்:</strong> உடல் எடை கட்டுப்பாட்டிற்கு சிறந்த கொம்போ — காட்டு தேன் + உளுந்து கஞ்சி மாவு.<br><br><strong>உள்ளடக்கம்:</strong> காட்டு தேன் 500கிராம் + உளுந்து கஞ்சி மாவு 250கிராம்.<br><br><strong>நன்மைகள்:</strong> வளர்சிதை மாற்றத்தை மேம்படுத்துகிறது, செரிமான ஆரோக்கியம்.`
+        name: 'Weight Loss Combo — Honey + Ulundhu Kanji', ta: 'உடல் எடை குறைப்பு கொம்போ — தேன் + உளுந்து கஞ்சி', price: '₹699', actualPrice: '₹798', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00310_dytxbt.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey 500g + Ulundhu Kanji Mix 250g.<br><br><strong>Health Benefits:</strong> Boosts metabolism, supports digestion, natural weight management.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் 500கிராம் + உளுந்து கஞ்சி மாவு 250கிராம்.<br><br><strong>நன்மைகள்:</strong> வளர்சிதை மாற்றத்தை மேம்படுத்துகிறது, செரிமான ஆரோக்கியம்.`
       },
 
       {
-        name: 'Gym Combo — Honey + Health Mixes', ta: 'ஜிம் கொம்போ — தேன் + சத்துமாவு', price: '₹921', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00312_onkbud.jpg', category: 'combo',
-        descEn: `<strong>Description:</strong> Power-packed combo for fitness enthusiasts — forest honey, sprouted mix & multi millet mix.<br><br><strong>Includes:</strong> Wild Forest Honey 500g + Sprouted Health Mix 250g + Multi Millet Health Mix 500g.<br><br><strong>Health Benefits:</strong> High protein, muscle recovery, sustained energy, natural pre/post-workout fuel.`,
-        descTa: `<strong>விளக்கம்:</strong> உடற்பயிற்சி ஆர்வலர்களுக்கான சிறப்பு கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> காட்டு தேன் 500கிராம் + முளைகட்டிய சத்துமாவு 250கிராம் + சிறுதானிய சத்துமாவு 500கிராம்.<br><br><strong>நன்மைகள்:</strong> புரதச்சத்து அதிகம், தசை மீட்பு, நிலையான ஆற்றல்.`
+        name: 'Gym Combo — Honey + Health Mixes', ta: 'ஜிம் கொம்போ — தேன் + சத்துமாவு', price: '₹921', actualPrice: '₹1047', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00312_onkbud.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey + Sprouted Health Mix + Multi Millet Health Mix.<br><br><strong>Health Benefits:</strong> High protein, muscle recovery, sustained energy, natural pre/post-workout fuel.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + முளைகட்டிய சத்துமாவு + பல சிறு தானிய சத்துமாவு.<br><br><strong>நன்மைகள்:</strong> புரதச்சத்து அதிகம், தசை மீட்பு, நிலையான ஆற்றல்.`
       },
 
       {
-        name: 'Kids Combo — Honey + Health Mix + Ghee', ta: 'குழந்தைகள் கொம்போ — தேன் + சத்துமாவு + நெய்', price: '₹2,278', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820509/DSC00307_cplfik.jpg', category: 'combo',
-        descEn: `<strong>Description:</strong> Complete nutrition pack for growing children — honey, sprouted health mix and pure A2 ghee.<br><br><strong>Includes:</strong> Wild Forest Honey 500g + Sprouted Health Mix 250g + A2 Desi Ghee 500ml.<br><br><strong>Health Benefits:</strong> Bone strength, brain development, immunity, healthy weight gain for kids.`,
-        descTa: `<strong>விளக்கம்:</strong> வளரும் குழந்தைகளுக்கான முழுமையான ஊட்டச்சத்து கொம்போ.<br><br><strong>உள்ளடக்கம்:</strong> காட்டு தேன் 500கிராம் + முளைகட்டிய சத்துமாவு 250கிராம் + A2 நாட்டுமாட்டு நெய் 500மி.லி.<br><br><strong>நன்மைகள்:</strong> எலும்பு வலிமை, மூளை வளர்ச்சி, நோய் எதிர்ப்பு சக்தி.`
+        name: 'Kids Combo — Honey + Health Mix + Ghee', ta: 'குழந்தைகள் கொம்போ — தேன் + சத்துமாவு + நெய்', price: '₹2,278', actualPrice: '₹2397', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820509/DSC00307_cplfik.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey + Multi Millet + A2 Desi Ghee.<br><br><strong>Health Benefits:</strong> Bone strength, brain development, immunity, healthy weight gain for kids.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + பல சிறு தானிய சத்துமாவு + A2 நாட்டுமாட்டு நெய்.<br><br><strong>நன்மைகள்:</strong> எலும்பு வலிமை, மூளை வளர்ச்சி, நோய் எதிர்ப்பு சக்தி.`
       },
     ];
 
@@ -3445,8 +3450,8 @@
         const title = lang === 'ta' ? p.ta : p.name;
         const sub = lang === 'ta' ? p.name : p.ta;
         const leafIcon = p.category === 'honey' ? '🍯' : p.category === 'mix' ? '🌾' : p.category === 'ghee' ? '🥛' : p.category === 'oil' ? '🫒' : p.category === 'millet' ? '🌿' : p.category === 'sugar' ? '🍃' : '🌱';
-        const mrp = getMRP(p.price);
-        const priceHtml = (mrp && isCombo)
+        const mrp = getMRP(p);
+        const priceHtml = (mrp && (isCombo || p.actualPrice))
           ? `<div class="prod-price-wrap"><span class="prod-price-original">${mrp}</span><span class="prod-price">${p.price}</span></div>`
           : `<div class="prod-price-wrap"><span class="prod-price">${p.price}</span></div>`;
         const isMillet = p.category === 'millet';
@@ -3509,11 +3514,11 @@
         document.getElementById('modalImage').style.width = '100%';
         mWrap.style.flexDirection = 'column';
       }
-      const mrp = getMRP(p.price);
+      const mrp = getMRP(p);
       const origEl = document.getElementById('modalPriceOrig');
       document.getElementById('modalPrice').textContent = p.price;
       const isCombo = p.category === 'combo';
-      if (mrp && isCombo) { origEl.textContent = mrp; origEl.style.display = 'inline'; }
+      if (mrp && (isCombo || p.actualPrice)) { origEl.textContent = mrp; origEl.style.display = 'inline'; }
       else { origEl.style.display = 'none'; }
       document.getElementById('modalDesc').innerHTML = `
     <button style="background:#1e7a3e;color:#fff;border-radius:20px;border:none;padding:6px 16px;font-weight:700;cursor:pointer;margin-bottom:12px;font-family:Nunito,sans-serif" onclick="toggleLang(true)">

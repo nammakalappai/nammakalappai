@@ -1173,23 +1173,25 @@
       transform: scaleX(1)
     }
 
-    .card-oil::before {
-      background: linear-gradient(90deg, #e8c400, #f0c000, #c8a000, #f5d000, #e8c400) !important
-    }
 
     .card-combo::before {
       background: linear-gradient(90deg, #ff6b35, #d44010, #ff8c55, #ff6b35) !important
     }
 
     .card-oil {
-      border: 2px solid rgba(200, 164, 0, .32) !important;
-      background: linear-gradient(165deg, #fffde8, #fdf5c0) !important
+      background: #fff !important;
+      border: 1px solid rgba(30, 122, 62, .15) !important;
+      box-shadow: var(--s1) !important;
     }
 
-    .card-oil .prod-img-wrap {
-      background: linear-gradient(135deg, #fffde8, #fdf5c0);
-      border-bottom: 2px solid rgba(240, 208, 0, .45)
+    .card-oil:hover {
+      box-shadow: var(--s3) !important;
     }
+
+    .card-oil::before {
+      display: none !important;
+    }
+
 
     .card-combo {
       border: 2px solid rgba(255, 107, 53, .28) !important;
@@ -1201,9 +1203,6 @@
       border-bottom: 2px solid rgba(255, 107, 53, .35)
     }
 
-    .card-oil:hover {
-      box-shadow: 0 16px 36px rgba(200, 164, 0, .35) !important
-    }
 
     .card-combo:hover {
       box-shadow: 0 16px 36px rgba(255, 107, 53, .35) !important
@@ -1224,8 +1223,8 @@
     }
 
     .card-oil .card-badge {
-      background: linear-gradient(135deg, #c8a400, #a07800);
-      box-shadow: 0 2px 8px rgba(200, 164, 0, .45)
+      background: linear-gradient(135deg, #1e7a3e, #145229);
+      box-shadow: 0 2px 8px rgba(30, 122, 62, .45)
     }
 
     .card-combo .card-badge {
@@ -1273,15 +1272,15 @@
       }
     }
 
-    .product-card:hover .card-spark.s1 {
+    .product-card:not(.card-oil):hover .card-spark.s1 {
       animation: sparkle .8s ease-in-out .0s infinite
     }
 
-    .product-card:hover .card-spark.s2 {
+    .product-card:not(.card-oil):hover .card-spark.s2 {
       animation: sparkle .8s ease-in-out .25s infinite
     }
 
-    .product-card:hover .card-spark.s3 {
+    .product-card:not(.card-oil):hover .card-spark.s3 {
       animation: sparkle .8s ease-in-out .5s infinite
     }
 
@@ -4000,7 +3999,7 @@
       </div>
       <div class="ab-cta reveal shown">
         <h2>Ready to Eat <em>Truly Pure?</em></h2>
-        <p>Join 5000+ families who have made the switch to honest, natural food. Your body will thank you.</p>
+        <p>Join 500+ families who have made the switch to honest, natural food. Your body will thank you.</p>
         <div class="cta-btns">
           <button class="cta-p"
             onclick="showPage('home');setTimeout(()=>document.getElementById('products').scrollIntoView({behavior:'smooth'}),100)">🛒
@@ -4457,16 +4456,16 @@
           `;
         }
         card.innerHTML = `
-      <div class="prod-img-wrap">
-        ${imgHtml}
-        <div class="img-leaf-bg">${leafIcon}</div>
-      </div>
-      <div class="prod-info">
-        <div class="card-spark s1"></div><div class="card-spark s2"></div><div class="card-spark s3"></div>
-        <div class="prod-name">${title}</div>
-        <div class="prod-sub">${sub}</div>
-        ${priceHtml}
-      </div>`;
+          <div class="prod-img-wrap">
+            ${imgHtml}
+            ${!isOil ? `<div class="img-leaf-bg">${leafIcon}</div>` : ''}
+          </div>
+          <div class="prod-info">
+            ${!isOil ? '<div class="card-spark s1"></div><div class="card-spark s2"></div><div class="card-spark s3"></div>' : ''}
+            <div class="prod-name">${title}</div>
+            <div class="prod-sub">${sub}</div>
+            ${priceHtml}
+          </div>`;
         card.style.animationDelay = (i % 10) * 0.05 + 's';
         card.classList.add('show');
         card.onclick = () => openProd(p);

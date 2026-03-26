@@ -57,6 +57,12 @@
       background-attachment: fixed;
     }
 
+    @media (max-width: 1024px) {
+      body {
+        background-attachment: scroll;
+      }
+    }
+
     /* NATURE CANVAS - reduced for performance */
     #natureCanvas {
       position: fixed;
@@ -163,6 +169,12 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+    }
+
+    @media (max-width: 1024px) {
+      .page {
+        background-attachment: scroll;
+      }
     }
 
     .page.active {
@@ -476,8 +488,16 @@
     .hero-car {
       position: relative;
       overflow: hidden;
-      height: clamp(360px, 54vw, 580px);
+      height: calc(100dvh - var(--nh));
+      min-height: 320px;
+      max-height: 780px;
       background: var(--gd)
+    }
+
+    @supports not (height: 100dvh) {
+      .hero-car {
+        height: calc(100vh - var(--nh));
+      }
     }
 
     .car-track {
@@ -644,6 +664,29 @@
     @media (max-width: 768px) {
       .car-arr {
         display: none
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-car {
+        height: 48vh;
+        min-height: 250px;
+      }
+
+      .car-dots {
+        bottom: 12px;
+      }
+
+      .sl-con {
+        padding: 0 5%;
+      }
+
+      .sl-title {
+        font-size: 2rem;
+      }
+
+      .sl-desc {
+        font-size: 0.85rem;
       }
     }
 
@@ -1572,6 +1615,594 @@
       -webkit-text-fill-color: transparent
     }
 
+    /* TESTIMONIALS MARQUEE */
+    .testi-sec {
+      padding: 72px 0 64px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #040e06 0%, #071509 35%, #050f07 65%, #030c05 100%);
+      border-top: 2px solid rgba(39, 160, 69, .18);
+      border-bottom: 2px solid rgba(39, 160, 69, .18);
+    }
+
+    /* Animated leaf decorations */
+    .testi-leaf {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      font-size: 1.6rem;
+      animation: testiLeafFloat linear infinite;
+      z-index: 0;
+      filter: drop-shadow(0 2px 6px rgba(39, 160, 69, .35));
+    }
+
+    @keyframes testiLeafFloat {
+      0% {
+        transform: translateY(110%) rotate(0deg) translateX(0px);
+        opacity: 0;
+      }
+
+      6% {
+        opacity: .55;
+      }
+
+      88% {
+        opacity: .3;
+      }
+
+      100% {
+        transform: translateY(-120px) rotate(540deg) translateX(40px);
+        opacity: 0;
+      }
+    }
+
+    /* Corner decorative large leaves */
+    .testi-corner-leaf {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .08;
+      font-size: 7rem;
+      line-height: 1;
+      animation: testiCornerPulse 6s ease-in-out infinite;
+    }
+
+    .testi-corner-leaf.tl {
+      top: -10px;
+      left: -10px;
+      transform: rotate(-30deg);
+      animation-delay: 0s;
+    }
+
+    .testi-corner-leaf.tr {
+      top: -10px;
+      right: -10px;
+      transform: rotate(30deg) scaleX(-1);
+      animation-delay: 1.5s;
+    }
+
+    .testi-corner-leaf.bl {
+      bottom: -10px;
+      left: -10px;
+      transform: rotate(20deg);
+      animation-delay: 3s;
+    }
+
+    .testi-corner-leaf.br {
+      bottom: -10px;
+      right: -10px;
+      transform: rotate(-20deg) scaleX(-1);
+      animation-delay: 4.5s;
+    }
+
+    @keyframes testiCornerPulse {
+
+      0%,
+      100% {
+        opacity: .07;
+        transform: scale(1) rotate(-30deg);
+      }
+
+      50% {
+        opacity: .14;
+        transform: scale(1.08) rotate(-28deg);
+      }
+    }
+
+    .testi-corner-leaf.tr {
+      animation-name: testiCornerPulseR;
+    }
+
+    .testi-corner-leaf.bl {
+      animation-name: testiCornerPulseBL;
+    }
+
+    .testi-corner-leaf.br {
+      animation-name: testiCornerPulseBR;
+    }
+
+    @keyframes testiCornerPulseR {
+
+      0%,
+      100% {
+        opacity: .07;
+        transform: scale(1) rotate(30deg) scaleX(-1);
+      }
+
+      50% {
+        opacity: .14;
+        transform: scale(1.08) rotate(32deg) scaleX(-1);
+      }
+    }
+
+    @keyframes testiCornerPulseBL {
+
+      0%,
+      100% {
+        opacity: .07;
+        transform: scale(1) rotate(20deg);
+      }
+
+      50% {
+        opacity: .14;
+        transform: scale(1.08) rotate(22deg);
+      }
+    }
+
+    @keyframes testiCornerPulseBR {
+
+      0%,
+      100% {
+        opacity: .07;
+        transform: scale(1) rotate(-20deg) scaleX(-1);
+      }
+
+      50% {
+        opacity: .14;
+        transform: scale(1.08) rotate(-18deg) scaleX(-1);
+      }
+    }
+
+    /* Glowing pollen dots */
+    .testi-pollen {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle, rgba(240, 184, 34, .5), rgba(240, 184, 34, .05));
+      animation: testiPollenPulse ease-in-out infinite;
+    }
+
+    @keyframes testiPollenPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: .15;
+      }
+
+      50% {
+        transform: scale(1.6);
+        opacity: .38;
+      }
+    }
+
+    /* Ensure content sits above decorations */
+    .testi-sec .container,
+    .testi-sec .marquee-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi-hd {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .testi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(39, 160, 69, .13);
+      border: 1px solid rgba(39, 160, 69, .3);
+      color: var(--gl);
+      font-size: .73rem;
+      font-weight: 800;
+      padding: 5px 18px;
+      border-radius: var(--rp);
+      letter-spacing: .9px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .testi-ttl {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.85rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, .4);
+    }
+
+    .testi-ttl em {
+      color: var(--go);
+      font-style: italic;
+    }
+
+    .testi-sub {
+      color: rgba(255, 255, 255, .55);
+      font-size: .93rem;
+      max-width: 500px;
+      margin: 0 auto 44px;
+    }
+
+    /* RATING STRIP */
+    .testi-rating-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Default center for desktop */
+      gap: 20px;
+      flex-wrap: nowrap;
+      /* Keep it horizontal */
+      margin-bottom: 52px;
+      overflow-x: auto;
+      /* Allow horizontal scroll */
+      -webkit-overflow-scrolling: touch;
+      /* Smooth scroll on iOS */
+      padding: 10px 0;
+      /* Add some padding for scroll space */
+      scrollbar-width: none;
+      /* Hide scrollbar for Firefox */
+    }
+
+    .testi-rating-strip::-webkit-scrollbar {
+      display: none;
+      /* Hide scrollbar for Chrome/Safari */
+    }
+
+    .trs-box {
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      padding: 18px 28px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      min-width: 140px;
+      /* Slightly more stable width */
+      flex-shrink: 0;
+      /* Don't squash the boxes */
+      transition: transform .3s ease, background .3s;
+    }
+
+    .trs-box:hover {
+      background: rgba(255, 255, 255, .12);
+      transform: translateY(-4px);
+    }
+
+    .trs-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--go);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .trs-stars {
+      font-size: .95rem;
+      color: var(--go);
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .trs-lbl {
+      color: rgba(255, 255, 255, .52);
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+
+    .trs-div {
+      width: 1px;
+      height: 60px;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    @media(max-width:500px) {
+      .testi-rating-strip {
+        justify-content: flex-start;
+        /* Start from left on mobile to show items */
+        padding-left: 20px;
+        /* Offset for better appearance */
+        padding-right: 20px;
+      }
+
+      .trs-div {
+        display: block;
+        /* Keep dividers visible for clarity */
+        flex-shrink: 0;
+      }
+    }
+
+    /* GOOGLE BADGE STRIP */
+    .g-badge-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .g-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border-radius: 50px;
+      padding: 8px 20px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .18);
+      font-size: .82rem;
+      font-weight: 800;
+      color: #3c4043;
+    }
+
+    .g-logo {
+      font-size: 1.1rem;
+    }
+
+    .g-badge-stars {
+      color: #fbbc04;
+      font-size: .95rem;
+      letter-spacing: 1px;
+    }
+
+    .g-badge-count {
+      color: #70757a;
+      font-size: .77rem;
+      font-weight: 600;
+    }
+
+    /* MARQUEE WRAPPER */
+    .marquee-section {
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+
+    .marquee-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      width: max-content;
+      animation: marqueeLeft 38s linear infinite;
+    }
+
+    .marquee-row.reverse {
+      animation: marqueeRight 42s linear infinite;
+    }
+
+    .marquee-row:hover,
+    .marquee-row.reverse:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeLeft {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes marqueeRight {
+      0% {
+        transform: translateX(-50%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* REVIEW CARD */
+    .rv-card {
+      flex-shrink: 0;
+      width: 320px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px 22px 18px;
+      box-shadow: 0 6px 28px rgba(0, 0, 0, .13);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform .3s ease, box-shadow .3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rv-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4285f4, #34a853, #fbbc04, #ea4335);
+    }
+
+    .rv-card:hover {
+      transform: translateY(-5px) scale(1.015);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .2);
+    }
+
+    .rv-top {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .rv-av {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      font-family: 'Nunito', sans-serif;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+    }
+
+    .rv-name {
+      font-weight: 800;
+      color: #202124;
+      font-size: .91rem;
+      line-height: 1.2;
+    }
+
+    .rv-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .rv-verified {
+      color: #1a73e8;
+      font-size: .68rem;
+      font-weight: 700;
+    }
+
+    .rv-date {
+      color: #9aa0a6;
+      font-size: .68rem;
+    }
+
+    .rv-g-logo {
+      margin-left: auto;
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+      font-size: 1rem;
+    }
+
+    .rv-stars {
+      color: #fbbc04;
+      font-size: .95rem;
+      letter-spacing: 1.5px;
+    }
+
+    .rv-text {
+      color: #3c4043;
+      font-size: .875rem;
+      line-height: 1.72;
+      flex: 1;
+    }
+
+    .rv-text strong {
+      color: #0b2e14;
+      font-weight: 800;
+    }
+
+    .rv-product {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #15803d;
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      width: fit-content;
+    }
+
+    /* New styles for marquee images */
+    .mq-img-card {
+      flex-shrink: 0;
+      width: 300px;
+      height: 220px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .mq-img-card:hover {
+      transform: scale(1.05);
+    }
+
+    .mq-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* FEATURED BANNER */
+    .testi-banner {
+      max-width: 820px;
+      margin: 52px auto 0;
+      background: linear-gradient(135deg, rgba(11, 46, 20, .75) 0%, rgba(18, 71, 42, .6) 100%);
+      border: 1px solid rgba(39, 160, 69, .28);
+      border-radius: 22px;
+      padding: 32px 40px;
+      text-align: center;
+      backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testi-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4285f4, #34a853, #fbbc04, #ea4335, #34a853);
+      background-size: 200% 100%;
+      animation: barGlow 3s linear infinite;
+    }
+
+    .tb-ico {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .tb-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.3vw, 1.3rem);
+      font-style: italic;
+      color: rgba(255, 255, 255, .92);
+      line-height: 1.68;
+      margin-bottom: 14px;
+    }
+
+    .tb-author {
+      color: var(--go);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .4px;
+    }
+
     /* FOOTER */
     .nk-footer {
       background: linear-gradient(160deg, #060f08 0%, #0a1a0c 60%, #070f09 100%);
@@ -1786,14 +2417,14 @@
       justify-content: center;
       box-shadow: 0 6px 22px rgba(37, 211, 102, .55), inset 0 1px 0 rgba(255, 255, 255, .2);
       text-decoration: none;
-      transition: transform .3s var(--ez), box-shadow .3s ease;
+      transition: transform .3s var(--ez), box-shadow .3s ease, opacity .3s ease, visibility .3s ease;
       animation: popIn .6s 1s cubic-bezier(.22, 1, .36, 1) both
     }
 
     .float-ig {
       position: fixed;
       bottom: 26px;
-      right: 88px;
+      right: 100px;
       z-index: 9999;
       width: 58px;
       height: 58px;
@@ -1804,8 +2435,18 @@
       justify-content: center;
       box-shadow: 0 6px 22px rgba(225, 48, 108, .55), inset 0 1px 0 rgba(255, 255, 255, .2);
       text-decoration: none;
-      transition: transform .3s var(--ez), box-shadow .3s ease;
+      transition: transform .3s var(--ez), box-shadow .3s ease, opacity .3s ease, visibility .3s ease;
       animation: popIn .6s 1.2s cubic-bezier(.22, 1, .36, 1) both
+    }
+
+    @media (max-width: 1024px) {
+
+      .float-wa.modal-hidden,
+      .float-ig.modal-hidden {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
     }
 
     @keyframes popIn {
@@ -1914,6 +2555,11 @@
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto
+    }
+
+    .scroll-top.modal-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     .scroll-top:hover {
@@ -2669,7 +3315,11 @@
           <div class="sl-bg">
             <img
               src="https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_1400/v1773826161/BANNER2.jpg_1_ytarjs.jpg"
-              class="sl-img" alt="Honey" loading="eager">
+              class="sl-img" style="object-position:center top" alt="Honey" loading="eager">
+          </div>
+          <div class="sl-con"
+            style="padding-top: 100px; display: flex; justify-content: center; align-items: flex-start; max-width: 100%; width: 100%;">
+
           </div>
         </div>
         <div class="car-slide">
@@ -2802,38 +3452,324 @@
       </div>
     </div>
 
-    <!-- CONTACT -->
-    <section class="c-sec" id="contact">
+    <!-- TESTIMONIALS -->
+    <section class="testi-sec" id="testimonials">
+
+      <!-- Corner decorative leaves -->
+      <div class="testi-corner-leaf tl">🌿</div>
+      <div class="testi-corner-leaf tr">🌿</div>
+      <div class="testi-corner-leaf bl">🍃</div>
+      <div class="testi-corner-leaf br">🍃</div>
+
+      <!-- Floating animated leaves (injected by JS below) -->
+      <div id="testiLeafCanvas"></div>
+
       <div class="container">
-        <h2 class="c-ttl">Get In <em>Touch</em></h2>
-        <div class="c-grid">
-          <div class="c-card">
-            <div class="c-ico">📞</div>
-            <div class="c-lbl">Phone</div>
-            <a href="tel:7448773399" class="c-lnk">7448773399</a>
-            <a href="tel:7448772299" class="c-lnk">7448772299</a>
+        <div class="testi-hd">
+          <div class="testi-badge">⭐ Customer Love</div>
+          <h2 class="testi-ttl">What Our <em>Families</em> Say</h2>
+          <p class="testi-sub">Real reviews from real customers — 5000+ happy families across Tamil Nadu trust Namma
+            Kalappai.</p>
+        </div>
+
+        <!-- Google Badge -->
+        <div class="g-badge-strip">
+          <div class="g-badge">
+            <span class="g-logo">G</span>
+            <span>Google Reviews</span>
+            <span class="g-badge-stars">★★★★★</span>
+            <span style="color:#202124;font-weight:800;">4.9</span>
+            <span class="g-badge-count">(200+ reviews)</span>
           </div>
-          <div class="c-card">
-            <div class="c-ico">📧</div>
-            <div class="c-lbl">Email</div>
-            <a href="/cdn-cgi/l/email-protection#c8a6a9a5a5a3a9a4a9b8b8a9a188afa5a9a1a4e6aba7a5" class="c-lnk"><span
-                class="__cf_email__"
-                data-cfemail="610f000c0c0a000d001111000821060c00080d4f020e0c">[email&#160;protected]</span></a>
+        </div>
+
+        <!-- Rating Strip -->
+        <div class="testi-rating-strip">
+          <div class="trs-box">
+            <div class="trs-num">4.9</div>
+            <div class="trs-stars">★★★★★</div>
+            <div class="trs-lbl">Overall Rating</div>
           </div>
-          <div class="c-card">
-            <div class="c-ico">📸</div>
-            <div class="c-lbl">Instagram</div>
-            <a href="https://www.instagram.com/namma_kalappai/" target="_blank" class="insta-lnk">@namma_kalappai</a>
+          <div class="trs-div"></div>
+          <div class="trs-box">
+            <div class="trs-num">5K+</div>
+            <div class="trs-stars">👨‍👩‍👧‍👦</div>
+            <div class="trs-lbl">Happy Families</div>
           </div>
-          <div class="c-card">
-            <div class="c-ico">💬</div>
-            <div class="c-lbl">WhatsApp</div>
-            <a href="https://wa.me/917448773399" target="_blank" class="c-lnk wa-cta">Chat with Us</a>
+          <div class="trs-div"></div>
+          <div class="trs-box">
+            <div class="trs-num">98%</div>
+            <div class="trs-stars">🔁</div>
+            <div class="trs-lbl">Repeat Orders</div>
           </div>
+          <div class="trs-div"></div>
+          <div class="trs-box">
+            <div class="trs-num">100%</div>
+            <div class="trs-stars">🌿</div>
+            <div class="trs-lbl">Pure & Natural</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee Row 1 (left scroll) -->
+      <div class="marquee-section">
+        <div class="marquee-row" id="mqRow1">
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#4285f4">P</div>
+              <div>
+                <div class="rv-name">Priya R.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 2 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">The forest honey is <strong>absolutely divine</strong>. I've tried many brands but
+              nothing compares to Namma Kalappai. Pure, raw, and full of goodness!</div>
+            <div class="rv-product">🍯 Wild Forest Honey</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#34a853">K</div>
+              <div>
+                <div class="rv-name">Karthik S.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 1 month ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">Ordered A2 cow ghee and the <strong>aroma alone told me it was authentic</strong>. Just
+              like what my grandparents made. Will never go back to store-bought ghee!</div>
+            <div class="rv-product">🥛 A2 Cow Ghee</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#ea4335">L</div>
+              <div>
+                <div class="rv-name">Lakshmi V.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 3 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">My kids absolutely love the millet biscuits. <strong>Healthy, tasty, no
+                preservatives</strong> — what more can you ask? Finishes in one sitting every time!</div>
+            <div class="rv-product">🍪 Millet Biscuits</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#fbbc04">M</div>
+              <div>
+                <div class="rv-name">Murugan P.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 1 month ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">Cold-pressed coconut oil is <strong>superb quality</strong>. My doctor even noticed
+              improvement in my health reports. Pure gold from Namma Kalappai!</div>
+            <div class="rv-product">🫒 Coconut Oil</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#9c27b0">A</div>
+              <div>
+                <div class="rv-name">Anitha K.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 2 months ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">The multigrains health mix is a <strong>lifesaver for busy mornings</strong>. My
+              2-year-old loves it as porridge. Real ingredients, no nonsense. 100% recommended!</div>
+            <div class="rv-product">🌾 Health Mix</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#f57c00">D</div>
+              <div>
+                <div class="rv-name">Deepak N.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 3 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">Gifted the festival combo pack to my parents — they called me <strong>immediately after
+                tasting the honey</strong>. Best gift decision ever. Packaging is premium!</div>
+            <div class="rv-product">🎁 Festival Combo</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#4285f4">P</div>
+              <div>
+                <div class="rv-name">Priya R.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 2 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">The forest honey is <strong>absolutely divine</strong>. I've tried many brands but
+              nothing compares to Namma Kalappai. Pure, raw, and full of goodness!</div>
+            <div class="rv-product">🍯 Wild Forest Honey</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#34a853">K</div>
+              <div>
+                <div class="rv-name">Karthik S.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 1 month ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">Ordered A2 cow ghee and the <strong>aroma alone told me it was authentic</strong>. Just
+              like what my grandparents made. Will never go back to store-bought ghee!</div>
+            <div class="rv-product">🥛 A2 Cow Ghee</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#ea4335">L</div>
+              <div>
+                <div class="rv-name">Lakshmi V.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 3 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">My kids absolutely love the millet biscuits. <strong>Healthy, tasty, no
+                preservatives</strong> — what more can you ask? Finishes in one sitting every time!</div>
+            <div class="rv-product">🍪 Millet Biscuits</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#fbbc04">M</div>
+              <div>
+                <div class="rv-name">Murugan P.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 1 month ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">Cold-pressed coconut oil is <strong>superb quality</strong>. My doctor even noticed
+              improvement in my health reports. Pure gold from Namma Kalappai!</div>
+            <div class="rv-product">🫒 Coconut Oil</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#9c27b0">A</div>
+              <div>
+                <div class="rv-name">Anitha K.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 2 months ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">The multigrains health mix is a <strong>lifesaver for busy mornings</strong>. My
+              2-year-old loves it as porridge. Real ingredients, no nonsense. 100% recommended!</div>
+            <div class="rv-product">🌾 Health Mix</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#f57c00">D</div>
+              <div>
+                <div class="rv-name">Deepak N.</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 3 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">Gifted the festival combo pack to my parents — they called me <strong>immediately after
+                tasting the honey</strong>. Best gift decision ever. Packaging is premium!</div>
+            <div class="rv-product">🎁 Festival Combo</div>
+          </div>
+        </div>
+        <!-- Row 2 (right scroll) -->
+        <div class="marquee-row reverse" id="mqRow2">
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/06_o2eccl.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431427/02_zpnyhx.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431429/07_kduxfs.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/06_o2eccl.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/09_iu2wjx.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/03_trsklp.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/04_mngd10.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431427/02_zpnyhx.jpg" alt="Product"></div>
+          <!-- Repeat for seamless loop -->
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431429/07_kduxfs.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/01_vlwr0f.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/01_vlwr0f.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/05_jl3e2m.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/06_o2eccl.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/09_iu2wjx.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/03_trsklp.jpg" alt="Product"></div>
+          <div class="mq-img-card"><img
+              src="https://res.cloudinary.com/dgqhq0jyu/image/upload/v1774431428/04_mngd10.jpg" alt="Product"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Featured Banner -->
+        <div class="testi-banner">
+          <div class="tb-ico">🌿</div>
+          <div class="tb-quote">"Switching to Namma Kalappai's products was the best health decision our family made
+            this year. Pure, honest, and truly traditional — just like what our grandparents used."</div>
+          <div class="tb-author">— Vijayalakshmi S., Verified Customer · Coimbatore &nbsp;·&nbsp; <span
+              style="color:#fbbc04">★★★★★</span> Google Review</div>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <!-- FOOTER -->
     <footer class="nk-footer">
       <div class="f-top">
@@ -2875,6 +3811,9 @@
                     onclick="filterProducts('millet');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🍪
                     Millet Biscuits</button></li>
                 <li><button
+                    onclick="filterProducts('sugar');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🍬
+                    Sugar</button></li>
+                <li><button
                     onclick="filterProducts('combo');document.getElementById('products').scrollIntoView({behavior:'smooth'})">🎁
                     Combo Packs</button></li>
               </ul>
@@ -2895,11 +3834,7 @@
               <h4 class="f-col-ttl">Contact Us</h4>
               <div class="f-ci">📞 <a href="tel:7448773399">7448773399</a></div>
               <div class="f-ci">📞 <a href="tel:7448772299">7448772299</a></div>
-              <div class="f-ci">📧 <a
-                  href="/cdn-cgi/l/email-protection#254b4448484e4449445555444c654248444c490b464a48"><span
-                    class="__cf_email__"
-                    data-cfemail="7a141b1717111b161b0a0a1b133a1d171b131654191517">[email&#160;protected]</span></a>
-              </div>
+              <div class="f-ci">📧 <a href="mailto:nammakalappai@gmail.com">nammakalappai@gmail.com</a></div>
               <div class="f-ci">📸 <a href="https://instagram.com/namma_kalappai" target="_blank">@namma_kalappai</a>
               </div>
               <div class="f-badges"><span class="f-bge">🌿 Natural</span><span class="f-bge">✅ Trusted</span><span
@@ -2937,7 +3872,7 @@
     <div class="ab-main">
       <div class="stats-row reveal shown">
         <div class="stat-c">
-          <div class="stat-n">5000+</div>
+          <div class="stat-n">500+</div>
           <div class="stat-l">Happy Families</div>
         </div>
         <div class="stat-c">
@@ -2949,7 +3884,7 @@
           <div class="stat-l">No Chemicals</div>
         </div>
         <div class="stat-c">
-          <div class="stat-n">4+ yrs</div>
+          <div class="stat-n">1+ yrs</div>
           <div class="stat-l">Trusted Since</div>
         </div>
       </div>
@@ -2962,7 +3897,7 @@
               directly from forest beekeepers and cold-pressed oils from traditional chekku mills.</p>
             <p>The name <strong>"Kalappai"</strong> (கலப்பை) means plough — the symbol of farming, hard work, and
               connection to the earth. We carry that spirit in every product we deliver.</p>
-            <p>Today we serve over <strong>5000+ families</strong> across Tamil Nadu, offering everything from forest
+            <p>Today we serve over <strong>500+ families</strong> across Tamil Nadu, offering everything from forest
               honey and multi-millet health mixes to A2 ghee and cold-pressed oils — all made the traditional, honest
               way.</p>
           </div>
@@ -3076,8 +4011,7 @@
     </div>
     <div class="ab-footer">
       <p>© 2025 Namma Kalappai · Pure • Traditional • Honest · <a href="tel:7448773399">7448773399</a> · <a
-          href="/cdn-cgi/l/email-protection#80eee1ededebe1ece1f0f0e1e9c0e7ede1e9ecaee3efed"><span class="__cf_email__"
-            data-cfemail="553b3438383e3439342525343c153238343c397b363a38">[email&#160;protected]</span></a></p>
+          href="mailto:nammakalappai@gmail.com">nammakalappai@gmail.com</a></p>
     </div>
   </div>
 
@@ -3101,19 +4035,45 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // ── LEAVE CONFIRMATION ───────────────────────────────────────
+    // Desktop / system: native browser dialog before tab/window close
     window.addEventListener('beforeunload', (e) => {
       e.preventDefault();
-      e.returnValue = '';
+      e.returnValue = 'நீங்கள் இந்த பக்கத்தை விட்டு வெளியேற விரும்புகிறீர்களா?';
     });
 
-    // Mobile Back Button / Gesture prevention
-    history.pushState(null, null, location.href);
-    window.addEventListener('popstate', function () {
-      if (confirm("நீங்கள் இங்கிருந்து வெளியேற விரும்புகிறீர்களா? (Do you want to leave this page?)")) {
-        // User confirmed exit
-      } else {
-        // User cancelled exit, push state again to stay
-        history.pushState(null, null, location.href);
+    // ── HISTORY-AWARE PAGE NAVIGATION ────────────────────────────
+    // Seed initial state AND push one extra "guard" entry so that
+    // the very first back-gesture triggers popstate (not an exit).
+    history.replaceState({ page: 'home', guard: false }, '', location.href);
+    history.pushState({ page: 'home', guard: true }, '', location.href);
+
+    window.addEventListener('popstate', function (e) {
+      const state = e.state || {};
+
+      // ── Modal is open: back = close modal only, no leave alert ──
+      const modal = document.getElementById('productModal');
+      if (modal && modal.style.display !== 'none') {
+        closeModal();
+        // Restore guard so next back still triggers popstate
+        history.pushState({ page: state.page || 'home', guard: true }, '', location.href);
+        return;
+      }
+
+      // ── Internal page navigation (about → home) ──────────────
+      if (state.page && !state.guard) {
+        _showPage(state.page, false);
+        history.pushState({ page: state.page, guard: true }, '', location.href);
+        return;
+      }
+
+      // ── Guard state popped = user wants to leave the site ────
+      const leaving = confirm(
+        '🌿 Namma Kalappai\n\nநீங்கள் இந்த பக்கத்தை விட்டு வெளியேற விரும்புகிறீர்களா?\n(Do you want to leave this page?)'
+      );
+
+      if (!leaving) {
+        history.pushState({ page: state.page || 'home', guard: true }, '', location.href);
       }
     });
 
@@ -3145,7 +4105,9 @@
     })();
 
     // ── PAGE SWITCHER ──────────────────────────────────────────────
-    function showPage(name) {
+    // Internal renderer — does the actual DOM work
+    function _showPage(name, pushHistory) {
+      if (pushHistory === undefined) pushHistory = true;
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       if (name === 'about') {
         document.getElementById('aboutPage').classList.add('active');
@@ -3155,6 +4117,15 @@
         document.getElementById('homePage').classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+      // Push a new history entry so browser back button returns here
+      if (pushHistory) {
+        history.pushState({ page: name }, '', location.href);
+      }
+    }
+
+    // Public API — called everywhere in the HTML
+    function showPage(name) {
+      _showPage(name, true);
     }
 
     // ── PRICE HELPERS ──────────────────────────────────────────────
@@ -3380,44 +4351,44 @@
 
       // COMBOS
       {
-        name: 'Women Combo — SESAME Oil + Ulundhu Kanji Mix + Palm Sugar', ta: 'பெண்கள் கொம்போ —எள்ளு எண்ணெய்  + உளுந்து கஞ்சி மாவு + பனை சர்க்கரை', price: '₹639', actualPrice: '₹667', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820503/DSC00297_uaevf0.jpg', category: 'combo',
-        descEn: `<strong>Includes:</strong> SESAME Oil + Ulundhu Kanji Mix + Palm Sugar.<br><br><strong>Health Benefits:</strong> High fiber, controls blood sugar, boosts immunity, hormonal balance.`,
-        descTa: `<strong>உள்ளடக்கம்:</strong> எள்ளு எண்ணெய் + உளுந்து கஞ்சி மாவு + பனை சர்க்கரை.<br><br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், நோய் எதிர்ப்பு சக்தி, ஹார்மோன் சமன்பாடு.`
+        name: 'Women Combo — SESAME Oil (500ml) + Ulundhu Kanji Mix (250g) + Palm Sugar (250g)', ta: 'பெண்கள் கொம்போ —எள்ளு எண்ணெய்  + உளுந்து கஞ்சி மாவு + பனை சர்க்கரை', price: '₹639', actualPrice: '₹667', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820503/DSC00297_uaevf0.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> SESAME Oil (500ml) + Ulundhu Kanji Mix (250g) + Palm Sugar (250g).<br><br><strong>Health Benefits:</strong> High fiber, controls blood sugar, boosts immunity, hormonal balance.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> எள்ளு எண்ணெய் (500மி.லி) + உளுந்து கஞ்சி மாவு (250கி) + பனை சர்க்கரை (250கி).<br><br><strong>நன்மைகள்:</strong> நார்ச்சத்து அதிகம், நோய் எதிர்ப்பு சக்தி, ஹார்மோன் சமன்பாடு.`
       },
 
       {
-        name: 'Cooking Combo — Groundnut Oil + Coconut Oil + Sesame Oil + A1 Ghee', ta: 'சமையல் கொம்போ — கடலை எண்ணெய் + தேங்காய் எண்ணெய் + எள்ளு எண்ணெய் + A1 நெய்', price: '₹1,299', actualPrice: '₹1396', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820527/DSC00298_qmyldw.jpg', category: 'combo',
-        descEn: `<strong>Includes:</strong> GROUNDNUT OIL + COCONUT OIL + SESAME Oil + A1 Ghee.<br><br><strong>Health Benefits:</strong> Heart-healthy oils, natural sweetener — complete kitchen upgrade!`,
-        descTa: `<strong>உள்ளடக்கம்:</strong> கடலை எண்ணெய் + தேங்காய் எண்ணெய் + எள்ளு எண்ணெய் + A1 நெய்.<br><br><strong>நன்மைகள்:</strong> இதய ஆரோக்கியம், இயற்கை இனிப்பு.`
+        name: 'Cooking Combo — Groundnut Oil (1L) + Coconut Oil (500ml) + Sesame Oil (500ml) + A1 Ghee (500g)', ta: 'சமையல் கொம்போ — கடலை எண்ணெய் + தேங்காய் எண்ணெய் + எள்ளு எண்ணெய் + A1 நெய்', price: '₹1,299', actualPrice: '₹1396', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820527/DSC00298_qmyldw.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> GROUNDNUT OIL (1L) + COCONUT OIL (500ml) + SESAME Oil (500ml) + A1 Ghee (500g).<br><br><strong>Health Benefits:</strong> Heart-healthy oils, natural sweetener — complete kitchen upgrade!`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> கடலை எண்ணெய் (1லி) + தேங்காய் எண்ணெய் (500மி.லி) + எள்ளு எண்ணெய் (500மி.லி) + A1 நெய் (500கி).<br><br><strong>நன்மைகள்:</strong> இதய ஆரோக்கியம், இயற்கை இனிப்பு.`
       },
 
       {
-        name: 'Daily Combo — Multi Millet Health Mix + Honey', ta: 'தினசரி கொம்போ — பல சிறு தானிய சத்துமாவு + தேன்', price: '₹763', actualPrice: '₹848', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820502/DSC00302_s7h1xl.jpg', category: 'combo',
-        descEn: `<strong>Includes:</strong> Multi Millet Health Mix + Honey.<br><br><strong>Health Benefits:</strong> Complete breakfast nutrition, immunity boost, sustained energy.`,
-        descTa: `<strong>உள்ளடக்கம்:</strong> பல சிறு தானிய சத்துமாவு + தேன்.<br><br><strong>நன்மைகள்:</strong> முழுமையான காலை உணவு ஊட்டச்சத்து, நோய் எதிர்ப்பு சக்தி.`
+        name: 'Daily Combo — Multi Millet Health Mix (500g) + Honey (500g)', ta: 'தினசரி கொம்போ — பல சிறு தானிய சத்துமாவு + தேன்', price: '₹763', actualPrice: '₹848', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820502/DSC00302_s7h1xl.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Multi Millet Health Mix (500g) + Honey (500g).<br><br><strong>Health Benefits:</strong> Complete breakfast nutrition, immunity boost, sustained energy.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> பல சிறு தானிய சத்துமாவு (500கி) + தேன் (500கி).<br><br><strong>நன்மைகள்:</strong> முழுமையான காலை உணவு ஊட்டச்சத்து, நோய் எதிர்ப்பு சக்தி.`
       },
 
       {
-        name: 'Haemoglobin Combo — Pomegranate Honey + ABC Malt', ta: 'ஹீமோகுளோபின் கொம்போ — மாதுளம் பூ தேன் + ABC மால்ட்', price: '₹1,129', actualPrice: '₹1248', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820508/DSC00304_e9gpfy.jpg', category: 'combo',
-        descEn: `<strong>Includes:</strong> Honey + ABC Malt.<br><br><strong>Health Benefits:</strong> Increases haemoglobin, blood purifier, rich in iron, glowing skin.`,
-        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + ABC மால்ட்.<br><br><strong>நன்மைகள்:</strong> ஹீமோகுளோபின் அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`
+        name: 'Haemoglobin Combo — Pomegranate Honey (500g) + ABC Malt (180g)', ta: 'ஹீமோகுளோபின் கொம்போ — மாதுளம் பூ தேன் + ABC மால்ட்', price: '₹1,129', actualPrice: '₹1248', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820508/DSC00304_e9gpfy.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey (500g) + ABC Malt (180g).<br><br><strong>Health Benefits:</strong> Increases haemoglobin, blood purifier, rich in iron, glowing skin.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் (500கி) + ABC மால்ட் (180கி).<br><br><strong>நன்மைகள்:</strong> ஹீமோகுளோபின் அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`
       },
 
       {
-        name: 'Weight Loss Combo — Forest Honey + Ulundhu Kanji', ta: 'உடல் எடை குறைப்பு கொம்போ — காட்டு தேன் + உளுந்து கஞ்சி மாவு', price: '₹699', actualPrice: '₹798', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00310_dytxbt.jpg', category: 'combo',
-        descEn: `<strong>Includes:</strong> Honey 500g + Ulundhu Kanji Mix 250g.<br><br><strong>Health Benefits:</strong> Boosts metabolism, supports digestion, natural weight management.`,
-        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் 500கிராம் + உளுந்து கஞ்சி மாவு 250கிராம்.<br><br><strong>நன்மைகள்:</strong> வளர்சிதை மாற்றத்தை மேம்படுத்துகிறது, செரிமான ஆரோக்கியம்.`
+        name: 'Weight Loss Combo — Forest Honey (500g) + Ulundhu Kanji (250g)', ta: 'உடல் எடை குறைப்பு கொம்போ — காட்டு தேன் + உளுந்து கஞ்சி மாவு', price: '₹699', actualPrice: '₹798', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00310_dytxbt.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey (500g) + Ulundhu Kanji Mix (250g).<br><br><strong>Health Benefits:</strong> Boosts metabolism, supports digestion, natural weight management.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் (500கி) + உளுந்து கஞ்சி மாவு (250கி).<br><br><strong>நன்மைகள்:</strong> வளர்சிதை மாற்றத்தை மேம்படுத்துகிறது, செரிமான ஆரோக்கியம்.`
       },
 
       {
-        name: 'Gym Combo — Honey + Sprouted Mix + Multi Millet Mix', ta: 'ஜிம் கொம்போ — தேன் + முளைகட்டிய சத்துமாவு + பல சிறு தானிய சத்துமாவு', price: '₹921', actualPrice: '₹1047', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00312_onkbud.jpg', category: 'combo',
-        descEn: `<strong>Includes:</strong> Honey + Sprouted Health Mix + Multi Millet Health Mix.<br><br><strong>Health Benefits:</strong> High protein, muscle recovery, sustained energy, natural pre/post-workout fuel.`,
-        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + முளைகட்டிய சத்துமாவு + பல சிறு தானிய சத்துமாவு.<br><br><strong>நன்மைகள்:</strong> புரதச்சத்து அதிகம், தசை மீட்பு, நிலையான ஆற்றல்.`
+        name: 'Gym Combo — Honey (500g) + Sprouted Mix (250g) + Multi Millet Mix (500g)', ta: 'ஜிம் கொம்போ — தேன் + முளைகட்டிய சத்துமாவு + பல சிறு தானிய சத்துமாவு', price: '₹921', actualPrice: '₹1047', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00312_onkbud.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey (500g) + Sprouted Health Mix (250g) + Multi Millet Health Mix (500g).<br><br><strong>Health Benefits:</strong> High protein, muscle recovery, sustained energy, natural pre/post-workout fuel.`,
+        descTa: `<strong>உள்ளடக்கம்:</strong> தேன் (500கி) + முளைகட்டிய சத்துமாவு (250கி) + பல சிறு தானிய சத்துமாவு (500கி).<br><br><strong>நன்மைகள்:</strong> புரதச்சத்து அதிகம், தசை மீட்பு, நிலையான ஆற்றல்.`
       },
 
       {
-        name: 'Kids Combo — Honey + Multi Millet + A2 Desi Ghee', ta: 'குழந்தைகள் கொம்போ — தேன் + பல சிறு தானிய சத்துமாவு + A2 நாட்டுமாட்டு நெய்', price: '₹2,278', actualPrice: '₹2397', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820509/DSC00307_cplfik.jpg', category: 'combo',
-        descEn: `<strong>Includes:</strong> Honey + Multi Millet + A2 Desi Ghee.<br><br><strong>Health Benefits:</strong> Bone strength, brain development, immunity, healthy weight gain for kids.`,
+        name: 'Kids Combo — Honey (500g) + Multi Millet (500g) + A2 Desi Ghee (500ml)', ta: 'குழந்தைகள் கொம்போ — தேன் + பல சிறு தானிய சத்துமாவு + A2 நாட்டுமாட்டு நெய்', price: '₹2,278', actualPrice: '₹2397', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820509/DSC00307_cplfik.jpg', category: 'combo',
+        descEn: `<strong>Includes:</strong> Honey (500g) + Multi Millet (500g) + A2 Desi Ghee (500ml).<br><br><strong>Health Benefits:</strong> Bone strength, brain development, immunity, healthy weight gain for kids.`,
         descTa: `<strong>உள்ளடக்கம்:</strong> தேன் + பல சிறு தானிய சத்துமாவு + A2 நாட்டுமாட்டு நெய்.<br><br><strong>நன்மைகள்:</strong> எலும்பு வலிமை, மூளை வளர்ச்சி, நோய் எதிர்ப்பு சக்தி.`
       },
     ];
@@ -3548,12 +4519,22 @@
       const box = document.getElementById('modalBox');
       overlay.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      setFloatBtnsVisibility(false);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           box.style.transform = 'translateY(0) scale(1)';
           box.style.opacity = '1';
         });
       });
+    }
+
+    function setFloatBtnsVisibility(visible) {
+      const wa = document.querySelector('.float-wa');
+      const ig = document.querySelector('.float-ig');
+      const st = document.getElementById('scrollTop');
+      if (wa) wa.classList.toggle('modal-hidden', !visible);
+      if (ig) ig.classList.toggle('modal-hidden', !visible);
+      if (st) st.classList.toggle('modal-hidden', !visible);
     }
 
     function closeModal() {
@@ -3563,6 +4544,7 @@
       setTimeout(() => {
         document.getElementById('productModal').style.display = 'none';
         document.body.style.overflow = '';
+        setFloatBtnsVisibility(true);
       }, 300);
     }
 
@@ -3600,6 +4582,44 @@
       showPage('home');
       setTimeout(() => {
         document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+
+        // ── TESTIMONIALS LEAF DECORATION ─────────────────────────────
+        (function () {
+          const sec = document.getElementById('testimonials');
+          const canvas = document.getElementById('testiLeafCanvas');
+          if (!sec || !canvas) return;
+          const leafs = ['🌿', '🍃', '🌱', '🍀', '🌾', '🪴'];
+          for (let i = 0; i < 18; i++) {
+            const el = document.createElement('div');
+            el.className = 'testi-leaf';
+            const sz = 14 + Math.random() * 16;
+            el.textContent = leafs[i % leafs.length];
+            el.style.cssText = [
+              'left:' + (Math.random() * 100) + '%',
+              'bottom:-40px',
+              'font-size:' + sz + 'px',
+              'animation-duration:' + (18 + Math.random() * 20) + 's',
+              'animation-delay:' + (Math.random() * 30) + 's'
+            ].join(';');
+            canvas.appendChild(el);
+          }
+          // Pollen dots
+          for (let i = 0; i < 14; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'testi-pollen';
+            const sz = 4 + Math.random() * 7;
+            dot.style.cssText = [
+              'left:' + (Math.random() * 100) + '%',
+              'top:' + (Math.random() * 100) + '%',
+              'width:' + sz + 'px',
+              'height:' + sz + 'px',
+              'animation-duration:' + (3 + Math.random() * 5) + 's',
+              'animation-delay:' + (Math.random() * 6) + 's'
+            ].join(';');
+            sec.appendChild(dot);
+          }
+        })();
+
         renderProducts('all');
         const cnt = document.getElementById('searchCount');
         if (cnt && searchQuery) {
@@ -3693,6 +4713,65 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeModal();
     });
+
+    // ── BACK BUTTON closes modal ──────────────────────────────────
+    let modalHistoryPushed = false;
+
+    const _origOpenProd = openProd;
+    openProd = function (p) {
+      _origOpenProd(p);
+      if (!modalHistoryPushed) {
+        history.pushState({ modalOpen: true }, '');
+        modalHistoryPushed = true;
+      }
+    };
+
+    const _origCloseModal = closeModal;
+    closeModal = function () {
+      _origCloseModal();
+      modalHistoryPushed = false;
+    };
+
+    // ── SWIPE DOWN on modal box closes it ────────────────────────
+    (function () {
+      const modalBox = document.getElementById('modalBox');
+      let touchStartY = 0;
+      let touchStartX = 0;
+      let isDragging = false;
+
+      modalBox.addEventListener('touchstart', e => {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+        isDragging = false;
+      }, { passive: true });
+
+      modalBox.addEventListener('touchmove', e => {
+        const dy = e.touches[0].clientY - touchStartY;
+        const dx = e.touches[0].clientX - touchStartX;
+        if (Math.abs(dy) > Math.abs(dx) && dy > 10) {
+          isDragging = true;
+          modalBox.style.transition = 'none';
+          modalBox.style.transform = `translateY(${Math.min(dy * 0.5, 80)}px) scale(${Math.max(0.95, 1 - dy * 0.0003)})`;
+          modalBox.style.opacity = `${Math.max(0.5, 1 - dy * 0.003)}`;
+        }
+      }, { passive: true });
+
+      modalBox.addEventListener('touchend', e => {
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        modalBox.style.transition = '';
+        if (isDragging && dy > 80) {
+          if (modalHistoryPushed) {
+            history.back();
+          } else {
+            closeModal();
+          }
+        } else {
+          modalBox.style.transform = 'translateY(0) scale(1)';
+          modalBox.style.opacity = '1';
+        }
+        isDragging = false;
+      }, { passive: true });
+    })();
 
     renderProducts('all');
     document.querySelectorAll('.tab').forEach(t => {

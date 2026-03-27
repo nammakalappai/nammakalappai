@@ -548,8 +548,13 @@
         }
 
         .mob-menu {
+            position: absolute;
+            top: var(--nh);
+            left: 0;
+            right: 0;
             background: rgba(255, 255, 255, .98);
             border-top: 1px solid rgba(30, 122, 62, .12);
+            box-shadow: 0 8px 24px rgba(11, 46, 20, .13);
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.25s ease, opacity 0.25s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -560,6 +565,7 @@
             opacity: 0;
             transform: translateY(-10px);
             pointer-events: none;
+            z-index: 999;
         }
 
         .mob-menu.open {

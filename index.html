@@ -1173,23 +1173,25 @@
       transform: scaleX(1)
     }
 
-    .card-oil::before {
-      background: linear-gradient(90deg, #e8c400, #f0c000, #c8a000, #f5d000, #e8c400) !important
-    }
 
     .card-combo::before {
       background: linear-gradient(90deg, #ff6b35, #d44010, #ff8c55, #ff6b35) !important
     }
 
     .card-oil {
-      border: 2px solid rgba(200, 164, 0, .32) !important;
-      background: linear-gradient(165deg, #fffde8, #fdf5c0) !important
+      background: #fff !important;
+      border: 1px solid rgba(30, 122, 62, .15) !important;
+      box-shadow: var(--s1) !important;
     }
 
-    .card-oil .prod-img-wrap {
-      background: linear-gradient(135deg, #fffde8, #fdf5c0);
-      border-bottom: 2px solid rgba(240, 208, 0, .45)
+    .card-oil:hover {
+      box-shadow: var(--s3) !important;
     }
+
+    .card-oil::before {
+      display: none !important;
+    }
+
 
     .card-combo {
       border: 2px solid rgba(255, 107, 53, .28) !important;
@@ -1201,9 +1203,6 @@
       border-bottom: 2px solid rgba(255, 107, 53, .35)
     }
 
-    .card-oil:hover {
-      box-shadow: 0 16px 36px rgba(200, 164, 0, .35) !important
-    }
 
     .card-combo:hover {
       box-shadow: 0 16px 36px rgba(255, 107, 53, .35) !important
@@ -1224,8 +1223,8 @@
     }
 
     .card-oil .card-badge {
-      background: linear-gradient(135deg, #c8a400, #a07800);
-      box-shadow: 0 2px 8px rgba(200, 164, 0, .45)
+      background: linear-gradient(135deg, #1e7a3e, #145229);
+      box-shadow: 0 2px 8px rgba(30, 122, 62, .45)
     }
 
     .card-combo .card-badge {
@@ -1273,15 +1272,15 @@
       }
     }
 
-    .product-card:hover .card-spark.s1 {
+    .product-card:not(.card-oil):hover .card-spark.s1 {
       animation: sparkle .8s ease-in-out .0s infinite
     }
 
-    .product-card:hover .card-spark.s2 {
+    .product-card:not(.card-oil):hover .card-spark.s2 {
       animation: sparkle .8s ease-in-out .25s infinite
     }
 
-    .product-card:hover .card-spark.s3 {
+    .product-card:not(.card-oil):hover .card-spark.s3 {
       animation: sparkle .8s ease-in-out .5s infinite
     }
 
@@ -2136,8 +2135,8 @@
     /* New styles for marquee images */
     .mq-img-card {
       flex-shrink: 0;
-      width: 300px;
-      height: 220px;
+      width: 380px;
+      height: 280px;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -3374,7 +3373,7 @@
       <div class="t-item"><span>🚫</span><span>No Preservatives</span></div>
       <div class="t-item"><span>🏡</span><span>Farm Direct</span></div>
       <div class="t-item"><span>🚚</span><span>Delivered Fresh</span></div>
-      <div class="t-item"><span>💚</span><span>5000+ Families</span></div>
+      <div class="t-item"><span>💚</span><span>500+ Families</span></div>
     </div>
     <!-- PRODUCTS -->
     <main class="container mt-4" id="products">
@@ -3468,7 +3467,7 @@
         <div class="testi-hd">
           <div class="testi-badge">⭐ Customer Love</div>
           <h2 class="testi-ttl">What Our <em>Families</em> Say</h2>
-          <p class="testi-sub">Real reviews from real customers — 5000+ happy families across Tamil Nadu trust Namma
+          <p class="testi-sub">Real reviews from real customers — 500+ happy families across Tamil Nadu trust Namma
             Kalappai.</p>
         </div>
 
@@ -3492,7 +3491,7 @@
           </div>
           <div class="trs-div"></div>
           <div class="trs-box">
-            <div class="trs-num">5K+</div>
+            <div class="trs-num">500+</div>
             <div class="trs-stars">👨‍👩‍👧‍👦</div>
             <div class="trs-lbl">Happy Families</div>
           </div>
@@ -3518,75 +3517,7 @@
             <div class="rv-top">
               <div class="rv-av" style="background:#4285f4">P</div>
               <div>
-                <div class="rv-name">Priya R.</div>
-                <div class="rv-meta">
-                  <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 2 weeks ago</span>
-                </div>
-              </div>
-              <div class="rv-g-logo">G</div>
-            </div>
-            <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">The forest honey is <strong>absolutely divine</strong>. I've tried many brands but
-              nothing compares to Namma Kalappai. Pure, raw, and full of goodness!</div>
-            <div class="rv-product">🍯 Wild Forest Honey</div>
-          </div>
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-av" style="background:#34a853">K</div>
-              <div>
-                <div class="rv-name">Karthik S.</div>
-                <div class="rv-meta">
-                  <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 1 month ago</span>
-                </div>
-              </div>
-              <div class="rv-g-logo">G</div>
-            </div>
-            <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">Ordered A2 cow ghee and the <strong>aroma alone told me it was authentic</strong>. Just
-              like what my grandparents made. Will never go back to store-bought ghee!</div>
-            <div class="rv-product">🥛 A2 Cow Ghee</div>
-          </div>
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-av" style="background:#ea4335">L</div>
-              <div>
-                <div class="rv-name">Lakshmi V.</div>
-                <div class="rv-meta">
-                  <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 3 weeks ago</span>
-                </div>
-              </div>
-              <div class="rv-g-logo">G</div>
-            </div>
-            <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">My kids absolutely love the millet biscuits. <strong>Healthy, tasty, no
-                preservatives</strong> — what more can you ask? Finishes in one sitting every time!</div>
-            <div class="rv-product">🍪 Millet Biscuits</div>
-          </div>
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-av" style="background:#fbbc04">M</div>
-              <div>
-                <div class="rv-name">Murugan P.</div>
-                <div class="rv-meta">
-                  <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 1 month ago</span>
-                </div>
-              </div>
-              <div class="rv-g-logo">G</div>
-            </div>
-            <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">Cold-pressed coconut oil is <strong>superb quality</strong>. My doctor even noticed
-              improvement in my health reports. Pure gold from Namma Kalappai!</div>
-            <div class="rv-product">🫒 Coconut Oil</div>
-          </div>
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-av" style="background:#9c27b0">A</div>
-              <div>
-                <div class="rv-name">Anitha K.</div>
+                <div class="rv-name">Prema vathi</div>
                 <div class="rv-meta">
                   <span class="rv-verified">✔ Google Review</span>
                   <span class="rv-date">· 2 months ago</span>
@@ -3595,49 +3526,16 @@
               <div class="rv-g-logo">G</div>
             </div>
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">The multigrains health mix is a <strong>lifesaver for busy mornings</strong>. My
-              2-year-old loves it as porridge. Real ingredients, no nonsense. 100% recommended!</div>
-            <div class="rv-product">🌾 Health Mix</div>
-          </div>
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-av" style="background:#f57c00">D</div>
-              <div>
-                <div class="rv-name">Deepak N.</div>
-                <div class="rv-meta">
-                  <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 3 weeks ago</span>
-                </div>
-              </div>
-              <div class="rv-g-logo">G</div>
-            </div>
-            <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">Gifted the festival combo pack to my parents — they called me <strong>immediately after
-                tasting the honey</strong>. Best gift decision ever. Packaging is premium!</div>
-            <div class="rv-product">🎁 Festival Combo</div>
-          </div>
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-av" style="background:#4285f4">P</div>
-              <div>
-                <div class="rv-name">Priya R.</div>
-                <div class="rv-meta">
-                  <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 2 weeks ago</span>
-                </div>
-              </div>
-              <div class="rv-g-logo">G</div>
-            </div>
-            <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">The forest honey is <strong>absolutely divine</strong>. I've tried many brands but
-              nothing compares to Namma Kalappai. Pure, raw, and full of goodness!</div>
-            <div class="rv-product">🍯 Wild Forest Honey</div>
+            <div class="rv-text">"I recently bought <strong>wild raw honey and floral honey</strong> from Kalappai
+              Honey, and I’ve been using them for the past two months. The taste is absolutely delicious, and the
+              quality is excellent. I especially loved the wild honey—it’s rich, natural, and truly authentic."</div>
+            <div class="rv-product">🍯 Wild Raw & Floral Honey</div>
           </div>
           <div class="rv-card">
             <div class="rv-top">
               <div class="rv-av" style="background:#34a853">K</div>
               <div>
-                <div class="rv-name">Karthik S.</div>
+                <div class="rv-name">Kalaivani S.</div>
                 <div class="rv-meta">
                   <span class="rv-verified">✔ Google Review</span>
                   <span class="rv-date">· 1 month ago</span>
@@ -3646,15 +3544,34 @@
               <div class="rv-g-logo">G</div>
             </div>
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">Ordered A2 cow ghee and the <strong>aroma alone told me it was authentic</strong>. Just
-              like what my grandparents made. Will never go back to store-bought ghee!</div>
-            <div class="rv-product">🥛 A2 Cow Ghee</div>
+            <div class="rv-text">"Hi, I just wanted to share my feedback after trying your products – the <strong>honey,
+                palm sugar, and health mix</strong>. Everything is so pure and natural. The honey has a great taste, and
+              the health mix is very nutritious."</div>
+            <div class="rv-product">🎁 Wellness Bundle</div>
           </div>
           <div class="rv-card">
             <div class="rv-top">
-              <div class="rv-av" style="background:#ea4335">L</div>
+              <div class="rv-av" style="background:#ea4335">Y</div>
               <div>
-                <div class="rv-name">Lakshmi V.</div>
+                <div class="rv-name">YASWANTH MR</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 1 month ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"It's a <strong>wonderful product</strong>! I've been using health mix and honey for a
+              month now, and I'm experiencing better results. The product has given me increased energy levels and
+              improved my overall health."</div>
+            <div class="rv-product">🌾 Health Mix & Honey</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#fbbc04">S</div>
+              <div>
+                <div class="rv-name">Swathi S.</div>
                 <div class="rv-meta">
                   <span class="rv-verified">✔ Google Review</span>
                   <span class="rv-date">· 3 weeks ago</span>
@@ -3663,32 +3580,16 @@
               <div class="rv-g-logo">G</div>
             </div>
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">My kids absolutely love the millet biscuits. <strong>Healthy, tasty, no
-                preservatives</strong> — what more can you ask? Finishes in one sitting every time!</div>
-            <div class="rv-product">🍪 Millet Biscuits</div>
+            <div class="rv-text">"I have been using Nama kalappai's honey for a while now. To be honest, this is a
+              <strong>great add up to my daily life</strong>. Working in night shifts and having an imbalance life
+              structure, this honey helps me stay active and fit into a healthy lifestyle."</div>
+            <div class="rv-product">🍯 Raw Honey</div>
           </div>
           <div class="rv-card">
             <div class="rv-top">
-              <div class="rv-av" style="background:#fbbc04">M</div>
+              <div class="rv-av" style="background:#9c27b0">D</div>
               <div>
-                <div class="rv-name">Murugan P.</div>
-                <div class="rv-meta">
-                  <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 1 month ago</span>
-                </div>
-              </div>
-              <div class="rv-g-logo">G</div>
-            </div>
-            <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">Cold-pressed coconut oil is <strong>superb quality</strong>. My doctor even noticed
-              improvement in my health reports. Pure gold from Namma Kalappai!</div>
-            <div class="rv-product">🫒 Coconut Oil</div>
-          </div>
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-av" style="background:#9c27b0">A</div>
-              <div>
-                <div class="rv-name">Anitha K.</div>
+                <div class="rv-name">Devaki S.</div>
                 <div class="rv-meta">
                   <span class="rv-verified">✔ Google Review</span>
                   <span class="rv-date">· 2 months ago</span>
@@ -3697,26 +3598,123 @@
               <div class="rv-g-logo">G</div>
             </div>
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">The multigrains health mix is a <strong>lifesaver for busy mornings</strong>. My
-              2-year-old loves it as porridge. Real ingredients, no nonsense. 100% recommended!</div>
-            <div class="rv-product">🌾 Health Mix</div>
+            <div class="rv-text">"We bought some honey it's <strong>really excellent, pure</strong>, and 100% natural.
+              🍯👌"</div>
+            <div class="rv-product">🍯 Pure Honey</div>
           </div>
           <div class="rv-card">
             <div class="rv-top">
-              <div class="rv-av" style="background:#f57c00">D</div>
+              <div class="rv-av" style="background:#f57c00">L</div>
               <div>
-                <div class="rv-name">Deepak N.</div>
+                <div class="rv-name">Logez Cinematographer</div>
                 <div class="rv-meta">
                   <span class="rv-verified">✔ Google Review</span>
-                  <span class="rv-date">· 3 weeks ago</span>
+                  <span class="rv-date">· 1 month ago</span>
                 </div>
               </div>
               <div class="rv-g-logo">G</div>
             </div>
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">Gifted the festival combo pack to my parents — they called me <strong>immediately after
-                tasting the honey</strong>. Best gift decision ever. Packaging is premium!</div>
-            <div class="rv-product">🎁 Festival Combo</div>
+            <div class="rv-text">"I bought <strong>Kashmiri Aqua Honey</strong> from Namma Kalapai. It tastes pure and
+              natural, with a rich and superb flavor. The quality feels authentic, and it blends perfectly with juices.
+              Overall, an excellent choice."</div>
+            <div class="rv-product">🍯 Kashmiri Aqua Honey</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#4285f4">R</div>
+              <div>
+                <div class="rv-name">Ramachandran 001</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 4 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"<strong>Good products..amazing</strong>"</div>
+            <div class="rv-product">🌿 Natural Products</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#34a853">S</div>
+              <div>
+                <div class="rv-name">Shahul Hameed</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 2 months ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"<strong>Very good product</strong> 👍"</div>
+            <div class="rv-product">✨ Trusted Quality</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#ea4335">G</div>
+              <div>
+                <div class="rv-name">Gru Raj</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 1 month ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"<strong>Very nice and quality product</strong>"</div>
+            <div class="rv-product">🥛 Ghee & Honey</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#fbbc04">A</div>
+              <div>
+                <div class="rv-name">Abhi Vinu</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 4 weeks ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"<strong>Nice product 😍</strong>"</div>
+            <div class="rv-product">🍪 Healthy Snacks</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#9c27b0">S</div>
+              <div>
+                <div class="rv-name">Satheesh kumar</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 2 months ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"<strong>Good product</strong>"</div>
+            <div class="rv-product">🍯 Organic Honey</div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-av" style="background:#f57c00">S</div>
+              <div>
+                <div class="rv-name">Sivaraj Sivakannu</div>
+                <div class="rv-meta">
+                  <span class="rv-verified">✔ Google Review</span>
+                  <span class="rv-date">· 1 month ago</span>
+                </div>
+              </div>
+              <div class="rv-g-logo">G</div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"<strong>Honey and helmix</strong> always good"</div>
+            <div class="rv-product">🌾 Health Mix</div>
           </div>
         </div>
         <!-- Row 2 (right scroll) -->
@@ -4000,7 +3998,7 @@
       </div>
       <div class="ab-cta reveal shown">
         <h2>Ready to Eat <em>Truly Pure?</em></h2>
-        <p>Join 5000+ families who have made the switch to honest, natural food. Your body will thank you.</p>
+        <p>Join 500+ families who have made the switch to honest, natural food. Your body will thank you.</p>
         <div class="cta-btns">
           <button class="cta-p"
             onclick="showPage('home');setTimeout(()=>document.getElementById('products').scrollIntoView({behavior:'smooth'}),100)">🛒
@@ -4457,16 +4455,16 @@
           `;
         }
         card.innerHTML = `
-      <div class="prod-img-wrap">
-        ${imgHtml}
-        <div class="img-leaf-bg">${leafIcon}</div>
-      </div>
-      <div class="prod-info">
-        <div class="card-spark s1"></div><div class="card-spark s2"></div><div class="card-spark s3"></div>
-        <div class="prod-name">${title}</div>
-        <div class="prod-sub">${sub}</div>
-        ${priceHtml}
-      </div>`;
+          <div class="prod-img-wrap">
+            ${imgHtml}
+            ${!isOil ? `<div class="img-leaf-bg">${leafIcon}</div>` : ''}
+          </div>
+          <div class="prod-info">
+            ${!isOil ? '<div class="card-spark s1"></div><div class="card-spark s2"></div><div class="card-spark s3"></div>' : ''}
+            <div class="prod-name">${title}</div>
+            <div class="prod-sub">${sub}</div>
+            ${priceHtml}
+          </div>`;
         card.style.animationDelay = (i % 10) * 0.05 + 's';
         card.classList.add('show');
         card.onclick = () => openProd(p);

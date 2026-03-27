@@ -194,6 +194,7 @@
       border-bottom: 1.5px solid rgba(30, 122, 62, .14);
       box-shadow: 0 2px 20px rgba(11, 46, 20, .09);
       transition: var(--tr);
+      overflow: visible !important;
     }
 
     .nk-nav.scrolled {
@@ -209,7 +210,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 24px;
-      gap: 14px
+      gap: 14px;
+      overflow: visible !important;
     }
 
     .n-brand {
@@ -280,6 +282,7 @@
     }
 
     /* NAVBAR SEARCH */
+    /* SEARCH BAR */
     .n-search {
       display: flex;
       align-items: center;
@@ -291,6 +294,8 @@
       transition: all .3s ease;
       min-width: 180px;
       max-width: 240px;
+      position: relative;
+      /* Anchor suggestions */
     }
 
     .n-search:focus-within {
@@ -300,10 +305,107 @@
       min-width: 220px;
     }
 
+    /* SUGGESTIONS DROPDOWN */
+    .n-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-radius: 16px;
+      margin-top: 10px;
+      box-shadow: 0 10px 40px rgba(11, 46, 20, .22);
+      overflow: hidden;
+      display: none;
+      z-index: 9999;
+      border: 1px solid rgba(30, 122, 62, .15);
+      min-width: 280px;
+      animation: suggSlide .25s ease-out;
+    }
+
+    @keyframes suggSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .n-suggestions.active {
+      display: block;
+    }
+
+    .s-item {
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      color: var(--tx);
+      border-bottom: 1px solid rgba(30, 122, 62, .06);
+      transition: all .2s;
+    }
+
+    .s-item:last-child {
+      border-bottom: none;
+    }
+
+    .s-item:hover,
+    .s-item.sel {
+      background: rgba(39, 160, 69, .1);
+      padding-left: 18px;
+    }
+
+    .s-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .s-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .s-name {
+      font-weight: 700;
+      font-size: .88rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .s-price {
+      color: var(--gm);
+      font-weight: 800;
+      font-size: .78rem;
+      display: block;
+    }
+
+    .s-cta {
+      font-size: .8rem;
+      opacity: .4;
+    }
+
+
     .n-search-ico {
       font-size: .9rem;
       opacity: .55;
       flex-shrink: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .n-search-ico.has-text {
+      opacity: 1;
+      color: var(--gm);
+      transform: scale(1.25);
+      filter: drop-shadow(0 0 5px rgba(39, 160, 69, 0.4));
     }
 
     .n-search-input {
@@ -1130,22 +1232,49 @@
       box-shadow: var(--s1);
       transition: transform .35s var(--ez), box-shadow .3s ease, border-color .25s ease;
       transform: translateZ(0);
+      opacity: 0; /* Hidden by default for animation */
     }
 
-    .product-card.show {
-      animation: cardIn .45s var(--ez) both
+    .product-card.zig-show { animation: zigIn .65s cubic-bezier(.16, 1, .3, 1) both; }
+    .product-card.zag-show { animation: zagIn .65s cubic-bezier(.16, 1, .3, 1) both; }
+
+    @keyframes zigIn {
+      0% { opacity: 0; transform: translateX(-50px) translateY(15px) rotate(-3deg) scale(.92); }
+      70% { transform: translateX(4px) translateY(-1px) rotate(1deg) scale(1.01); }
+      100% { opacity: 1; transform: translateX(0) translateY(0) rotate(0) scale(1); }
     }
 
-    @keyframes cardIn {
-      from {
-        opacity: 0;
-        transform: translateY(22px) scale(.97)
-      }
+    @keyframes zagIn {
+      0% { opacity: 0; transform: translateX(50px) translateY(15px) rotate(3deg) scale(.92); }
+      70% { transform: translateX(-4px) translateY(-1px) rotate(-1deg) scale(1.01); }
+      100% { opacity: 1; transform: translateX(0) translateY(0) rotate(0) scale(1); }
+    }
 
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1)
-      }
+    /* Nature Particles */
+    .nature-deco {
+      position: absolute;
+      pointer-events: none;
+      font-size: 1.1rem;
+      z-index: 10;
+      opacity: 0;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    .zig-show .nature-deco.bee, .zag-show .nature-deco.bee { animation: beePop 1.4s ease-out both; }
+    .zig-show .nature-deco.leaf, .zag-show .nature-deco.leaf { animation: leafPop 1.8s ease-out both; }
+
+    @keyframes beePop {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+      20% { opacity: 1; transform: translate(15px, -15px) scale(1.1) rotate(15deg); }
+      40% { transform: translate(-10px, -30px) scale(1) rotate(-10deg); }
+      60% { transform: translate(20px, -50px) scale(0.9) rotate(20deg); }
+      100% { opacity: 0; transform: translate(0px, -90px) scale(0.7) rotate(0deg); }
+    }
+
+    @keyframes leafPop {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+      30% { opacity: 0.8; transform: translate(-20px, -20px) scale(1) rotate(45deg); }
+      60% { transform: translate(10px, -45px) rotate(-30deg); }
+      100% { opacity: 0; transform: translate(-15px, -85px) scale(0.6) rotate(90deg); }
     }
 
     .product-card:hover {
@@ -1194,9 +1323,51 @@
 
 
     .card-combo {
-      border: 2px solid rgba(255, 107, 53, .28) !important;
-      background: linear-gradient(165deg, #fff5ef, #ffe5d0) !important
+      border: 2px solid rgba(255, 107, 10, .28) !important;
+      background: linear-gradient(165deg, #fff5ef, #ffe5d0) !important;
     }
+
+    /* AMBIENT NATURE BACKGROUND */
+    #products { position: relative; } /* For absolute layer */
+    .nature-ambient-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 1; /* Maximum visibility */
+    }
+    .nature-p {
+      position: absolute;
+      font-size: 1.2rem;
+      transition: opacity 1s ease;
+      z-index: 0;
+    }
+    /* Ambient Animations */
+    @keyframes floatBee {
+      0% { transform: translate(0,0) rotate(0deg); }
+      25% { transform: translate(15px, -20px) rotate(10deg); }
+      50% { transform: translate(-10px, -45px) rotate(-10deg); }
+      75% { transform: translate(20px, -70px) rotate(15deg); }
+      100% { transform: translate(0px, -100px) rotate(0deg); }
+    }
+    @keyframes floatButter {
+      0% { transform: translate(0,0) scaleX(1); }
+      33% { transform: translate(80px, 40px) scaleX(-1); }
+      66% { transform: translate(-40px, 120px) scaleX(1); }
+      100% { transform: translate(120px, 200px) scaleX(-1); }
+    }
+    @keyframes floatBird {
+      0% { transform: translateX(-100px) translateY(0) scaleX(1); }
+      100% { transform: translateX(calc(100vw + 100px)) translateY(-150px) scaleX(1); }
+    }
+    @keyframes floatLeaf {
+      0% { transform: translateY(0) rotate(0deg) translateX(0); }
+      33% { transform: translateY(150px) rotate(120deg) translateX(30px); }
+      66% { transform: translateY(300px) rotate(240deg) translateX(-30px); }
+      100% { transform: translateY(450px) rotate(360deg) translateX(0); }
+    }
+
 
     .card-combo .prod-img-wrap {
       background: linear-gradient(135deg, #fff5ef, #ffe5d0);
@@ -3280,10 +3451,11 @@
           onclick="showPage('home');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),100)">Contact</button>
       </div>
       <div class="n-search" id="navSearch">
-        <span class="n-search-ico">🔍</span>
-        <input class="n-search-input" id="navSearchInput" type="text" placeholder="Search products…" autocomplete="off"
-          oninput="navHandleSearch(this.value)" onkeydown="if(event.key==='Escape')navClearSearch()">
+        <span class="n-search-ico" id="navSearchIco"
+          onclick="navHandleSearch(document.getElementById('navSearchInput').value)" style="cursor: pointer;">🔍</span>
+        <input class="n-search-input" id="navSearchInput" type="text" placeholder="Search products…" autocomplete="off">
         <button class="n-search-clear" id="navSearchClear" onclick="navClearSearch()">✕</button>
+        <div id="navSugg" class="n-suggestions"></div>
       </div>
       <div class="n-acts">
         <button class="lang-btn" id="navLangBtn" onclick="toggleLang()">தமிழ்</button>
@@ -3377,6 +3549,7 @@
     </div>
     <!-- PRODUCTS -->
     <main class="container mt-4" id="products">
+      <div id="natureAmbient" class="nature-ambient-layer"></div>
       <div class="sec-hd">
         <div class="sec-deco">🌿 🍯 🐝 🌸 🍃</div>
         <h2 class="sec-ttl">Our <em>Products</em></h2>
@@ -3582,7 +3755,8 @@
             <div class="rv-stars">★★★★★</div>
             <div class="rv-text">"I have been using Nama kalappai's honey for a while now. To be honest, this is a
               <strong>great add up to my daily life</strong>. Working in night shifts and having an imbalance life
-              structure, this honey helps me stay active and fit into a healthy lifestyle."</div>
+              structure, this honey helps me stay active and fit into a healthy lifestyle."
+            </div>
             <div class="rv-product">🍯 Raw Honey</div>
           </div>
           <div class="rv-card">
@@ -4371,7 +4545,6 @@
         descEn: `<strong>Includes:</strong> Honey (500g) + ABC Malt (180g).<br><br><strong>Health Benefits:</strong> Increases haemoglobin, blood purifier, rich in iron, glowing skin.`,
         descTa: `<strong>உள்ளடக்கம்:</strong> தேன் (500கி) + ABC மால்ட் (180கி).<br><br><strong>நன்மைகள்:</strong> ஹீமோகுளோபின் அதிகரிக்கிறது, இரும்புச்சத்து நிறைந்தது.`
       },
-
       {
         name: 'Weight Loss Combo — Forest Honey (500g) + Ulundhu Kanji (250g)', ta: 'உடல் எடை குறைப்பு கொம்போ — காட்டு தேன் + உளுந்து கஞ்சி மாவு', price: '₹699', actualPrice: '₹798', img: 'https://res.cloudinary.com/dgqhq0jyu/image/upload/f_auto,q_auto,w_600/v1773820532/DSC00310_dytxbt.jpg', category: 'combo',
         descEn: `<strong>Includes:</strong> Honey (500g) + Ulundhu Kanji Mix (250g).<br><br><strong>Health Benefits:</strong> Boosts metabolism, supports digestion, natural weight management.`,
@@ -4410,7 +4583,7 @@
       // Apply search filter
       if (searchQuery) {
         filtered = filtered.filter(p => {
-          const haystack = (p.name + ' ' + p.ta + ' ' + (p.descEn || '') + ' ' + (p.descTa || '')).toLowerCase();
+          const haystack = (p.name + ' ' + p.ta + ' ' + p.category).toLowerCase();
           return haystack.includes(searchQuery);
         });
       }
@@ -4424,9 +4597,13 @@
       }
       // No results
       if (filtered.length === 0) {
+        if (typeof updateAmbientNature === 'function') updateAmbientNature(0);
         grid.innerHTML = '<div class="no-results" style="grid-column:1/-1"><div class="nr-ico">🔍</div><p>No products found for \'<strong style=\"color:#fff\">' + term + '</strong>\'</p><p style="margin-top:8px;font-size:.82rem">Try: honey, ghee, oil, ragi, combo…</p></div>';
         return;
       }
+      
+      if (typeof updateAmbientNature === 'function') updateAmbientNature(filtered.length);
+      
       filtered.forEach((p, i) => {
         const isOil = p.category === 'oil', isCombo = p.category === 'combo';
         const card = document.createElement('div');
@@ -4465,8 +4642,24 @@
             <div class="prod-sub">${sub}</div>
             ${priceHtml}
           </div>`;
-        card.style.animationDelay = (i % 10) * 0.05 + 's';
-        card.classList.add('show');
+        const isEven = i % 2 === 0;
+        const entryClass = isEven ? 'zig-show' : 'zag-show';
+        card.classList.add(entryClass);
+        card.style.animationDelay = (i * 0.06) + 's';
+
+        // Add 2 Nature Particles
+        const decos = ['🐝', '🍃', '🍯', '🌿'];
+        for(let d=0; d<2; d++){
+          const span = document.createElement('span');
+          span.className = 'nature-deco ' + (d === 0 ? 'bee' : 'leaf');
+          span.textContent = decos[Math.floor(Math.random() * decos.length)];
+          // Position relative to card center
+          span.style.left = (Math.random() * 60 + 20) + '%';
+          span.style.top = (Math.random() * 40 + 30) + '%';
+          span.style.animationDelay = (i * 0.06 + 0.1 + Math.random() * 0.2) + 's';
+          card.appendChild(span);
+        }
+
         card.onclick = () => openProd(p);
         // hover 3D
         card.addEventListener('mousemove', e => {
@@ -4562,58 +4755,139 @@
     // ── NAVBAR SEARCH ────────────────────────────────────────────
     let searchQuery = '';
 
+    document.addEventListener('DOMContentLoaded', () => {
+      const navInput = document.getElementById('navSearchInput');
+      const navIco = document.getElementById('navSearchIco');
+      if (navInput) {
+        navInput.addEventListener('input', (e) => {
+          const val = e.target.value;
+          navShowSugg(val);
+          if (navIco) navIco.classList.toggle('has-text', val.length > 0);
+        });
+        navInput.addEventListener('keydown', (e) => {
+          navKeySugg(e);
+        });
+      }
+    });
+
+    function hideSugg() {
+      const s = document.getElementById('navSugg');
+      if (s) s.classList.remove('active');
+    }
+
+    let curSuggIdx = -1;
+    let suggMatches = [];
+
+    function navShowSugg(val) {
+      const q = val.trim().toLowerCase();
+      if (!q) { hideSugg(); return; }
+      suggMatches = products.filter(p => (p.name + ' ' + p.ta).toLowerCase().includes(q)).slice(0, 6);
+      if (suggMatches.length === 0) { hideSugg(); return; }
+
+      const s = document.getElementById('navSugg');
+      if (!s) return;
+      s.innerHTML = suggMatches.map((p, i) => `
+        <div class="s-item" onclick="navSuggSelect(${i})" id="sugg-${i}">
+          <img src="${p.img}" class="s-img" alt="">
+          <div class="s-info">
+            <div class="s-name">${lang === 'ta' ? p.ta : p.name}</div>
+            <div class="s-price">${p.price}</div>
+          </div>
+          <div class="s-cta">↵</div>
+        </div>
+      `).join('');
+      s.classList.add('active');
+      curSuggIdx = -1;
+    }
+
+    function navSuggSelect(idx) {
+      const p = suggMatches[idx];
+      if (!p) return;
+      const ni = document.getElementById('navSearchInput');
+      if (ni) ni.value = p.name;
+      hideSugg();
+      // If the selected item is a category match (implied by name containing category), 
+      // but here we just pass the full name for a specific search
+      navHandleSearch(p.name);
+    }
+
+    function navKeySugg(e) {
+      const s = document.getElementById('navSugg');
+      const items = s.querySelectorAll('.s-item');
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        curSuggIdx = (curSuggIdx + 1) % items.length;
+        updateSuggSel(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        curSuggIdx = (curSuggIdx - 1 + items.length) % items.length;
+        updateSuggSel(items);
+      } else if (e.key === 'Enter') {
+        if (curSuggIdx > -1) {
+          e.preventDefault();
+          navSuggSelect(curSuggIdx);
+        } else {
+          navHandleSearch(document.getElementById('navSearchInput').value);
+        }
+        hideSugg();
+      } else if (e.key === 'Escape') {
+        hideSugg();
+        navClearSearch();
+      }
+    }
+
+    function updateSuggSel(items) {
+      items.forEach((it, i) => it.classList.toggle('sel', i === curSuggIdx));
+      if (curSuggIdx > -1) items[curSuggIdx].scrollIntoView({ block: 'nearest' });
+    }
+
+    // Hide suggestions on click outside
+    document.addEventListener('click', e => {
+      if (!document.getElementById('navSearch').contains(e.target)) hideSugg();
+    });
+
     function navHandleSearch(val) {
-      searchQuery = val.trim().toLowerCase();
+      const q = val.trim().toLowerCase();
+      if (!q) { navClearSearch(); return; }
+
+      searchQuery = q;
       const clearBtn = document.getElementById('navSearchClear');
       if (clearBtn) clearBtn.classList.toggle('vis', searchQuery.length > 0);
-      // sync products-section search input if exists
+
       const si = document.getElementById('searchInput');
       if (si) si.value = val;
       const sc = document.getElementById('searchClear');
       if (sc) sc.classList.toggle('vis', searchQuery.length > 0);
-      // reset tabs to all
-      if (searchQuery) {
-        document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === 'all'));
-        document.querySelectorAll('.prod-bar-item').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
-      }
-      // scroll to products and render
+
+      // reset tabs to all for general search
+      document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === 'all'));
+      document.querySelectorAll('.prod-bar-item').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+
       showPage('home');
       setTimeout(() => {
-        document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+        const pr = document.getElementById('products');
+        if (pr) pr.scrollIntoView({ behavior: 'smooth' });
 
-        // ── TESTIMONIALS LEAF DECORATION ─────────────────────────────
+        // ── TESTIMONIALS LEAF DECORATION (Restored) ─────────────────────
         (function () {
           const sec = document.getElementById('testimonials');
           const canvas = document.getElementById('testiLeafCanvas');
-          if (!sec || !canvas) return;
+          if (!sec || !canvas || canvas.children.length > 0) return;
           const leafs = ['🌿', '🍃', '🌱', '🍀', '🌾', '🪴'];
           for (let i = 0; i < 18; i++) {
             const el = document.createElement('div');
             el.className = 'testi-leaf';
             const sz = 14 + Math.random() * 16;
             el.textContent = leafs[i % leafs.length];
-            el.style.cssText = [
-              'left:' + (Math.random() * 100) + '%',
-              'bottom:-40px',
-              'font-size:' + sz + 'px',
-              'animation-duration:' + (18 + Math.random() * 20) + 's',
-              'animation-delay:' + (Math.random() * 30) + 's'
-            ].join(';');
+            el.style.cssText = `left:${Math.random() * 100}%;bottom:-40px;font-size:${sz}px;animation-duration:${18 + Math.random() * 20}s;animation-delay:${Math.random() * 30}s`;
             canvas.appendChild(el);
           }
-          // Pollen dots
           for (let i = 0; i < 14; i++) {
             const dot = document.createElement('div');
             dot.className = 'testi-pollen';
             const sz = 4 + Math.random() * 7;
-            dot.style.cssText = [
-              'left:' + (Math.random() * 100) + '%',
-              'top:' + (Math.random() * 100) + '%',
-              'width:' + sz + 'px',
-              'height:' + sz + 'px',
-              'animation-duration:' + (3 + Math.random() * 5) + 's',
-              'animation-delay:' + (Math.random() * 6) + 's'
-            ].join(';');
+            dot.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;width:${sz}px;height:${sz}px;animation-duration:${3 + Math.random() * 5}s;animation-delay:${Math.random() * 6}s`;
             sec.appendChild(dot);
           }
         })();
@@ -4634,11 +4908,14 @@
       const si = document.getElementById('searchInput');
       const sc = document.getElementById('searchClear');
       const cnt = document.getElementById('searchCount');
+      const nico = document.getElementById('navSearchIco');
       if (ni) ni.value = '';
       if (nc) nc.classList.remove('vis');
       if (si) si.value = '';
       if (sc) sc.classList.remove('vis');
       if (cnt) cnt.textContent = '';
+      if (nico) nico.classList.remove('has-text');
+      hideSugg();
       renderProducts('all');
     }
 
@@ -4706,7 +4983,98 @@
       });
     }
 
+    // ── AMBIENT NATURE POOL ──────────────────────────────────────
+    function initNaturePool() {
+      const layer = document.getElementById('natureAmbient');
+      if (!layer) return;
+      layer.innerHTML = ''; // reset
+      
+      const emojis = { bee: '🐝', butter: '🦋', leaf: '🍃' };
+      const anims = { bee: 'floatBee', butter: 'floatButter', leaf: 'floatLeaf' };
+      // Max pre-generated pool for up to ~40 products
+      const maxCounts = { bee: 65, butter: 45, leaf: 65 };
+      
+      for (const [type, count] of Object.entries(maxCounts)) {
+        for (let i = 0; i < count; i++) {
+          const span = document.createElement('span');
+          span.className = 'nature-p';
+          span.dataset.type = type;
+          span.textContent = emojis[type];
+          span.style.left = Math.random() * 100 + '%';
+          span.style.top = Math.random() * 100 + '%';
+          const s = 0.8 + Math.random() * 0.6; // slightly larger
+          span.style.transform = `scale(${s})`;
+          span.style.opacity = 0.5 + Math.random() * 0.5; // much higher visibility
+          const dur = 8 + Math.random() * 12; // much faster movement speed
+          const del = Math.random() * 10;
+          span.style.animation = `${anims[type]} ${dur}s linear ${del}s infinite`;
+          span.style.display = 'none'; // hidden initially
+          layer.appendChild(span);
+        }
+      }
+    }
+
+    function updateAmbientNature(productCount) {
+      if (!productCount || productCount === 0) productCount = 0;
+      
+      // Calculate active particles proportional to products being shown
+      const multiplier = 1.6;
+      const targetCounts = {
+        bee: Math.ceil(productCount * multiplier),
+        butter: Math.ceil(productCount * multiplier * 0.75),
+        leaf: Math.ceil(productCount * multiplier)
+      };
+      
+      const currentCounts = { bee: 0, butter: 0, leaf: 0 };
+      const particles = document.querySelectorAll('#natureAmbient .nature-p');
+      
+      particles.forEach(p => {
+        const type = p.dataset.type;
+        if (currentCounts[type] < targetCounts[type]) {
+          p.style.display = 'block';
+          currentCounts[type]++;
+        } else {
+          p.style.display = 'none';
+        }
+      });
+    }
+
     // ── INIT ─────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      // Restore scroll logic
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const cur = window.pageYOffset;
+        if (cur > 100) {
+          document.getElementById('nkNav').classList.toggle('slid-up', cur > lastScroll);
+        } else {
+          document.getElementById('nkNav').classList.remove('slid-up');
+        }
+        lastScroll = cur;
+      }, { passive: true });
+
+      // Restore search listeners
+      const nico = document.getElementById('navSearchIco');
+      const ni = document.getElementById('navSearchInput');
+      const nc = document.getElementById('navSearchClear');
+      if (nico && ni) {
+        nico.onclick = () => navHandleSearch(ni.value);
+        ni.onkeydown = (e) => navKeySugg(e);
+        ni.oninput = (e) => {
+          navShowSugg(ni.value);
+          if (ni.value.length > 0) {
+            nico.classList.add('has-text');
+          } else {
+            nico.classList.remove('has-text');
+          }
+          if (nc) nc.classList.toggle('vis', ni.value.length > 0);
+        };
+      }
+      
+      initNaturePool();
+      initReveal();
+    });
+
     // Escape key closes modal
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeModal();
